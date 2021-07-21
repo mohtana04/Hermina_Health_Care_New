@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActiviry">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/aksenheadlogin"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/accentheadlogin"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logorshsmd"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toEndOf="@id/aksenheadlogin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/logorshsmd"/>
+
+    <LinearLayout
+        android:id="@+id/parentinputlogin"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/aksenheadlogin"
+        android:layout_marginTop="50dp">
+
+        <EditText
+            android:id="@+id/ETnomorcm"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/customedittext"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:hint="Nomor Rekam Meids"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toTopOf="@id/ETtgllahir"
+            android:inputType="text"
+            app:layout_constraintTop_toBottomOf="@id/aksenheadlogin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingLeft="20dp"/>
+
+        <EditText
+            android:id="@+id/ETtgllahir"
+            android:background="@drawable/customedittext"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:paddingLeft="20dp"
+            android:hint="Tanggal Lahir"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:inputType="date"
+            app:layout_constraintTop_toBottomOf="@id/ETnomorcm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/BTlogin"
+            android:paddingStart="20dp" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/BTlogin"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Masuk"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/custombutton"
+        app:layout_constraintTop_toBottomOf="@id/parentinputlogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/parentbottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/aksenfooterlogin"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:src="@drawable/bottomaccent" />
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
