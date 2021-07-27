@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Hermina Healt Center</string>
+    <string name="app_name">Hermina Health Care</string>
+    <string name="SloginGreeting">Login</string>
+    <string name="SloginHintuser">Nomor Rekam Meids</string>
+    <string name="SloginHintpass">Tanggal Lahir</string>
+    <string name="SloginMasuk">Masuk</string>
 </resources>
