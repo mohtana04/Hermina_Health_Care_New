@@ -85,6 +85,7 @@
                 android:background="@drawable/customedittext"
                 android:layout_width="match_parent"
                 android:padding="10dp"
+                android:focusable="false"
                 android:paddingLeft="20dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"

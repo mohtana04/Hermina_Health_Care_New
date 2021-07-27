@@ -1,10 +1,12 @@
 package com.example.herminahealtcenter;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,7 +18,10 @@ import com.example.herminahealtcenter.model.MetaData;
 import com.example.herminahealtcenter.rest.ApiClient;
 import com.example.herminahealtcenter.rest.ApiInterface;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextTgllahir;
     private String nomr,tgllahir;
     private Button buttonLogin;
+    private SimpleDateFormat dateformatter;
+    private DatePickerDialog datePickerDialog;
     View focusView = null;
 
     @Override
@@ -40,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         editTextTgllahir = (EditText) findViewById(R.id.ETtgllahir);
         buttonLogin = (Button) findViewById(R.id.BTlogin);
 
+        dateformatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +60,27 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        editTextTgllahir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datepickerlogin();
+            }
+        });
+
+    }
+
+    private void datepickerlogin () {
+        Calendar loginCalendar = Calendar.getInstance();
+
+        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                Calendar loginDate = Calendar.getInstance();
+                loginDate.set(year, month, dayOfMonth);
+                editTextTgllahir.setText(dateformatter.format(loginDate.getTime()));
+            }
+        },loginCalendar.get(Calendar.YEAR), loginCalendar.get(Calendar.MONTH), loginCalendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
     private void attemptLogin() {
