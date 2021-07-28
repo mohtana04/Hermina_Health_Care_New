@@ -4,6 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFDD5"
     tools:context=".DashboardActivity">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btninformasi"
+        android:layout_width="0dp"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:text="informasi"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:drawableLeft="@drawable/ic_baseline_info_24"
+        android:background="@drawable/custombuttonfrag"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnberanda"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnberanda"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="beranda"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:drawableLeft="@drawable/ic_baseline_home_work_24"
+        android:background="@drawable/custombuttonfrag"
+        app:layout_constraintStart_toEndOf="@id/btninformasi"
+        android:padding="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnprofile"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnprofile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="profil"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:drawableLeft="@drawable/ic_baseline_account_circle_24"
+        android:background="@drawable/custombuttonfrag"
+        app:layout_constraintStart_toEndOf="@id/btnberanda"
+        android:padding="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <FrameLayout
+        android:id="@+id/framefragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/btnberanda"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
