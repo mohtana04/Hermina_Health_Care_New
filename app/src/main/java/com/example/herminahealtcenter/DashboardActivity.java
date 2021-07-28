@@ -2,6 +2,7 @@ package com.example.herminahealtcenter;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +19,14 @@ public class DashboardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_dashboard);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(
+                R.id.framefragmentberanda, new HomeFragment()
+        );
+        ft.commit();
 
         Btninfo = findViewById(R.id.btninformasi);
         Btnbrd = findViewById(R.id.btnberanda);
@@ -29,7 +37,7 @@ public class DashboardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(
-                        R.id.framefragment, new HomeFragment()
+                        R.id.framefragmentberanda, new HomeFragment()
                 );
                 ft.commit();
             }
@@ -40,7 +48,7 @@ public class DashboardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(
-                        R.id.framefragment, new InformationFragment()
+                        R.id.framefragmentberanda, new InformationFragment()
                 );
                 ft.commit();
             }
@@ -51,7 +59,7 @@ public class DashboardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(
-                        R.id.framefragment, new ProfileFragment()
+                        R.id.framefragmentberanda, new ProfileFragment()
                 );
                 ft.commit();
             }
