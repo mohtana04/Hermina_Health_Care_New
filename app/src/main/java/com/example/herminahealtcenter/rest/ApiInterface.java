@@ -1,5 +1,7 @@
 package com.example.herminahealtcenter.rest;
 
+import com.example.herminahealtcenter.model.HistoryrwiResponse;
+import com.example.herminahealtcenter.model.HistoryrwjResponse;
 import com.example.herminahealtcenter.model.LoginResponse;
 
 import retrofit2.Call;
@@ -13,4 +15,14 @@ public interface ApiInterface {
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @POST("users/login")
     Call<LoginResponse> a(@Field("nomr") String nomr, @Field("tgllahir") String tgllahir);
+
+    @FormUrlEncoded
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @POST("info/historyrwj")
+    Call<HistoryrwjResponse> hrwj(@Field("nomr") String nomr);
+
+    @FormUrlEncoded
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @POST("info/historyrwi")
+    Call<HistoryrwiResponse> hrwi(@Field("nomr") String nomr);
 }
