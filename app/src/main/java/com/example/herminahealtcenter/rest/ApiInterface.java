@@ -1,5 +1,6 @@
 package com.example.herminahealtcenter.rest;
 
+import com.example.herminahealtcenter.model.HistorylabheaderResponse;
 import com.example.herminahealtcenter.model.HistoryrwiResponse;
 import com.example.herminahealtcenter.model.HistoryrwjResponse;
 import com.example.herminahealtcenter.model.LoginResponse;
@@ -25,4 +26,9 @@ public interface ApiInterface {
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @POST("info/historyrwi")
     Call<HistoryrwiResponse> hrwi(@Field("nomr") String nomr);
+
+    @FormUrlEncoded
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @POST("info/historylabh")
+    Call<HistorylabheaderResponse> hlabhead(@Field("nomr") String nomr);
 }

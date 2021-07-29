@@ -1,15 +1,17 @@
 package com.example.herminahealtcenter.fragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.herminahealtcenter.LaboratoriumHeaderActivity;
 import com.example.herminahealtcenter.R;
 import com.example.herminahealtcenter.utils.SessionsManager;
 
@@ -27,6 +29,7 @@ public class HomeFragment extends Fragment {
     ImageView imageViewlab;
     TextView textViewlab;
     String norm;
+    Context context;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -71,14 +74,16 @@ public class HomeFragment extends Fragment {
         imageViewlab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(),"klik gambar",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity(), LaboratoriumHeaderActivity.class);
+                startActivity(intent);
             }
         });
 
         textViewlab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(),"klik text",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity(), LaboratoriumHeaderActivity.class);
+                startActivity(intent);
             }
         });
 
