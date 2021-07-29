@@ -6,10 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.herminahealtcenter.R;
+import com.example.herminahealtcenter.utils.SessionsManager;
 
 public class HomeFragment extends Fragment {
 
@@ -21,9 +23,10 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    SessionsManager sessionsManager;
     ImageView imageViewlab;
     TextView textViewlab;
+    String norm;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -49,6 +52,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sessionsManager = new SessionsManager(getContext());
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -63,7 +67,25 @@ public class HomeFragment extends Fragment {
 
         imageViewlab = (ImageView) view.findViewById(R.id.btnimglab);
         textViewlab = (TextView) view.findViewById(R.id.btntvlab);
+        norm = sessionsManager.getUserName();
+        imageViewlab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(),"klik gambar",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        textViewlab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(),"klik text",Toast.LENGTH_LONG).show();
+            }
+        });
+
         return  view;
 
     }
+
+
+
 }

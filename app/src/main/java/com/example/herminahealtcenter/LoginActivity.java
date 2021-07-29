@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-    private void loginProcessWithRetrofit(String nomr,String tgllahir) {
+    private void loginProcessWithRetrofit(final String nomr,final String tgllahir) {
         ApiInterface apiService =
                 ApiClient.createService(ApiInterface.class, "admin", "h3rm1n4c4r3");
         Call<LoginResponse> mService = apiService.a(nomr, tgllahir);
