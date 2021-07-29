@@ -1,17 +1,21 @@
 package com.example.herminahealtcenter.fragment;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.example.herminahealtcenter.R;
 
-public class HomeFragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link RiwayatRwj#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class RiwayatRwj extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,9 +26,7 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    ImageView imageViewlab;
-    TextView textViewlab;
-    public HomeFragment() {
+    public RiwayatRwj() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class HomeFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
+     * @return A new instance of fragment RiwayatRwj.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
+    public static RiwayatRwj newInstance(String param1, String param2) {
+        RiwayatRwj fragment = new RiwayatRwj();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,11 +61,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view =  inflater.inflate(R.layout.fragment_home, container, false);
-
-        imageViewlab = (ImageView) view.findViewById(R.id.btnimglab);
-        textViewlab = (TextView) view.findViewById(R.id.btntvlab);
-        return  view;
-
+        return inflater.inflate(R.layout.fragment_riwayat_rwj, container, false);
     }
 }
