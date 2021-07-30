@@ -21,7 +21,7 @@
                 app:layout_constraintEnd_toStartOf="@id/parentradiologi">
 
                 <TextView
-                    android:id="@+id/btnriwayat"
+                    android:id="@+id/btntvriwayat"
                     android:layout_width="150dp"
                     android:layout_height="70dp"
                     android:text="riwayat"
@@ -35,6 +35,7 @@
                     android:background="@drawable/customgridview"/>
 
                 <ImageView
+                    android:id="@+id/btnimgriwayat"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/riwayat"

@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.herminahealtcenter.LaboratoriumHeaderActivity;
 import com.example.herminahealtcenter.R;
+import com.example.herminahealtcenter.RiwayatActivity;
 import com.example.herminahealtcenter.utils.SessionsManager;
 
 public class HomeFragment extends Fragment {
@@ -26,8 +27,8 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     SessionsManager sessionsManager;
-    ImageView imageViewlab;
-    TextView textViewlab;
+    ImageView imageViewlab, imageViewriwayat;
+    TextView textViewlab, textViewriwayat;
     String norm;
     Context context;
     public HomeFragment() {
@@ -70,6 +71,8 @@ public class HomeFragment extends Fragment {
 
         imageViewlab = (ImageView) view.findViewById(R.id.btnimglab);
         textViewlab = (TextView) view.findViewById(R.id.btntvlab);
+        imageViewriwayat = view.findViewById(R.id.btntvriwayat);
+        textViewriwayat = view.findViewById(R.id.btnimgriwayat);
         norm = sessionsManager.getUserName();
         imageViewlab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +87,20 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), LaboratoriumHeaderActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        imageViewriwayat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), RiwayatActivity.class));
+            }
+        });
+
+        textViewriwayat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), RiwayatActivity.class));
             }
         });
 
