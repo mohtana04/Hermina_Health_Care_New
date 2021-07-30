@@ -27,8 +27,8 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     SessionsManager sessionsManager;
-    ImageView imageViewlab, imageViewriwayat;
-    TextView textViewlab, textViewriwayat;
+    ImageView imageViewlab, imageViewRiwayat;
+    TextView textViewlab, textViewRiwayat;
     String norm;
     Context context;
     public HomeFragment() {
@@ -71,8 +71,10 @@ public class HomeFragment extends Fragment {
 
         imageViewlab = (ImageView) view.findViewById(R.id.btnimglab);
         textViewlab = (TextView) view.findViewById(R.id.btntvlab);
-        imageViewriwayat = view.findViewById(R.id.btntvriwayat);
-        textViewriwayat = view.findViewById(R.id.btnimgriwayat);
+        imageViewRiwayat = (ImageView) view.findViewById(R.id.btnimgriwayat);
+        textViewRiwayat = (TextView) view.findViewById(R.id.btntvriwayat);
+//        imageViewriwayat =(ImageView) view.findViewById(R.id.btntvriwayat);
+//        textViewriwayat =(TextView) view.findViewById(R.id.btnimgriwayat);
         norm = sessionsManager.getUserName();
         imageViewlab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,19 +92,33 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        imageViewriwayat.setOnClickListener(new View.OnClickListener() {
+        imageViewRiwayat.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 startActivity(new Intent(getActivity(), RiwayatActivity.class));
             }
         });
 
-        textViewriwayat.setOnClickListener(new View.OnClickListener() {
+        textViewRiwayat.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 startActivity(new Intent(getActivity(), RiwayatActivity.class));
             }
         });
+
+//        imageViewriwayat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity(), RiwayatActivity.class));
+//            }
+//        });
+//
+//        textViewriwayat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity(), RiwayatActivity.class));
+//            }
+//        });
 
         return  view;
 
