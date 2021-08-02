@@ -9,7 +9,6 @@ import com.example.herminahealtcenter.utils.SessionsManager;
 
 public class MainActivity extends AppCompatActivity {
 
-
     SessionsManager sessionsManager;
     TextView textViewNorm;
     String norm;

@@ -6,7 +6,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.herminahealtcenter.fragment.HomeFragment;
 import com.example.herminahealtcenter.fragment.InformationFragment;
@@ -15,6 +18,7 @@ import com.example.herminahealtcenter.fragment.ProfileFragment;
 public class DashboardActivity extends AppCompatActivity {
 
     private Button Btninfo, Btnbrd, Btnprof;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,48 +28,15 @@ public class DashboardActivity extends AppCompatActivity {
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(
-                R.id.framefragmentberanda, new HomeFragment()
+                R.id.VPberanda, new HomeFragment()
         );
         ft.commit();
 
         Btninfo = findViewById(R.id.btninformasi);
         Btnbrd = findViewById(R.id.btnberanda);
         Btnprof = findViewById(R.id.btnprofile);
-
-        Btnbrd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(
-                        R.id.framefragmentberanda, new HomeFragment()
-                );
-                ft.commit();
-            }
-        });
-
-        Btninfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(
-                        R.id.framefragmentberanda, new InformationFragment()
-                );
-                ft.commit();
-            }
-        });
-
-        Btnprof.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(
-                        R.id.framefragmentberanda, new ProfileFragment()
-                );
-                ft.commit();
-            }
-        });
-
-
-
+        viewPager = findViewById(R.id.VPberanda);
     }
+
+
 }
