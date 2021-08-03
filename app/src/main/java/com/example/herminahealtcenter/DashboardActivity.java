@@ -59,8 +59,32 @@ public class DashboardActivity extends AppCompatActivity {
 
             }
         });
-        viewPager.setCurrentItem(0);
-        Btninfo.setBackgroundResource(R.drawable.active_back);
+        viewPager.setCurrentItem(1);
+        Btnbrd.setBackgroundResource(R.drawable.active_back);
+
+        Btninfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.setCurrentItem(0);
+                Btninfo.setBackgroundResource(R.drawable.active_back);
+            }
+        });
+
+        Btnbrd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.setCurrentItem(1);
+                Btnbrd.setBackgroundResource(R.drawable.active_back);
+            }
+        });
+
+        Btnprof.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.setCurrentItem(2);
+                Btnprof.setBackgroundResource(R.drawable.active_back);
+            }
+        });
     }
 
     private final void chageTabs(int position) {

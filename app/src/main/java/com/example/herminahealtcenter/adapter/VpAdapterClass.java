@@ -21,10 +21,10 @@ public class VpAdapterClass extends FragmentPagerAdapter {
         Fragment FVPlayout = new Fragment();
         switch (position) {
             case 0:
-                FVPlayout = (Fragment) (new HomeFragment());
+                FVPlayout = (Fragment) (new InformationFragment());
                 break;
             case 1:
-                FVPlayout = (Fragment) (new InformationFragment());
+                FVPlayout = (Fragment) (new HomeFragment());
                 break;
             case 2:
                 FVPlayout = (Fragment) (new ProfileFragment());
