@@ -47,7 +47,7 @@ public class HistoryrwiAdapter extends RecyclerView.Adapter<HistoryrwiAdapter.Hi
 
     @Override
     public int getItemCount() {
-        return historyrwis.size();
+        return historyrwis == null ? 0 :historyrwis.size();
     }
 
     public class HistoryrwiAdapterViewHolder extends RecyclerView.ViewHolder{
