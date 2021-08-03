@@ -10,6 +10,9 @@ public class Historylabheader {
     @SerializedName("tgltransaksi")
     @Expose
     private String tgltransaksi;
+    @SerializedName("jamsampling")
+    @Expose
+    private String jamsampling;
     @SerializedName("patientnama")
     @Expose
     private String patientnama;
@@ -34,6 +37,14 @@ public class Historylabheader {
 
     public void setTgltransaksi(String tgltransaksi) {
         this.tgltransaksi = tgltransaksi;
+    }
+
+    public String getJamsampling() {
+        return jamsampling;
+    }
+
+    public void setJamsampling(String jamsampling) {
+        this.jamsampling = jamsampling;
     }
 
     public String getPatientnama() {

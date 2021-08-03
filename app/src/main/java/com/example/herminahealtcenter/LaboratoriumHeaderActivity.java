@@ -43,6 +43,7 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity {
 
 
         Call<HistorylabheaderResponse> call = apiService.hlabhead(norm);
+
         call.enqueue(new Callback<HistorylabheaderResponse>() {
             @Override
             public void onResponse(Call<HistorylabheaderResponse> call, Response<HistorylabheaderResponse> response) {
