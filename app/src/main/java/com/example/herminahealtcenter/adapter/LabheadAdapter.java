@@ -36,7 +36,6 @@ public class LabheadAdapter extends RecyclerView.Adapter<LabheadAdapter.Labheade
     public void onBindViewHolder(LabheadAdapter.LabheaderAdapterViewHolder holder, int position) {
         holder.nobuktitransaksi.setText(historylabheaders.get(position).getNobuktitransaksi());
         holder.jamsampling.setText(historylabheaders.get(position).getJamsampling());
-        holder.patientnama.setText(historylabheaders.get(position).getPatientnama());
         holder.typeketerangan.setText(historylabheaders.get(position).getTypeketerangan());
         holder.dotkternama.setText(historylabheaders.get(position).getDokternama());
     }
@@ -53,7 +52,6 @@ public class LabheadAdapter extends RecyclerView.Adapter<LabheadAdapter.Labheade
             super(view);
             nobuktitransaksi = (TextView) view.findViewById(R.id.tvnotransaksilab);
             jamsampling = (TextView) view.findViewById(R.id.tvtgltransaksilab);
-            patientnama = (TextView) view.findViewById(R.id.tvnamapasienlab);
             typeketerangan = (TextView) view.findViewById(R.id.tvtipetransaksilab);
             dotkternama = (TextView) view.findViewById(R.id.tvdokternyalab);
         }

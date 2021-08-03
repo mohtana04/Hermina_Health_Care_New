@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.herminahealtcenter.fragment.RiwayatRwi;
-import com.example.herminahealtcenter.fragment.RiwayatRwj;
+import com.example.herminahealtcenter.fragment.RiwayatRwiFragment;
+import com.example.herminahealtcenter.fragment.RiwayatRwjFragment;
 
 public class VpAdapterRiwayat extends FragmentPagerAdapter {
 
@@ -20,10 +20,10 @@ public class VpAdapterRiwayat extends FragmentPagerAdapter {
         Fragment FVPRiwLayout = new Fragment();
         switch (position) {
             case 0:
-                FVPRiwLayout = (Fragment) (new RiwayatRwi());
+                FVPRiwLayout = (Fragment) (new RiwayatRwiFragment());
                 break;
             case 1:
-                FVPRiwLayout = (Fragment) (new RiwayatRwj());
+                FVPRiwLayout = (Fragment) (new RiwayatRwjFragment());
                 break;
         }
         return FVPRiwLayout;

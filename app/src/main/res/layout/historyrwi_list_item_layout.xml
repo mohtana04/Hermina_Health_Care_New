@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="16dp"
+    android:background="@drawable/customgridview"
+    app:cardCornerRadius="3dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="1dp">
+
+        <TextView
+            android:id="@+id/tvnoregistrasirwi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NoRegis"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <view
+            android:id="@+id/view1rwi"
+            class="androidx.appcompat.widget.AppCompatButton"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/black_trans80"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvasuransirwj"
+            app:layout_constraintTop_toBottomOf="@+id/tvnoregistrasirwi" />
+
+
+        <TextView
+            android:id="@+id/tvnamadokterrwi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="nama dokter"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view1rwi" />
+
+        <TextView
+            android:id="@+id/tvtglpulangrwi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Tanggal Pulang"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvnamadokterrwi" />
+
+        <TextView
+            android:id="@+id/tvtglregistrasirwi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tgl registrasi"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tvasuransirwi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Asuransi"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvtglpulangrwi" />
+
+        <TextView
+            android:id="@+id/tvusiarwi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Usia"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvasuransirwi" />
+
+        <TextView
+            android:id="@+id/tvketeranganrwi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="keterangan"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvusiarwi" />
+
+        <TextView
+            android:id="@+id/tvketeranganrwi2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="keterangan2"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvketeranganrwi" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
