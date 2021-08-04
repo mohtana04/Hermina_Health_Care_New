@@ -34,7 +34,7 @@ public class HistoryrwiAdapter extends RecyclerView.Adapter<HistoryrwiAdapter.Hi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HistoryrwiAdapter.HistoryrwiAdapterViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HistoryrwiAdapterViewHolder holder, int position) {
         holder.noregisrwi.setText(historyrwis.get(position).getNoregistrasi());
         holder.doktername.setText(historyrwis.get(position).getDoktername());
         holder.tglpulang.setText(historyrwis.get(position).getTglpulang());
