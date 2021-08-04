@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -14,7 +16,8 @@ import com.example.herminahealtcenter.adapter.VpAdapterClass;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    private Button Btninfo, Btnbrd, Btnprof;
+    private ImageButton Btninfo, Btnprof;
+    private TextView Btnbrd;
     private ViewPager viewPager;
 
     @Override
@@ -47,49 +50,45 @@ public class DashboardActivity extends AppCompatActivity {
 
             }
         });
-        viewPager.setCurrentItem(1);
-        Btnbrd.setBackgroundResource(R.drawable.active_back);
+        viewPager.setCurrentItem(0);
 
         Btninfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(0);
+                viewPager.setCurrentItem(1);
                 Btninfo.setBackgroundResource(R.drawable.active_back);
+                Btnprof.setBackgroundResource(R.drawable.inactive_back);
             }
         });
 
         Btnbrd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(1);
-                Btnbrd.setBackgroundResource(R.drawable.active_back);
+                viewPager.setCurrentItem(0);
+                Btninfo.setBackgroundResource(R.drawable.inactive_back);
+                Btnprof.setBackgroundResource(R.drawable.inactive_back);
             }
         });
 
-        Btnprof.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewPager.setCurrentItem(2);
-                Btnprof.setBackgroundResource(R.drawable.active_back);
-            }
+        Btnprof.setOnClickListener(v -> {
+            viewPager.setCurrentItem(2);
+            Btnprof.setBackgroundResource(R.drawable.active_back);
+            Btninfo.setBackgroundResource(R.drawable.inactive_back);
         });
     }
 
-    private final void chageTabs(int position) {
+    private void chageTabs(int position) {
         if (position == 0) {
-            Btninfo.setBackgroundResource(R.drawable.active_back);
-            Btnbrd.setBackgroundResource(R.drawable.inactive_back);
+            Btninfo.setBackgroundResource(R.drawable.inactive_back);
             Btnprof.setBackgroundResource(R.drawable.inactive_back);
         }
         if (position == 1) {
-            Btninfo.setBackgroundResource(R.drawable.inactive_back);
-            Btnbrd.setBackgroundResource(R.drawable.active_back);
+            Btninfo.setBackgroundResource(R.drawable.active_back);
             Btnprof.setBackgroundResource(R.drawable.inactive_back);
         }
         if (position == 2) {
-            Btninfo.setBackgroundResource(R.drawable.inactive_back);
-            Btnbrd.setBackgroundResource(R.drawable.inactive_back);
             Btnprof.setBackgroundResource(R.drawable.active_back);
+            Btninfo.setBackgroundResource(R.drawable.inactive_back);
         }
     }
 

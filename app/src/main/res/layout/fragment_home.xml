@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFDD5"
     android:orientation="vertical"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.HomeFragment">
 
@@ -16,13 +16,15 @@
                 android:id="@+id/parentriwayat"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:padding="5dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/parentradiologi">
+                app:layout_constraintEnd_toStartOf="@id/parentradiologi"
+                app:layout_constraintBottom_toTopOf="@id/parentfisioterapi">
 
                 <TextView
                     android:id="@+id/btntvriwayat"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:text="riwayat"
                     android:gravity="bottom|center"
@@ -50,12 +52,14 @@
                 android:id="@+id/parentradiologi"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:padding="5dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/parentriwayat"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/parentrehabmedik">
 
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:text="radiologi"
                     android:gravity="bottom|center"
@@ -82,12 +86,14 @@
                 android:id="@+id/parentfisioterapi"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:padding="5dp"
                 app:layout_constraintTop_toBottomOf="@id/parentriwayat"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/parentrehabmedik">
+                app:layout_constraintEnd_toStartOf="@id/parentrehabmedik"
+                app:layout_constraintBottom_toTopOf="@id/parentlaboratorium">
 
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:text="fisioterapi"
                     android:gravity="bottom|center"
@@ -114,12 +120,14 @@
                 android:id="@+id/parentrehabmedik"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:padding="5dp"
                 app:layout_constraintTop_toBottomOf="@id/parentradiologi"
                 app:layout_constraintStart_toEndOf="@id/parentfisioterapi"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/parentfarmasi">
 
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:text="rehab medik"
                     android:gravity="bottom|center"
@@ -146,13 +154,15 @@
                 android:id="@+id/parentlaboratorium"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:padding="5dp"
                 app:layout_constraintTop_toBottomOf="@id/parentfisioterapi"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/parentfarmasi">
+                app:layout_constraintEnd_toStartOf="@id/parentfarmasi"
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <TextView
                     android:id="@+id/btntvlab"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:text="laboratorium"
                     android:gravity="bottom|center"
@@ -180,12 +190,14 @@
                 android:id="@+id/parentfarmasi"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:padding="5dp"
                 app:layout_constraintTop_toBottomOf="@id/parentrehabmedik"
                 app:layout_constraintStart_toEndOf="@id/parentlaboratorium"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:text="farmasi"
                     android:gravity="bottom|center"

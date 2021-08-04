@@ -4,17 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:isScrollContainer="true"
     tools:context=".LaboratoriumHeaderActivity">
 
+    <LinearLayout
+        android:id="@+id/LLactionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/IBkembaliLab"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/active_back"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"/>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ETpencarianLab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Laboratorium"
+        android:drawableLeft="@drawable/ic_baseline_search_24"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:layout_margin="5dp"
+        android:background="@drawable/customedittextinternal"
+        app:layout_constraintTop_toBottomOf="@id/LLactionbar"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/labheader_recycleview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.014">
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ETpencarianLab">
     </androidx.recyclerview.widget.RecyclerView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

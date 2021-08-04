@@ -49,26 +49,20 @@ public class RiwayatActivity extends AppCompatActivity {
         viewPager.setCurrentItem(0);
         BtnRawatinap.setBackgroundResource(R.drawable.active_back);
 
-        BtnRawatinap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewPager.setCurrentItem(0);
-                BtnRawatinap.setBackgroundResource(R.drawable.active_back);
-            }
+        BtnRawatinap.setOnClickListener(v -> {
+            viewPager.setCurrentItem(0);
+            BtnRawatinap.setBackgroundResource(R.drawable.active_back);
         });
 
-        BtnRawatjalan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewPager.setCurrentItem(1);
-                BtnRawatjalan.setBackgroundResource(R.drawable.active_back);
-            }
+        BtnRawatjalan.setOnClickListener(v -> {
+            viewPager.setCurrentItem(1);
+            BtnRawatjalan.setBackgroundResource(R.drawable.active_back);
         });
 
 
     }
 
-    private final void chageTabs(int position) {
+    private void chageTabs(int position) {
         if (position == 0) {
             BtnRawatinap.setBackgroundResource(R.drawable.active_back);
             BtnRawatjalan.setBackgroundResource(R.drawable.inactive_back);
