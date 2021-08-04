@@ -3,7 +3,6 @@ package com.example.herminahealtcenter;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -16,8 +15,7 @@ import com.example.herminahealtcenter.adapter.VpAdapterClass;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    private ImageButton Btninfo, Btnprof;
-    private TextView Btnbrd;
+    private TextView Btnbrd, Btninfo, Btnprof;
     private ViewPager viewPager;
 
     @Override
@@ -51,6 +49,7 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
         viewPager.setCurrentItem(0);
+        Btnbrd.setBackgroundResource(R.drawable.active_back);
 
         Btninfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +57,7 @@ public class DashboardActivity extends AppCompatActivity {
                 viewPager.setCurrentItem(1);
                 Btninfo.setBackgroundResource(R.drawable.active_back);
                 Btnprof.setBackgroundResource(R.drawable.inactive_back);
+                Btnbrd.setBackgroundResource(R.drawable.inactive_back);
             }
         });
 
@@ -65,6 +65,7 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 viewPager.setCurrentItem(0);
+                Btnbrd.setBackgroundResource(R.drawable.active_back);
                 Btninfo.setBackgroundResource(R.drawable.inactive_back);
                 Btnprof.setBackgroundResource(R.drawable.inactive_back);
             }
@@ -74,21 +75,25 @@ public class DashboardActivity extends AppCompatActivity {
             viewPager.setCurrentItem(2);
             Btnprof.setBackgroundResource(R.drawable.active_back);
             Btninfo.setBackgroundResource(R.drawable.inactive_back);
+            Btnbrd.setBackgroundResource(R.drawable.inactive_back);
         });
     }
 
     private void chageTabs(int position) {
         if (position == 0) {
+            Btnbrd.setBackgroundResource(R.drawable.active_back);
             Btninfo.setBackgroundResource(R.drawable.inactive_back);
             Btnprof.setBackgroundResource(R.drawable.inactive_back);
         }
         if (position == 1) {
             Btninfo.setBackgroundResource(R.drawable.active_back);
             Btnprof.setBackgroundResource(R.drawable.inactive_back);
+            Btnbrd.setBackgroundResource(R.drawable.inactive_back);
         }
         if (position == 2) {
             Btnprof.setBackgroundResource(R.drawable.active_back);
             Btninfo.setBackgroundResource(R.drawable.inactive_back);
+            Btnbrd.setBackgroundResource(R.drawable.inactive_back);
         }
     }
 

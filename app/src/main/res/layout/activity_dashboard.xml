@@ -11,44 +11,68 @@
         android:id="@+id/CLtopnavbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/VPberanda">
 
+        <ImageView
+            android:id="@+id/IVlogoDashboard"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/logoherlogin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnberanda"/>
+
         <TextView
             android:id="@+id/btnberanda"
             android:layout_width="0dp"
-            android:layout_height="20dp"
-            android:text="Hermina Health Care"
-            android:textColor="@color/purple_700"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="HealthCare"
             android:textStyle="bold"
-            android:gravity="center_horizontal"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btninformasi"/>
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btninformasi"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
             android:background="@drawable/inactive_back"
-            android:src="@drawable/ic_baseline_info_24"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/IVlogoDashboard"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btninformasi"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/btninformasi"
+            android:layout_width="0dp"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:text="Informasi"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:gravity="center_horizontal"
+            android:textAllCaps="false"
+            android:background="@drawable/inactive_back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnberanda"
             app:layout_constraintEnd_toStartOf="@id/btnprofile"/>
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <TextView
             android:id="@+id/btnprofile"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Profil"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
             android:background="@drawable/inactive_back"
-            android:src="@drawable/ic_baseline_account_circle_24"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btninformasi"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
