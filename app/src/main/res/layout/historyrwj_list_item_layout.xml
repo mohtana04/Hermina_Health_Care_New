@@ -8,7 +8,7 @@
     android:layout_marginTop="5dp"
     android:layout_marginRight="5dp"
     android:layout_marginBottom="16dp"
-    android:background="@drawable/customgridview"
+    android:background="@color/cardview_light_background"
     app:cardCornerRadius="3dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
