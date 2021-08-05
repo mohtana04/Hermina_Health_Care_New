@@ -2,8 +2,6 @@ package com.example.herminahealtcenter;
 
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,12 +15,19 @@ public class DashboardActivity extends AppCompatActivity {
 
     private TextView Btnbrd, Btninfo, Btnprof;
     private ViewPager viewPager;
-
+    Boolean on = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_dashboard);
+        if (on) {
+            View view = getWindow().getDecorView();
+            view.setSystemUiVisibility(view.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        } else {
+            View view = getWindow().getDecorView();
+            view.setSystemUiVisibility(view.getSystemUiVisibility() & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
 
         Btninfo = findViewById(R.id.btninformasi);
         Btnbrd = findViewById(R.id.btnberanda);

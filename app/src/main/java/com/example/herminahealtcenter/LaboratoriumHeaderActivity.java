@@ -1,10 +1,13 @@
 package com.example.herminahealtcenter;
 
+import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.WindowManager;
+import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,12 +30,23 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity {
 
     SessionsManager sessionsManager;
     String norm;
-
+    Boolean on = true;
+    private Activity activity;
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_laboratorium_header);
+//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        if (on) {
+            View view = getWindow().getDecorView();
+            view.setSystemUiVisibility(view.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        } else {
+            View view = getWindow().getDecorView();
+            view.setSystemUiVisibility(view.getSystemUiVisibility() & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+
         sessionsManager = new SessionsManager(getApplicationContext());
         norm = sessionsManager.getUserName();
 
@@ -62,27 +76,7 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity {
                 Toast.makeText(LaboratoriumHeaderActivity.this, "gagal", Toast.LENGTH_LONG).show();
             }
         });
-//        call.enqueue(new Callback<HistorylabheaderResponse>() {
-//            @Override
-//            public void onResponse(Call<HistorylabheaderResponse> call, Response<HistorylabheaderResponse> response) {
-//                MetaData code =response.body().getMetaData();
-//                String MetaCode = code.getCode();
-//                String MetaMessage = code.getMessage();
-//                Log.d("Retrofit Post", "Jumlah data Kontak: " + MetaCode);
-//
-//                if (MetaCode.equals("200")) {
-//                    final List<Historylabheader> historylabheaders = response.body().getHistorylabheader();
-//                    recyclerView.setAdapter(new LabheadAdapter(historylabheaders, R.layout.labheader_list_item_layout, getApplicationContext()));
-//                } else {
-//                    Toast.makeText(LaboratoriumHeaderActivity.this,MetaMessage,Toast.LENGTH_LONG).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<HistorylabheaderResponse> call, Throwable t) {
-//
-//            }
-//        });
+
 
     }
 

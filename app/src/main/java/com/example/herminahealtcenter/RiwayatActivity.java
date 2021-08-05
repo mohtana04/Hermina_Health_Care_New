@@ -1,10 +1,10 @@
 package com.example.herminahealtcenter;
 
 import android.os.Bundle;
-import android.view.WindowManager;
-import android.widget.TextView;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -13,14 +13,21 @@ import com.example.herminahealtcenter.adapter.VpAdapterRiwayat;
 
 public class RiwayatActivity extends AppCompatActivity {
 
-    private TextView BtnRawatjalan, BtnRawatinap;
+    private AppCompatButton BtnRawatjalan, BtnRawatinap;
     private ViewPager viewPager;
-
+    Boolean on = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_riwayat);
+        if (on) {
+            View view = getWindow().getDecorView();
+            view.setSystemUiVisibility(view.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        } else {
+            View view = getWindow().getDecorView();
+            view.setSystemUiVisibility(view.getSystemUiVisibility() & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
 
         BtnRawatinap = findViewById(R.id.btnrawatinap);
         BtnRawatjalan = findViewById(R.id.btnrawatjalan);
