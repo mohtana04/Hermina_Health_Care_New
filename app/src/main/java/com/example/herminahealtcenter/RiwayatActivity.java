@@ -1,7 +1,9 @@
 package com.example.herminahealtcenter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +17,7 @@ public class RiwayatActivity extends AppCompatActivity {
 
     private TextView BtnRawatjalan, BtnRawatinap;
     private ViewPager viewPager;
+    private ImageView riwayatBack;
     Boolean on = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class RiwayatActivity extends AppCompatActivity {
         BtnRawatinap = findViewById(R.id.btnrawatinap);
         BtnRawatjalan = findViewById(R.id.btnrawatjalan);
         viewPager = findViewById(R.id.VPriwayat);
+        riwayatBack = findViewById(R.id.IVbackriwayat);
 
         FragmentManager fm = this.getSupportFragmentManager();
         viewPager.setAdapter((PagerAdapter) (new VpAdapterRiwayat(fm)));
@@ -63,6 +67,11 @@ public class RiwayatActivity extends AppCompatActivity {
         BtnRawatjalan.setOnClickListener(v -> {
             viewPager.setCurrentItem(1);
             BtnRawatjalan.setBackgroundResource(R.drawable.active_back);
+        });
+
+        riwayatBack.setOnClickListener(v -> {
+            startActivity(new Intent(RiwayatActivity.this, DashboardActivity.class));
+            finish();
         });
 
 
