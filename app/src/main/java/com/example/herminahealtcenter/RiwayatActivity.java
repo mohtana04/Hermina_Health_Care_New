@@ -1,11 +1,10 @@
 package com.example.herminahealtcenter;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -14,7 +13,7 @@ import com.example.herminahealtcenter.adapter.VpAdapterRiwayat;
 
 public class RiwayatActivity extends AppCompatActivity {
 
-    private AppCompatButton BtnRawatjalan, BtnRawatinap;
+    private TextView BtnRawatjalan, BtnRawatinap;
     private ViewPager viewPager;
 
     @Override
