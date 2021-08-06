@@ -61,8 +61,6 @@ public class DashboardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 viewPager.setCurrentItem(1);
                 Btninfo.setBackgroundResource(R.drawable.active_back);
-                Btnprof.setBackgroundResource(R.drawable.inactive_back);
-                Btnbrd.setBackgroundResource(R.drawable.inactive_back);
             }
         });
 
@@ -71,16 +69,12 @@ public class DashboardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 viewPager.setCurrentItem(0);
                 Btnbrd.setBackgroundResource(R.drawable.active_back);
-                Btninfo.setBackgroundResource(R.drawable.inactive_back);
-                Btnprof.setBackgroundResource(R.drawable.inactive_back);
             }
         });
 
         Btnprof.setOnClickListener(v -> {
             viewPager.setCurrentItem(2);
             Btnprof.setBackgroundResource(R.drawable.active_back);
-            Btninfo.setBackgroundResource(R.drawable.inactive_back);
-            Btnbrd.setBackgroundResource(R.drawable.inactive_back);
         });
     }
 
