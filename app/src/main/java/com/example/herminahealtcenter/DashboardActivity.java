@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.herminahealtcenter.adapter.VpAdapterClass;
@@ -21,11 +20,10 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_dashboard);
+        View view = getWindow().getDecorView();
         if (on) {
-            View view = getWindow().getDecorView();
             view.setSystemUiVisibility(view.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         } else {
-            View view = getWindow().getDecorView();
             view.setSystemUiVisibility(view.getSystemUiVisibility() & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
@@ -35,7 +33,7 @@ public class DashboardActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.VPberanda);
 
         FragmentManager fm = this.getSupportFragmentManager();
-        viewPager.setAdapter((PagerAdapter) (new VpAdapterClass(fm)));
+        viewPager.setAdapter(new VpAdapterClass(fm));
         viewPager.setOffscreenPageLimit(3);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
