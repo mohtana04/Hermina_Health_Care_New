@@ -42,7 +42,7 @@ public class LabheadAdapter extends RecyclerView.Adapter<LabheadAdapter.Labheade
 
     @Override
     public int getItemCount() {
-        return historylabheaders.size();
+        return historylabheaders == null ? 0 : historylabheaders.size();
     }
 
     public class LabheaderAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

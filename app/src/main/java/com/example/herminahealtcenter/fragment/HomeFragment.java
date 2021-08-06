@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.herminahealtcenter.LaboratoriumHeaderActivity;
 import com.example.herminahealtcenter.R;
+import com.example.herminahealtcenter.RadiologiHeaderActivity;
 import com.example.herminahealtcenter.RiwayatActivity;
 import com.example.herminahealtcenter.utils.SessionsManager;
 
@@ -27,10 +28,11 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     SessionsManager sessionsManager;
-    ImageView imageViewlab, imageViewRiwayat;
-    TextView textViewlab, textViewRiwayat;
+    ImageView imageViewlab, imageViewRiwayat, imageViewRad;
+    TextView textViewlab, textViewRiwayat, textViewRad;
     String norm;
     Context context;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -67,14 +69,16 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view =  inflater.inflate(R.layout.fragment_home, container, false);
+        final View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         imageViewlab = (ImageView) view.findViewById(R.id.btnimglab);
         textViewlab = (TextView) view.findViewById(R.id.btntvlab);
         imageViewRiwayat = (ImageView) view.findViewById(R.id.btnimgriwayat);
         textViewRiwayat = (TextView) view.findViewById(R.id.btntvriwayat);
-//        imageViewriwayat =(ImageView) view.findViewById(R.id.btntvriwayat);
-//        textViewriwayat =(TextView) view.findViewById(R.id.btnimgriwayat);
+        imageViewRad = (ImageView) view.findViewById(R.id.btnimgrad);
+        textViewRad = (TextView) view.findViewById(R.id.btntvrad);
+
+
         norm = sessionsManager.getUserName();
         imageViewlab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,24 +110,24 @@ public class HomeFragment extends Fragment {
             }
         });
 
-//        imageViewriwayat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(getActivity(), RiwayatActivity.class));
-//            }
-//        });
-//
-//        textViewriwayat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(getActivity(), RiwayatActivity.class));
-//            }
-//        });
+        imageViewRad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), RadiologiHeaderActivity.class));
+            }
+        });
 
-        return  view;
+
+        textViewRad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), RadiologiHeaderActivity.class));
+            }
+        });
+
+        return view;
 
     }
-
 
 
 }

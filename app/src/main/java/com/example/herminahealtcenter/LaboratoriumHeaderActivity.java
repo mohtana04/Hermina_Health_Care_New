@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.herminahealtcenter.adapter.LabheadAdapter;
 import com.example.herminahealtcenter.model.Historylabheader;
@@ -26,17 +27,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LaboratoriumHeaderActivity extends AppCompatActivity {
+public class LaboratoriumHeaderActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     SessionsManager sessionsManager;
     String norm;
     Boolean on = true;
     private Activity activity;
+    private SwipeRefreshLayout swipeRefreshLayout;
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_laboratorium_header);
 //        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         if (on) {
@@ -47,9 +49,23 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity {
             view.setSystemUiVisibility(view.getSystemUiVisibility() & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
+
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayoutlab);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+                refreshData();
+            }
+        });
         sessionsManager = new SessionsManager(getApplicationContext());
         norm = sessionsManager.getUserName();
 
+    }
+
+
+    public void refreshData() {
 
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.labheader_recycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -68,7 +84,8 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity {
                 String MetaMessage = code.getMessage();
                 Log.d("Retrofit Post", "Jumlah data Kontak: " + MetaCode);
                 final List<Historylabheader> historylabheaders = response.body().getHistorylabheader();
-                recyclerView.setAdapter(new LabheadAdapter(historylabheaders,R.layout.labheader_list_item_layout,getApplicationContext()));
+                recyclerView.setAdapter(new LabheadAdapter(historylabheaders, R.layout.labheader_list_item_layout, getApplicationContext()));
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
@@ -76,9 +93,10 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity {
                 Toast.makeText(LaboratoriumHeaderActivity.this, "gagal", Toast.LENGTH_LONG).show();
             }
         });
-
-
     }
 
-
+    @Override
+    public void onRefresh() {
+        refreshData();
+    }
 }

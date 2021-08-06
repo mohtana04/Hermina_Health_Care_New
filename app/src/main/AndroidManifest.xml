@@ -15,6 +15,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity android:name=".LaboratoriumHeaderActivity" ></activity>
+        <activity android:name=".RadiologiHeaderActivity"></activity>
         <activity android:name=".RiwayatActivity" android:theme="@style/Theme.HerminaHealtCenterRiwayat"/>
         <activity android:name=".DashboardActivity" android:theme="@style/Theme.HerminaHealtCenterDashboard"/>
         <activity android:name=".LoginActivity">
