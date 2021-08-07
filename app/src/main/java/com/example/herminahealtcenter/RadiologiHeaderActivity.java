@@ -4,7 +4,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -84,7 +83,8 @@ public class RadiologiHeaderActivity extends AppCompatActivity implements SwipeR
 
             @Override
             public void onFailure(Call<HistoryradheaderResponse> call, Throwable t) {
-                Toast.makeText(RadiologiHeaderActivity.this, "gagal", Toast.LENGTH_LONG).show();
+//                Toast.makeText(RadiologiHeaderActivity.this, "gagal", Toast.LENGTH_LONG).show();
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
 

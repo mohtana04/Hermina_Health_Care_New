@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.herminahealtcenter.Alert.AlertKoneksi;
 import com.example.herminahealtcenter.R;
 import com.example.herminahealtcenter.adapter.HistoryrwiAdapter;
 import com.example.herminahealtcenter.model.Historyrwi;
@@ -123,7 +124,9 @@ public class RiwayatRwiFragment extends Fragment implements SwipeRefreshLayout.O
 
             @Override
             public void onFailure(Call<HistoryrwiResponse> call, Throwable t) {
-
+                AlertKoneksi alert = new AlertKoneksi();
+                alert.showDialog(getActivity(),"Mohon maaf , sedang dalam perbaikan");
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }

@@ -5,7 +5,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -90,7 +89,8 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity implements Swi
 
             @Override
             public void onFailure(Call<HistorylabheaderResponse> call, Throwable t) {
-                Toast.makeText(LaboratoriumHeaderActivity.this, "gagal", Toast.LENGTH_LONG).show();
+//                Toast.makeText(LaboratoriumHeaderActivity.this, "gagal", Toast.LENGTH_LONG).show();
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }
