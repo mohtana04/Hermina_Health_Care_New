@@ -70,11 +70,9 @@ public class RiwayatActivity extends AppCompatActivity {
         });
 
         riwayatBack.setOnClickListener(v -> {
-            startActivity(new Intent(RiwayatActivity.this, DashboardActivity.class));
+//            startActivity(new Intent(RiwayatActivity.this, DashboardActivity.class));
             finish();
         });
-
-
     }
 
     private void chageTabs(int position) {
@@ -86,5 +84,11 @@ public class RiwayatActivity extends AppCompatActivity {
             BtnRawatinap.setBackgroundResource(R.drawable.inactive_back);
             BtnRawatjalan.setBackgroundResource(R.drawable.active_back);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

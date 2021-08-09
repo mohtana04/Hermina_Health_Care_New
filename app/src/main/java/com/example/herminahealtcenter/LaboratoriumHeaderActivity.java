@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,7 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity implements Swi
     Boolean on = true;
     private Activity activity;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private ImageView backLaboratorium;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -50,6 +52,7 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity implements Swi
 
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayoutlab);
+        backLaboratorium = findViewById(R.id.IVbacklaboratorium);
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.post(new Runnable() {
             @Override
@@ -60,6 +63,13 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity implements Swi
         });
         sessionsManager = new SessionsManager(getApplicationContext());
         norm = sessionsManager.getUserName();
+
+        backLaboratorium.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
@@ -98,5 +108,11 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity implements Swi
     @Override
     public void onRefresh() {
         refreshData();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

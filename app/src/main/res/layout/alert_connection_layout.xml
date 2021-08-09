@@ -45,9 +45,9 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:text="text"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:textSize="18dp"/>
 
         </androidx.cardview.widget.CardView>
     </LinearLayout>

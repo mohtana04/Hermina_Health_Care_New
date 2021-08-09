@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,7 @@ public class RadiologiHeaderActivity extends AppCompatActivity implements SwipeR
     String norm;
     Boolean on = true;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private ImageView backRadiologi;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -44,6 +46,7 @@ public class RadiologiHeaderActivity extends AppCompatActivity implements SwipeR
             view.setSystemUiVisibility(view.getSystemUiVisibility() & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
+        backRadiologi = findViewById(R.id.IVbackradiologi);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayoutrad);
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.post(new Runnable() {
@@ -52,6 +55,10 @@ public class RadiologiHeaderActivity extends AppCompatActivity implements SwipeR
                 swipeRefreshLayout.setRefreshing(true);
                 refreshData();
             }
+        });
+
+        backRadiologi.setOnClickListener(v -> {
+            finish();
         });
 
 
@@ -93,5 +100,11 @@ public class RadiologiHeaderActivity extends AppCompatActivity implements SwipeR
     @Override
     public void onRefresh() {
         refreshData();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
