@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.herminahealtcenter.FisioHeaderActivity;
+import com.example.herminahealtcenter.KtkHeaderActivity;
 import com.example.herminahealtcenter.LaboratoriumHeaderActivity;
 import com.example.herminahealtcenter.R;
 import com.example.herminahealtcenter.RadiologiHeaderActivity;
@@ -28,8 +30,8 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     SessionsManager sessionsManager;
-    ImageView imageViewlab, imageViewRiwayat, imageViewRad;
-    TextView textViewlab, textViewRiwayat, textViewRad;
+    ImageView imageViewlab, imageViewRiwayat, imageViewRad, imageViewKtk, imageViewFis;
+    TextView textViewlab, textViewRiwayat, textViewRad, textViewKtk, textViewFis;
     String norm;
     Context context;
 
@@ -77,6 +79,10 @@ public class HomeFragment extends Fragment {
         textViewRiwayat = (TextView) view.findViewById(R.id.btntvriwayat);
         imageViewRad = (ImageView) view.findViewById(R.id.btnimgrad);
         textViewRad = (TextView) view.findViewById(R.id.btntvrad);
+        imageViewKtk = (ImageView) view.findViewById(R.id.btnimgktk);
+        textViewKtk = (TextView) view.findViewById(R.id.btntvktk);
+        imageViewFis = (ImageView) view.findViewById(R.id.btnimgfis);
+        textViewFis = (TextView) view.findViewById(R.id.btntvfis);
 
 
         norm = sessionsManager.getUserName();
@@ -122,6 +128,51 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), RadiologiHeaderActivity.class));
+            }
+        });
+
+        imageViewKtk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), KtkHeaderActivity.class));
+            }
+        });
+
+
+        textViewKtk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), KtkHeaderActivity.class));
+            }
+        });
+
+        imageViewKtk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), KtkHeaderActivity.class));
+            }
+        });
+
+
+        textViewKtk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), KtkHeaderActivity.class));
+            }
+        });
+
+        imageViewFis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), FisioHeaderActivity.class));
+            }
+        });
+
+
+        textViewFis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), FisioHeaderActivity.class));
             }
         });
 

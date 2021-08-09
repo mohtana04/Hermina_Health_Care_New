@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.herminahealtcenter" >
+    package="com.example.herminahealtcenter">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,7 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HerminaHealtCenter"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m" >
+        tools:targetApi="m">
+        <activity
+            android:name=".FisioHeaderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".KtkHeaderActivity"
+            android:exported="true" />
         <activity android:name=".LaboratoriumHeaderActivity" />
         <activity android:name=".RadiologiHeaderActivity" />
         <activity
@@ -23,7 +29,7 @@
         <activity
             android:name=".DashboardActivity"
             android:theme="@style/Theme.HerminaHealtCenterDashboard" />
-        <activity android:name=".LoginActivity" >
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

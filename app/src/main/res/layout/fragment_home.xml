@@ -53,7 +53,7 @@
                     android:id="@+id/btntvriwayat"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:text="riwayat"
+                    android:text="Kunjungan"
                     android:gravity="bottom|center"
                     android:textStyle="bold"
                     android:textColor="#019443"
@@ -89,7 +89,7 @@
                     android:id="@+id/btntvrad"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:text="radiologi"
+                    android:text="Radiologi"
                     android:gravity="bottom|center"
                     android:textStyle="bold"
                     android:textColor="#019443"
@@ -122,9 +122,10 @@
                 app:layout_constraintBottom_toTopOf="@id/parentlaboratorium">
 
                 <TextView
+                    android:id="@+id/btntvfis"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:text="fisioterapi"
+                    android:text="Fisioterapi"
                     android:gravity="bottom|center"
                     android:textStyle="bold"
                     android:textColor="#019443"
@@ -135,6 +136,7 @@
                     android:background="@drawable/customgridview"/>
 
                 <ImageView
+                    android:id="@+id/btnimgfis"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/fisioterapi"
@@ -156,9 +158,10 @@
                 app:layout_constraintBottom_toTopOf="@id/parentfarmasi">
 
                 <TextView
+                    android:id="@+id/btntvktk"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:text="rehab medik"
+                    android:text="Klinik Tumbuh Kembang"
                     android:gravity="bottom|center"
                     android:textColor="#019443"
                     android:textStyle="bold"
@@ -169,6 +172,7 @@
                     android:background="@drawable/customgridview"/>
 
                 <ImageView
+                    android:id="@+id/btnimgktk"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/rehabmedik"
@@ -193,7 +197,7 @@
                     android:id="@+id/btntvlab"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:text="laboratorium"
+                    android:text="Laboratorium"
                     android:gravity="bottom|center"
                     android:textStyle="bold"
                     android:textColor="#019443"
@@ -228,7 +232,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:text="farmasi"
+                    android:text="Farmasi"
                     android:gravity="bottom|center"
                     android:textStyle="bold"
                     android:textColor="#019443"
