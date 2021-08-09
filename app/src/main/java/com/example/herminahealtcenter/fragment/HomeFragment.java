@@ -30,9 +30,9 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     SessionsManager sessionsManager;
-    ImageView imageViewlab, imageViewRiwayat, imageViewRad, imageViewKtk, imageViewFis;
-    TextView textViewlab, textViewRiwayat, textViewRad, textViewKtk, textViewFis;
-    String norm;
+    ImageView imageViewAvatar, imageViewlab, imageViewRiwayat, imageViewRad, imageViewKtk, imageViewFis;
+    TextView textViewNmpasien, textViewNorm , textViewlab, textViewRiwayat, textViewRad, textViewKtk, textViewFis;
+    String norm, nmpasien, gender;
     Context context;
 
     public HomeFragment() {
@@ -73,6 +73,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        imageViewAvatar = (ImageView) view.findViewById(R.id.IVavatar);
         imageViewlab = (ImageView) view.findViewById(R.id.btnimglab);
         textViewlab = (TextView) view.findViewById(R.id.btntvlab);
         imageViewRiwayat = (ImageView) view.findViewById(R.id.btnimgriwayat);
@@ -83,9 +84,24 @@ public class HomeFragment extends Fragment {
         textViewKtk = (TextView) view.findViewById(R.id.btntvktk);
         imageViewFis = (ImageView) view.findViewById(R.id.btnimgfis);
         textViewFis = (TextView) view.findViewById(R.id.btntvfis);
+        textViewNmpasien = (TextView) view.findViewById(R.id.TVnamapasien);
+        textViewNorm = (TextView) view.findViewById(R.id.TVcmpasien);
+
+        norm = sessionsManager.getUserNomr();
+        nmpasien = sessionsManager.getUserName();
+        gender = sessionsManager.getUserGender();
 
 
-        norm = sessionsManager.getUserName();
+        textViewNorm.setText(norm);
+        textViewNmpasien.setText(nmpasien);
+
+        if (gender.equals('L')){
+            imageViewAvatar.setImageResource(R.drawable.userman);
+        } else {
+            imageViewAvatar.setImageResource(R.drawable.usergirl);
+        }
+
+
         imageViewlab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

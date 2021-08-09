@@ -54,7 +54,7 @@ public class FisioHeaderActivity extends AppCompatActivity implements SwipeRefre
             }
         });
         sessionsManager = new SessionsManager(getApplicationContext());
-        norm = sessionsManager.getUserName();
+        norm = sessionsManager.getUserNomr();
     }
 
     public void refreshData() {

@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".FarmasiHeaderActivity"
+            android:exported="true" />
+        <activity
             android:name=".FisioHeaderActivity"
             android:exported="true" />
         <activity

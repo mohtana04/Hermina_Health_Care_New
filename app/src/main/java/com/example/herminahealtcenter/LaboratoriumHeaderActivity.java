@@ -62,7 +62,7 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity implements Swi
             }
         });
         sessionsManager = new SessionsManager(getApplicationContext());
-        norm = sessionsManager.getUserName();
+        norm = sessionsManager.getUserNomr();
 
         backLaboratorium.setOnClickListener(new View.OnClickListener() {
             @Override

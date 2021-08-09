@@ -83,7 +83,7 @@ public class RiwayatRwiFragment extends Fragment implements SwipeRefreshLayout.O
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         sessionsManager = new SessionsManager(getContext());
-        nomr = sessionsManager.getUserName();
+        nomr = sessionsManager.getUserNomr();
         final View view = inflater.inflate(R.layout.fragment_riwayat_rwi, container, false);
 
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayoutrwi);

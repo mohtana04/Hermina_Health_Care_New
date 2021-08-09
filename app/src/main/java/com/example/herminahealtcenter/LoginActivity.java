@@ -22,7 +22,6 @@ import com.example.herminahealtcenter.utils.SessionsManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -33,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText editTextNomr;
     private EditText editTextTgllahir;
-    private String nomr,tgllahir;
+    private String nomr,tgllahir, nmpasien, gender;
     private Button buttonLogin;
     private SimpleDateFormat dateformatter;
     private DatePickerDialog datePickerDialog;
@@ -106,12 +105,18 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 MetaData code =response.body().getMetaData();
-                List<Login> logins = response.body().getResponse();
+                Login login = response.body().getLogin();
                 String MetaCode = code.getCode();
                 String MetaMessage = code.getMessage();
-                Log.d("Retrofit Post", "Jumlah data Kontak: " + MetaCode);
+                nmpasien = login.getNama();
+                gender = login.getGender();
+
+                Log.d("Retrofit Post", "Jumlah data Kontak: " + nmpasien + " " + gender);
+
                 if (MetaCode.equals("200")) {
-                    sessionsManager.createLoginSession(nomr);
+                    sessionsManager.createLoginSession(nomr,nmpasien,gender);
+
+                    Log.d("nama" , "session nama :"  +sessionsManager.getUserName() );
                     Intent log = new Intent(LoginActivity.this, DashboardActivity.class);
                     startActivity(log);
                 } else {

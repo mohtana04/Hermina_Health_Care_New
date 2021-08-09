@@ -42,7 +42,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @Headers("Content-Type: application/x-www-form-urlencoded")
-    @POST("info/historyfish")
+    @POST("info/historyktkh")
     Call<HistoryktkheaderResponse> hktkhead(@Field("nomr") String nomr);
 
     @FormUrlEncoded

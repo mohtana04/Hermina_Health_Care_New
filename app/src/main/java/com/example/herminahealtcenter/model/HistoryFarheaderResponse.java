@@ -1,25 +1,24 @@
 package com.example.herminahealtcenter.model;
 
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LoginResponse {
+import java.util.List;
 
-
-    @SerializedName("loginresponse")
+public class HistoryFarheaderResponse {
+    @SerializedName("historyfarheader")
     @Expose
-    private Login login;
+    private List<Historyfarheader> historyfarheader = null;
     @SerializedName("metaData")
     @Expose
     private MetaData metaData;
 
-    public Login getLogin() {
-        return login;
+    public List<Historyfarheader> getHistoryfarheader() {
+        return historyfarheader;
     }
 
-    public void setLogin(Login login) {
-        this.login = login;
+    public void setHistoryfarheader(List<Historyfarheader> historyfarheader) {
+        this.historyfarheader = historyfarheader;
     }
 
     public MetaData getMetaData() {
@@ -29,5 +28,4 @@ public class LoginResponse {
     public void setMetaData(MetaData metaData) {
         this.metaData = metaData;
     }
-
 }

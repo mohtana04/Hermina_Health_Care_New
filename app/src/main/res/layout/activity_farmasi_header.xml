@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    tools:context=".FisioHeaderActivity">
+    android:isScrollContainer="true"
+    tools:context=".FarmasiHeaderActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/CLtopnavbarFisio"
+        android:id="@+id/CLtopnavbarFarmasi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -18,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:id="@+id/IVbackfisio"
+            android:id="@+id/IVbackfarmasi"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_margin="5dp"
@@ -34,45 +35,45 @@
             android:textStyle="bold"
             android:textSize="18sp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/IVbackfisio"
+            app:layout_constraintStart_toEndOf="@id/IVbackfarmasi"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:textColor="@color/black"
-            android:text="Fisioterapi"/>
+            android:text="Farmasi"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/ETpencarianFis"
+        android:id="@+id/ETpencarianFar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Cari data Fisioterapi"
+        android:hint="Cari data farmasi"
         android:drawableLeft="@drawable/ic_baseline_search_24"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:layout_margin="5dp"
         android:background="@drawable/customedittextinternal"
-        app:layout_constraintTop_toBottomOf="@id/CLtopnavbarFisio"/>
+        app:layout_constraintTop_toBottomOf="@id/CLtopnavbarFarmasi"/>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayoutfis"
+        android:id="@+id/swipeRefreshLayoutfar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="5dp"
-        app:layout_constraintTop_toBottomOf="@id/ETpencarianFis"
+        app:layout_constraintTop_toBottomOf="@id/ETpencarianFar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fisheader_recycleview"
+            android:id="@+id/farheader_recycleview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ETpencarianFis">
+            app:layout_constraintTop_toBottomOf="@id/ETpencarianFar">
         </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

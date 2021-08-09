@@ -11,7 +11,8 @@ public class SessionsManager {
     // User name (make variable public to access from outside)
     public static final String KEY_NOMR = "nomr";
     // Email address (make variable public to access from outside)
-    public static final String KEY_EMAIL = "email";
+    public static final String KEY_NAMA = "nmpasien";
+    public static final String KEY_GENDER = "gender";
     // Sharedpref file name
     private static final String PREF_NAME = "PandawaCodePref";
     // All Shared Preferences Keys
@@ -38,15 +39,18 @@ public class SessionsManager {
     /**
      * Create Login session
      */
-    public void createLoginSession(String nomr) {
+    public void createLoginSession(String nomr, String nmpasien, String gender) {
         // Storing Login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
-        // Storing name in pref
+        // Storing nomr in pref
         editor.putString(KEY_NOMR, nomr);
 
-        // Storing email in pref
-//        editor.putString(KEY_EMAIL, email);
+        // Storing name in pref
+        editor.putString(KEY_NAMA, nmpasien);
+
+        // Storing gender in pref
+        editor.putString(KEY_GENDER, gender);
 
         // commit changes
         editor.commit();
@@ -55,7 +59,7 @@ public class SessionsManager {
     public void createRegistrasiSession(String email){
         editor.putBoolean(IS_REGISTER, true);
 
-        editor.putString(KEY_EMAIL, email);
+        editor.putString(KEY_NAMA, email);
         // commit changes
         editor.commit();
     }
@@ -100,12 +104,17 @@ public class SessionsManager {
      */
     public String getUserName() {
         // return user
+        return pref.getString(KEY_NAMA, null);
+    }
+
+    public String getUserNomr() {
+        // return user
         return pref.getString(KEY_NOMR, null);
     }
 
-    public String getUserEmail() {
+    public String getUserGender() {
         // return user
-        return pref.getString(KEY_EMAIL, null);
+        return pref.getString(KEY_GENDER, null);
     }
 
     /**

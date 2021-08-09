@@ -66,7 +66,7 @@ public class RadiologiHeaderActivity extends AppCompatActivity implements SwipeR
 
     public void refreshData() {
         sessionsManager = new SessionsManager(getApplicationContext());
-        norm = sessionsManager.getUserName();
+        norm = sessionsManager.getUserNomr();
 
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvradiologiheader);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -30,7 +30,7 @@
         android:layout_marginLeft="5dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/view1lab"
-        app:layout_constraintEnd_toStartOf="@id/TVtitleRating"/>
+        app:layout_constraintEnd_toStartOf="@id/TVtitleRatinglab"/>
 
     <TextView
         android:id="@+id/titleTVtgltransaksilab"
@@ -100,7 +100,7 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
-        android:id="@+id/TVtitleRating"
+        android:id="@+id/TVtitleRatinglab"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Beri penilaian :"

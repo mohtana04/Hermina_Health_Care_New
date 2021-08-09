@@ -9,7 +9,7 @@
     app:cardCornerRadius="3dp">
 
     <view
-        android:id="@+id/view1lab"
+        android:id="@+id/viewrad"
         class="androidx.appcompat.widget.AppCompatButton"
         android:layout_width="3dp"
         android:layout_height="0dp"
@@ -29,11 +29,11 @@
         android:textStyle="bold"
         android:layout_marginLeft="5dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/view1lab"
-        app:layout_constraintEnd_toStartOf="@id/TVtitleRating"/>
+        app:layout_constraintStart_toEndOf="@id/viewrad"
+        app:layout_constraintEnd_toStartOf="@id/TVtitleRatingrad"/>
 
     <TextView
-        android:id="@+id/titleTVtgltransaksilab"
+        android:id="@+id/titleTVtgltransaksirad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pemeriksaan :"
@@ -43,18 +43,18 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="2dp"
         app:layout_constraintTop_toBottomOf="@id/tvdokternyarad"
-        app:layout_constraintStart_toEndOf="@id/view1lab"/>
+        app:layout_constraintStart_toEndOf="@id/viewrad"/>
 
     <ImageView
-        android:id="@+id/IVdatemasuklab"
+        android:id="@+id/IVdatemasukrad"
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:src="@drawable/ic_baseline_date_range_24"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        app:layout_constraintTop_toTopOf="@id/titleTVtgltransaksilab"
-        app:layout_constraintBottom_toBottomOf="@id/titleTVtgltransaksilab"
-        app:layout_constraintStart_toEndOf="@id/titleTVtgltransaksilab"/>
+        app:layout_constraintTop_toTopOf="@id/titleTVtgltransaksirad"
+        app:layout_constraintBottom_toBottomOf="@id/titleTVtgltransaksirad"
+        app:layout_constraintStart_toEndOf="@id/titleTVtgltransaksirad"/>
 
     <TextView
         android:id="@+id/tvtgltransaksirad"
@@ -66,9 +66,9 @@
         tools:ignore="SmallSp"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="5dp"
-        app:layout_constraintTop_toTopOf="@id/IVdatemasuklab"
-        app:layout_constraintBottom_toBottomOf="@id/IVdatemasuklab"
-        app:layout_constraintStart_toEndOf="@id/IVdatemasuklab"/>
+        app:layout_constraintTop_toTopOf="@id/IVdatemasukrad"
+        app:layout_constraintBottom_toBottomOf="@id/IVdatemasukrad"
+        app:layout_constraintStart_toEndOf="@id/IVdatemasukrad"/>
 
     <TextView
         android:id="@+id/tvtipetransaksirad"
@@ -81,8 +81,8 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="2dp"
-        app:layout_constraintTop_toBottomOf="@id/titleTVtgltransaksilab"
-        app:layout_constraintStart_toEndOf="@id/view1lab"/>
+        app:layout_constraintTop_toBottomOf="@id/titleTVtgltransaksirad"
+        app:layout_constraintStart_toEndOf="@id/viewrad"/>
 
     <TextView
         android:id="@+id/tvnotransaksirad"
@@ -96,11 +96,11 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="2dp"
         app:layout_constraintTop_toBottomOf="@id/tvtipetransaksirad"
-        app:layout_constraintStart_toEndOf="@id/view1lab"
+        app:layout_constraintStart_toEndOf="@id/viewrad"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
-        android:id="@+id/TVtitleRating"
+        android:id="@+id/TVtitleRatingrad"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Beri penilaian :"

@@ -54,7 +54,7 @@ public class KtkHeaderActivity extends AppCompatActivity implements SwipeRefresh
             }
         });
         sessionsManager = new SessionsManager(getApplicationContext());
-        norm = sessionsManager.getUserName();
+        norm = sessionsManager.getUserNomr();
     }
 
     public void refreshData() {
