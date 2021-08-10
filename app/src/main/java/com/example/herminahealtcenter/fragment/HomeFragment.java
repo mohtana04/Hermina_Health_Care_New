@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.herminahealtcenter.FarmasiHeaderActivity;
 import com.example.herminahealtcenter.FisioHeaderActivity;
 import com.example.herminahealtcenter.KtkHeaderActivity;
 import com.example.herminahealtcenter.LaboratoriumHeaderActivity;
@@ -30,8 +31,8 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     SessionsManager sessionsManager;
-    ImageView imageViewAvatar, imageViewlab, imageViewRiwayat, imageViewRad, imageViewKtk, imageViewFis;
-    TextView textViewNmpasien, textViewNorm , textViewlab, textViewRiwayat, textViewRad, textViewKtk, textViewFis;
+    ImageView imageViewAvatar, imageViewlab, imageViewRiwayat, imageViewRad, imageViewKtk, imageViewFis, imageViewFar;
+    TextView textViewNmpasien, textViewNorm , textViewlab, textViewRiwayat, textViewRad, textViewKtk, textViewFis, textViewFar;
     String norm, nmpasien, gender;
     Context context;
 
@@ -86,6 +87,9 @@ public class HomeFragment extends Fragment {
         textViewFis = (TextView) view.findViewById(R.id.btntvfis);
         textViewNmpasien = (TextView) view.findViewById(R.id.TVnamapasien);
         textViewNorm = (TextView) view.findViewById(R.id.TVcmpasien);
+        imageViewFar = (ImageView) view.findViewById(R.id.btnimgfar);
+        textViewFar = (TextView) view.findViewById(R.id.btntvfar);
+
 
         norm = sessionsManager.getUserNomr();
         nmpasien = sessionsManager.getUserName();
@@ -95,7 +99,7 @@ public class HomeFragment extends Fragment {
         textViewNorm.setText(norm);
         textViewNmpasien.setText(nmpasien);
 
-        if (gender.equals('L')){
+        if (gender.equals("L")){
             imageViewAvatar.setImageResource(R.drawable.userman);
         } else {
             imageViewAvatar.setImageResource(R.drawable.usergirl);
@@ -189,6 +193,21 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), FisioHeaderActivity.class));
+            }
+        });
+
+        imageViewFar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), FarmasiHeaderActivity.class));
+            }
+        });
+
+
+        textViewFar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), FarmasiHeaderActivity.class));
             }
         });
 

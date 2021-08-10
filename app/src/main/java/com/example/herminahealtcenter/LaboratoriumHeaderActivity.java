@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.herminahealtcenter.Alert.AlertKoneksi;
 import com.example.herminahealtcenter.adapter.LabheadAdapter;
 import com.example.herminahealtcenter.model.Historylabheader;
 import com.example.herminahealtcenter.model.HistorylabheaderResponse;
@@ -100,6 +101,8 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity implements Swi
             @Override
             public void onFailure(Call<HistorylabheaderResponse> call, Throwable t) {
 //                Toast.makeText(LaboratoriumHeaderActivity.this, "gagal", Toast.LENGTH_LONG).show();
+                AlertKoneksi alert = new AlertKoneksi();
+                alert.showDialog(LaboratoriumHeaderActivity.this,"Mohon maaf , sedang dalam perbaikan");
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

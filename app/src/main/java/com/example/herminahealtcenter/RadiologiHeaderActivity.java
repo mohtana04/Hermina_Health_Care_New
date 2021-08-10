@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.herminahealtcenter.Alert.AlertKoneksi;
 import com.example.herminahealtcenter.adapter.RadheadAdapter;
 import com.example.herminahealtcenter.model.Historyradheader;
 import com.example.herminahealtcenter.model.HistoryradheaderResponse;
@@ -91,6 +92,8 @@ public class RadiologiHeaderActivity extends AppCompatActivity implements SwipeR
             @Override
             public void onFailure(Call<HistoryradheaderResponse> call, Throwable t) {
 //                Toast.makeText(RadiologiHeaderActivity.this, "gagal", Toast.LENGTH_LONG).show();
+                AlertKoneksi alert = new AlertKoneksi();
+                alert.showDialog(RadiologiHeaderActivity.this,"Mohon maaf , sedang dalam perbaikan");
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

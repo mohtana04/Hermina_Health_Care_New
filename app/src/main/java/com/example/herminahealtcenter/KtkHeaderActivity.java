@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.herminahealtcenter.Alert.AlertKoneksi;
 import com.example.herminahealtcenter.adapter.KtkheadAdapter;
 import com.example.herminahealtcenter.model.Historyktkheader;
 import com.example.herminahealtcenter.model.HistoryktkheaderResponse;
@@ -82,6 +83,8 @@ public class KtkHeaderActivity extends AppCompatActivity implements SwipeRefresh
 
             @Override
             public void onFailure(Call<HistoryktkheaderResponse> call, Throwable t) {
+                AlertKoneksi alert = new AlertKoneksi();
+                alert.showDialog(KtkHeaderActivity.this,"Mohon maaf , sedang dalam perbaikan");
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

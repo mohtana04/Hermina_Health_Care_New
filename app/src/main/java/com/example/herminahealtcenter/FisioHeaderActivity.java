@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.herminahealtcenter.Alert.AlertKoneksi;
 import com.example.herminahealtcenter.adapter.FisheadAdapter;
 import com.example.herminahealtcenter.model.Historyfisioheader;
 import com.example.herminahealtcenter.model.HistoryfisioheaderResponse;
@@ -81,6 +82,8 @@ public class FisioHeaderActivity extends AppCompatActivity implements SwipeRefre
 
             @Override
             public void onFailure(Call<HistoryfisioheaderResponse> call, Throwable t) {
+                AlertKoneksi alert = new AlertKoneksi();
+                alert.showDialog(FisioHeaderActivity.this,"Mohon maaf , sedang dalam perbaikan");
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

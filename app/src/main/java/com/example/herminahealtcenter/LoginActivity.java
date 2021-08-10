@@ -9,10 +9,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.herminahealtcenter.Alert.AlertKoneksi;
 import com.example.herminahealtcenter.model.Login;
 import com.example.herminahealtcenter.model.LoginResponse;
 import com.example.herminahealtcenter.model.MetaData;
@@ -108,26 +108,27 @@ public class LoginActivity extends AppCompatActivity {
                 Login login = response.body().getLogin();
                 String MetaCode = code.getCode();
                 String MetaMessage = code.getMessage();
-                nmpasien = login.getNama();
-                gender = login.getGender();
-
-                Log.d("Retrofit Post", "Jumlah data Kontak: " + nmpasien + " " + gender);
 
                 if (MetaCode.equals("200")) {
+                    nmpasien = login.getNama();
+                    gender = login.getGender();
                     sessionsManager.createLoginSession(nomr,nmpasien,gender);
-
+                    Log.d("Retrofit Post", "Jumlah data Kontak: " + nmpasien + " " + gender);
                     Log.d("nama" , "session nama :"  +sessionsManager.getUserName() );
                     Intent log = new Intent(LoginActivity.this, DashboardActivity.class);
                     startActivity(log);
                 } else {
-                    Toast.makeText(LoginActivity.this,MetaMessage,Toast.LENGTH_LONG).show();
+                    Log.d("Retrofit Post", "error: " + MetaMessage);
+                    AlertKoneksi alert = new AlertKoneksi();
+                    alert.showDialog(LoginActivity.this,MetaMessage);
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
                 Log.e("Retrofit Post", t.toString());
-                Toast.makeText(LoginActivity.this,"GAGAL",Toast.LENGTH_LONG).show();
+                AlertKoneksi alert = new AlertKoneksi();
+                alert.showDialog(LoginActivity.this,"Mohon maaf , sedang dalam perbaikan");
             }
         });
     }

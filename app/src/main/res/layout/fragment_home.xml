@@ -266,6 +266,7 @@
                 app:layout_constraintBottom_toBottomOf="parent">
 
                 <TextView
+                    android:id="@+id/btntvfar"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:text="Farmasi"
@@ -279,6 +280,7 @@
                     android:background="@drawable/customgridview"/>
 
                 <ImageView
+                    android:id="@+id/btnimgfar"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/farmasi"
