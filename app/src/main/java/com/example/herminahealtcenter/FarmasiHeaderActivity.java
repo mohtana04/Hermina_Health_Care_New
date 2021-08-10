@@ -94,6 +94,7 @@ public class FarmasiHeaderActivity extends AppCompatActivity implements SwipeRef
                         Historyfarheader historyfarheader = historyfarheaders.get(position);
                         String nobukti = historyfarheader.getNobuktitransaksi();
                         Toast.makeText(getApplicationContext(),nobukti,Toast.LENGTH_LONG).show();
+
                     }
 
                     @Override

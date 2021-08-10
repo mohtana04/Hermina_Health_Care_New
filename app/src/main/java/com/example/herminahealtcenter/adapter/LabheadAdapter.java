@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,6 +40,12 @@ public class LabheadAdapter extends RecyclerView.Adapter<LabheadAdapter.Labheade
         holder.jamsampling.setText(historylabheaders.get(position).getJamsampling());
         holder.typeketerangan.setText(historylabheaders.get(position).getTypeketerangan());
         holder.dotkternama.setText(historylabheaders.get(position).getDokternama());
+        holder.detaillab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(holder.detaillab.getContext(), "s" ,Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -47,17 +55,20 @@ public class LabheadAdapter extends RecyclerView.Adapter<LabheadAdapter.Labheade
 
     public class LabheaderAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView nobuktitransaksi, jamsampling, patientnama, typeketerangan, dotkternama;
+        TextView nobuktitransaksi, jamsampling, typeketerangan, dotkternama;
+        Button detaillab;
         public LabheaderAdapterViewHolder(View view) {
             super(view);
             nobuktitransaksi = (TextView) view.findViewById(R.id.tvnotransaksilab);
             jamsampling = (TextView) view.findViewById(R.id.tvtgltransaksilab);
             typeketerangan = (TextView) view.findViewById(R.id.tvtipetransaksilab);
             dotkternama = (TextView) view.findViewById(R.id.tvdokternyalab);
+            detaillab = (Button) view. findViewById(R.id.ACBlihatdetaillab);
         }
 
         @Override
         public void onClick(View view) {
+
 
         }
     }
