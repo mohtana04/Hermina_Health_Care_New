@@ -3,6 +3,7 @@ package com.example.herminahealtcenter.rest;
 import com.example.herminahealtcenter.model.HistoryFarheaderResponse;
 import com.example.herminahealtcenter.model.HistoryfisioheaderResponse;
 import com.example.herminahealtcenter.model.HistoryktkheaderResponse;
+import com.example.herminahealtcenter.model.HistorylabdetailResponse;
 import com.example.herminahealtcenter.model.HistorylabheaderResponse;
 import com.example.herminahealtcenter.model.HistoryradheaderResponse;
 import com.example.herminahealtcenter.model.HistoryrwiResponse;
@@ -57,5 +58,9 @@ public interface ApiInterface {
     Call<HistoryFarheaderResponse> hfarhead(@Field("nomr") String nomr);
 
 
+    @FormUrlEncoded
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @POST("info/historylabdet")
+    Call<HistorylabdetailResponse> hlabdet(@Field("nobuktitransaksi") String nobuktitransaksi);
 
 }

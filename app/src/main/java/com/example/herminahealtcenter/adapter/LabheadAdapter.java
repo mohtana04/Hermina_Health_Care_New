@@ -1,16 +1,17 @@
 package com.example.herminahealtcenter.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.herminahealtcenter.R;
+import com.example.herminahealtcenter.detail.LaboratoriumDetailActivity;
 import com.example.herminahealtcenter.model.Historylabheader;
 
 import java.util.List;
@@ -36,6 +37,8 @@ public class LabheadAdapter extends RecyclerView.Adapter<LabheadAdapter.Labheade
 
     @Override
     public void onBindViewHolder(LabheadAdapter.LabheaderAdapterViewHolder holder, int position) {
+
+        String notransaksi = historylabheaders.get(position).getNobuktitransaksi();
         holder.nobuktitransaksi.setText(historylabheaders.get(position).getNobuktitransaksi());
         holder.jamsampling.setText(historylabheaders.get(position).getJamsampling());
         holder.typeketerangan.setText(historylabheaders.get(position).getTypeketerangan());
@@ -43,7 +46,11 @@ public class LabheadAdapter extends RecyclerView.Adapter<LabheadAdapter.Labheade
         holder.detaillab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(holder.detaillab.getContext(), "s" ,Toast.LENGTH_LONG).show();
+//                Toast.makeText(holder.detaillab.getContext(), "s" ,Toast.LENGTH_LONG).show();
+                Intent intent = new Intent (holder.detaillab.getContext(), LaboratoriumDetailActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("notransaksi", notransaksi);
+                context.startActivity(intent);
             }
         });
     }
