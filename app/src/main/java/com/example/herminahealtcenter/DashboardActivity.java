@@ -17,6 +17,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.herminahealtcenter.Alert.AlertKoneksi;
 import com.example.herminahealtcenter.adapter.VpAdapterClass;
+import com.example.herminahealtcenter.utils.SessionsManager;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -26,6 +27,7 @@ public class DashboardActivity extends AppCompatActivity {
     AlertDialog.Builder dialog;
     LayoutInflater inflater;
     View dialogView;
+    SessionsManager sessionsManager;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -33,7 +35,8 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_dashboard);
-
+        sessionsManager = new SessionsManager(getApplicationContext());
+        sessionsManager.checkLogin();
 
         /*cek koneksi pada handphone*/
 
@@ -125,7 +128,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
 
-    public void Dialogform(){
+    public void Dialogform() {
 //        dialog = new AlertDialog.Builder(DashboardActivity.this);
 //        inflater = getLayoutInflater();
 //        dialogView = inflater.inflate(R.layout.alert_connection_layout, null);
@@ -158,6 +161,6 @@ public class DashboardActivity extends AppCompatActivity {
 //        dialog.show();
 
         AlertKoneksi alert = new AlertKoneksi();
-        alert.showDialog(DashboardActivity.this,"Cek koneksi anda");
+        alert.showDialog(DashboardActivity.this, "Cek koneksi anda");
     }
 }

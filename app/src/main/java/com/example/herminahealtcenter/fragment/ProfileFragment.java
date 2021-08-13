@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.herminahealtcenter.R;
+import com.example.herminahealtcenter.utils.SessionsManager;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +18,8 @@ import com.example.herminahealtcenter.R;
  */
 public class ProfileFragment extends Fragment {
 
+    TextView textViewLogout;
+    SessionsManager sessionsManager;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -60,6 +64,19 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+
+
+        final View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        sessionsManager = new SessionsManager(getContext());
+
+        textViewLogout =(TextView) view.findViewById(R.id.TVlogoutpengaturan);
+
+        textViewLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sessionsManager.logoutUser();
+            }
+        });
+        return view;
     }
 }

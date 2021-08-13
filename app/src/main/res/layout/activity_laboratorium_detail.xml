@@ -271,7 +271,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="3dp"
-
+            android:textColor="@color/black"
             android:scaleType="centerCrop"
             android:text="Pemeriksaan |"
             android:textSize="13sp" />
@@ -280,7 +280,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="3dp"
-
+            android:textColor="@color/black"
             android:text="Hasil |"
             android:textSize="13sp" />
 
@@ -288,7 +288,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="3dp"
-
+            android:textColor="@color/black"
             android:text="Nilai Normal |"
             android:textSize="13sp" />
 
@@ -297,14 +297,14 @@
             android:layout_height="wrap_content"
             android:padding="3dp"
             android:text="Satuan |"
-
+            android:textColor="@color/black"
             android:textSize="13sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="3dp"
-
+            android:textColor="@color/black"
             android:text="Keterangan |"
             android:textSize="13sp" />
 
