@@ -1,176 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.ProfileFragment">
+    tools:context=".fragment.ProfileFragment"
+    android:background="@drawable/customcolorgradient">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CVkartuhermina"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/IVkopsuratpengaturan"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:src="@drawable/copsurat"
+                android:scaleType="fitXY"
+                android:padding="10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/TVnamapasienkartupengaturan"/>
+
+            <ImageView
+                android:id="@+id/IVpatungkartupengaturan"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/herminapatung"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/IVbarcodekartupengaturan"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:src="@drawable/barcode"
+                android:layout_margin="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TVnormkartupengaturan"/>
+
+            <TextView
+                android:id="@+id/TVnamapasienkartupengaturan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="nama pasien"
+                android:textColor="#019443"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/TVnormkartupengaturan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/IVkopsuratpengaturan"/>
+
+            <TextView
+                android:id="@+id/TVnormkartupengaturan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="nomor rm"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintTop_toBottomOf="@id/TVnamapasienkartupengaturan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/IVbarcodekartupengaturan"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/CLcontentbottohsheetpengaturan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:elevation="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/customroundedtop"
+        app:layout_constraintTop_toBottomOf="@id/CVkartuhermina"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/CVprofilepengaturan"
-            android:layout_width="match_parent"
+            android:id="@+id/CVfotoprofilepengaturan"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cardElevation="20dp"
-            app:cardCornerRadius="20dp"
-            android:layout_margin="10dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="50dp"
+            android:layout_marginTop="10dp"
+            app:cardElevation="10dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/CVkartuhermina">
+            app:layout_constraintBottom_toTopOf="@id/garispemisah">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="5dp"
-                android:background="@color/white">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/CVfotoprofilepengaturan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:cardCornerRadius="50dp"
-                    android:layout_marginTop="10dp"
-                    app:cardElevation="10dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/garispemisah">
-
-                    <ImageView
-                        android:id="@+id/IVavatarpengaturan"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/logoherlogin"/>
-
-                </androidx.cardview.widget.CardView>
-
-                <View
-                    android:id="@+id/garispemisah"
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintTop_toBottomOf="@id/CVfotoprofilepengaturan"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
-
-                <TextView
-                    android:id="@+id/TVeditprofilpengaturan"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Ubah Profil"
-                    android:gravity="center_horizontal"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:layout_margin="5dp"
-                    android:padding="7dp"
-                    android:background="@drawable/customgridviewtiny"
-                    app:layout_constraintTop_toBottomOf="@id/garispemisah"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/TVlogoutpengaturan"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-                <TextView
-                    android:id="@+id/TVlogoutpengaturan"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Keluar Akun"
-                    android:gravity="center_horizontal"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:layout_margin="5dp"
-                    android:padding="7dp"
-                    android:background="@drawable/customgridviewtiny"
-                    app:layout_constraintTop_toBottomOf="@id/garispemisah"
-                    app:layout_constraintStart_toEndOf="@id/TVeditprofilpengaturan"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/IVavatarpengaturan"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/logoherlogin"/>
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/CVkartuhermina"
+        <View
+            android:id="@+id/garispemisah"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="20dp"
-            app:layout_constraintTop_toBottomOf="@id/CVprofilepengaturan"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/CVfotoprofilepengaturan"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white">
+        <TextView
+            android:id="@+id/TVeditprofilpengaturan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Ubah Profil"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_margin="5dp"
+            android:padding="7dp"
+            android:background="@drawable/customgridviewtiny"
+            app:layout_constraintTop_toBottomOf="@id/garispemisah"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/TVlogoutpengaturan"/>
 
-                <ImageView
-                    android:id="@+id/IVkopsuratpengaturan"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:src="@drawable/copsurat"
-                    android:scaleType="fitXY"
-                    android:padding="10dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/TVnamapasienkartupengaturan"/>
-
-                <ImageView
-                    android:id="@+id/IVpatungkartupengaturan"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/herminapatung"
-                    android:scaleType="fitXY"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-                <ImageView
-                    android:id="@+id/IVbarcodekartupengaturan"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/barcode"
-                    android:layout_margin="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/TVnormkartupengaturan"/>
-
-                <TextView
-                    android:id="@+id/TVnamapasienkartupengaturan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="nama pasien"
-                    android:textColor="#019443"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/TVnormkartupengaturan"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/IVkopsuratpengaturan"/>
-
-                <TextView
-                    android:id="@+id/TVnormkartupengaturan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="nomor rm"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="20dp"
-                    app:layout_constraintTop_toBottomOf="@id/TVnamapasienkartupengaturan"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/IVbarcodekartupengaturan"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/TVlogoutpengaturan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Keluar Akun"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_margin="5dp"
+            android:padding="7dp"
+            android:background="@drawable/customgridviewtiny"
+            app:layout_constraintTop_toBottomOf="@id/garispemisah"
+            app:layout_constraintStart_toEndOf="@id/TVeditprofilpengaturan"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
