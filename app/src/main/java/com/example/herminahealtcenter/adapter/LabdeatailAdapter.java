@@ -19,7 +19,7 @@ public class LabdeatailAdapter extends RecyclerView.Adapter<LabdeatailAdapter.La
     public List<Testindonesium> testindonesiums;
     public Context context;
     private int rowLayout;
-
+    String hasilnumeriks;
     public LabdeatailAdapter (List<Testindonesium> testindonesiums, int rowLayout, Context context){
 
         this.testindonesiums = testindonesiums;
@@ -38,10 +38,15 @@ public class LabdeatailAdapter extends RecyclerView.Adapter<LabdeatailAdapter.La
 
         holder.kelompoknama.setText(testindonesiums.get(position).getKelompoknama());
         holder.testindonesia.setText(testindonesiums.get(position).getTestindonesia());
-        holder.hasilnumerik.setText(testindonesiums.get(position).getHasilnumerik());
-        holder.hasilkarakter.setText(testindonesiums.get(position).getHasilkarakter());
+        hasilnumeriks = testindonesiums.get(position).getHasilnumerik();
+        if (hasilnumeriks.equals("0")){
+            holder.hasil.setText(testindonesiums.get(position).getHasilkarakter());
+        } else {
+            holder.hasil.setText(testindonesiums.get(position).getHasilnumerik());
+        }
         holder.normalkarakter.setText(testindonesiums.get(position).getNormalkarakter());
         holder.satuanindonesia.setText(testindonesiums.get(position).getSatuanindonesia());
+
     }
 
     @Override
@@ -51,14 +56,14 @@ public class LabdeatailAdapter extends RecyclerView.Adapter<LabdeatailAdapter.La
 
     public class LabdeatailAdapterViewHolder extends RecyclerView.ViewHolder {
 
-        TextView kelompoknama, testindonesia, hasilnumerik, hasilkarakter, normalkarakter, satuanindonesia;
+        TextView kelompoknama, testindonesia, hasil, normalkarakter, satuanindonesia;
 
         public LabdeatailAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
+
             testindonesia = (TextView) itemView.findViewById(R.id.TVtestindonesialabdet);
-            hasilnumerik = (TextView) itemView.findViewById(R.id.TVhasilnumeriklabdet);
             kelompoknama = (TextView) itemView.findViewById(R.id.TVkelompoknamalabdet);
-            hasilkarakter = (TextView) itemView.findViewById(R.id.TVhasilkarakterlabdet);
+            hasil = (TextView) itemView.findViewById(R.id.TVhasillabdet);
             normalkarakter = (TextView) itemView.findViewById(R.id.TVnormalkarakterlabdet);
             satuanindonesia = (TextView) itemView.findViewById(R.id.TVSatuanlabdet);
         }

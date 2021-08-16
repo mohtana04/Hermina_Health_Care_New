@@ -48,22 +48,14 @@
                 android:text="Pemeriksaansub"
                 android:textSize="13sp" />
 
+
             <TextView
-                android:id="@+id/TVhasilnumeriklabdet"
+                android:id="@+id/TVhasillabdet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="3dp"
                 android:textColor="@color/black"
                 android:text="Hasil"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/TVhasilkarakterlabdet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="3dp"
-                android:textColor="@color/black"
-                android:text="Nilai Normal"
                 android:textSize="13sp" />
 
             <TextView
