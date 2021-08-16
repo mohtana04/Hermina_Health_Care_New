@@ -45,7 +45,7 @@
                 android:padding="3dp"
                 android:textColor="@color/black"
                 android:scaleType="centerCrop"
-                android:text="Pemeriksaan"
+                android:text="Pemeriksaansub"
                 android:textSize="13sp" />
 
             <TextView
