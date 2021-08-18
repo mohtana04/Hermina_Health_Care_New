@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -93,7 +92,7 @@ public class FarmasiHeaderActivity extends AppCompatActivity implements SwipeRef
                     public void onClick(View view, int position) {
                         Historyfarheader historyfarheader = historyfarheaders.get(position);
                         String nobukti = historyfarheader.getNobuktitransaksi();
-                        Toast.makeText(getApplicationContext(),nobukti,Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(),nobukti,Toast.LENGTH_LONG).show();
 
                     }
 

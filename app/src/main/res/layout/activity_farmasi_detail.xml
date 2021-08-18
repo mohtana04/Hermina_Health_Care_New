@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="5dp"
+    android:background="@color/main_background"
+    tools:context=".detail.FarmasiDetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/CLtopnavbarfarmasidet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/IVbackfarmasidet"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/previous"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Bukti Transaksi Resep"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/IVbackfarmasidet"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CVdetailfarmasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/CLtopnavbarfarmasidet">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fardetailtittle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/CLtopnavbarfarmasidet">
+
+
+            <TextView
+                android:id="@+id/titleTVnoregisfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No. Registrasi :"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/TVnoregistrasifardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:text="JFJFJFFJJFJFJ"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/titleTVnoregisfardetail"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/titleTVnotransaksifardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No. Transaksi :"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTVnoregisfardetail" />
+
+            <TextView
+                android:id="@+id/TVnotransaksifardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="AFxxxxxx"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/TVnoregistrasifardetail"
+                app:layout_constraintStart_toEndOf="@+id/titleTVnotransaksifardetail"
+                app:layout_constraintTop_toBottomOf="@+id/TVnoregistrasifardetail" />
+
+            <TextView
+                android:id="@+id/titleTVnormfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No. Rekam Medis :"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTVnotransaksifardetail" />
+
+            <TextView
+                android:id="@+id/TVnormfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginLeft="36dp"
+                android:text="C2XXXXXX"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/titleTVnormfardetail"
+                app:layout_constraintTop_toBottomOf="@+id/TVnotransaksifardetail" />
+
+            <TextView
+                android:id="@+id/titleTVnamapasienfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Pasien :"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTVnormfardetail" />
+
+            <TextView
+                android:id="@+id/TVnamapasienfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:text="Chanxxxx"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/titleTVnamapasienfardetail"
+                app:layout_constraintTop_toBottomOf="@+id/TVnormfardetail" />
+
+
+            <TextView
+                android:id="@+id/titleTVnmdokterfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Dokter :"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTVnamapasienfardetail" />
+
+            <TextView
+                android:id="@+id/TVnmdokterfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="dr. Richard"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/titleTVnmdokterfardetail"
+                app:layout_constraintTop_toBottomOf="@+id/TVnamapasienfardetail" />
+
+            <TextView
+                android:id="@+id/titleTVtypeketeranganfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jenis Transaksi :"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTVnmdokterfardetail" />
+
+            <TextView
+                android:id="@+id/TVtypeketeranganfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="Rawat Jalxxxx"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/titleTVtypeketeranganfardetail"
+                app:layout_constraintTop_toBottomOf="@+id/TVnmdokterfardetail" />
+
+            <TextView
+                android:id="@+id/titleTVshiftfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shift :"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTVtypeketeranganfardetail" />
+
+            <TextView
+                android:id="@+id/TVshiftfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="SORE"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/titleTVshiftfardetail"
+                app:layout_constraintTop_toBottomOf="@+id/TVtypeketeranganfardetail" />
+
+
+            <TextView
+                android:id="@+id/titleTVtglfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal :"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTVshiftfardetail" />
+
+            <TextView
+                android:id="@+id/TVtglfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="2021-09-11"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/titleTVtglfardetail"
+                app:layout_constraintTop_toBottomOf="@+id/TVshiftfardetail" />
+
+            <TextView
+                android:id="@+id/titleTVjamfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jam :"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTVtglfardetail" />
+
+            <TextView
+                android:id="@+id/TVjamfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="16:00"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/titleTVjamfardetail"
+                app:layout_constraintTop_toBottomOf="@+id/TVtglfardetail" />
+
+            <TextView
+                android:id="@+id/titleTVpetugasfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Petugas :"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTVjamfardetail" />
+
+            <TextView
+                android:id="@+id/TVpetugasfardetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="Anxxxx"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/titleTVpetugasfardetail"
+                app:layout_constraintTop_toBottomOf="@+id/TVjamfardetail" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayoutfardet"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/CVdetailfarmasi"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fardetail_recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/swipeRefreshLayoutfardet">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

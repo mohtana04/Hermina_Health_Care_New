@@ -45,9 +45,8 @@
 
             <ImageView
                 android:id="@+id/IVbarcodekartupengaturan"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:src="@drawable/barcode"
+                android:layout_width="242dp"
+                android:layout_height="71dp"
                 android:layout_margin="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

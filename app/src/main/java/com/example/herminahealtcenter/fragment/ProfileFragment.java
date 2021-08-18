@@ -1,20 +1,22 @@
 package com.example.herminahealtcenter.fragment;
 
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.herminahealtcenter.R;
 import com.example.herminahealtcenter.utils.SessionsManager;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,8 +25,11 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
  */
 public class ProfileFragment extends Fragment {
 
-    TextView textViewLogout;
+    TextView textViewLogout,textViewnamapasienkartu, textViewnomorpasienkartu;
     SessionsManager sessionsManager;
+    ImageView imageViewbarcodecm;
+
+    String namapasien, nomorkartu;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -49,6 +54,7 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static ProfileFragment newInstance(String param1, String param2) {
         ProfileFragment fragment = new ProfileFragment();
+
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +65,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sessionsManager = new SessionsManager(getContext());
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -71,11 +78,25 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        namapasien = sessionsManager.getUserName();
+        nomorkartu = sessionsManager.getUserNomr();
 
         final View view = inflater.inflate(R.layout.fragment_profile, container, false);
         sessionsManager = new SessionsManager(getContext());
 
+        imageViewbarcodecm = (ImageView) view.findViewById(R.id.IVbarcodekartupengaturan);
         textViewLogout =(TextView) view.findViewById(R.id.TVlogoutpengaturan);
+        textViewnamapasienkartu = (TextView) view.findViewById(R.id.TVnamapasienkartupengaturan);
+        textViewnomorpasienkartu = (TextView) view.findViewById(R.id.TVnormkartupengaturan);
+        textViewnamapasienkartu.setText(namapasien);
+        textViewnomorpasienkartu.setText(nomorkartu);
+
+        imageViewbarcodecm.post(new Runnable() {
+            @Override
+            public void run() {
+                generatebarcode(textViewnomorpasienkartu);
+            }
+        });
 
         textViewLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,5 +105,22 @@ public class ProfileFragment extends Fragment {
             }
         });
         return view;
+    }
+
+
+    public void generatebarcode (TextView textViewnomorpasienkartu){
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+        try {
+            BitMatrix bitMatrix = multiFormatWriter.encode(textViewnomorpasienkartu.getText().toString(), BarcodeFormat.CODE_128, imageViewbarcodecm.getWidth(), imageViewbarcodecm.getHeight());
+            Bitmap bitmap = Bitmap.createBitmap(imageViewbarcodecm.getWidth(),imageViewbarcodecm.getHeight(),Bitmap.Config.RGB_565);
+            for (int i = 0; i<imageViewbarcodecm.getWidth(); i++){
+                for (int j = 0; j<imageViewbarcodecm.getHeight(); j++){
+                    bitmap.setPixel(i,j,bitMatrix.get(i,j)? Color.BLACK:Color.WHITE);
+                }
+            }
+            imageViewbarcodecm.setImageBitmap(bitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
     }
 }
