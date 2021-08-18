@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 
 import com.example.herminahealtcenter.R;
@@ -25,9 +26,10 @@ import com.google.zxing.common.BitMatrix;
  */
 public class ProfileFragment extends Fragment {
 
-    TextView textViewLogout,textViewnamapasienkartu, textViewnomorpasienkartu;
+    TextView textViewnamapasienkartu, textViewnomorpasienkartu;
     SessionsManager sessionsManager;
     ImageView imageViewbarcodecm;
+    AppCompatImageButton textViewLogout;
 
     String namapasien, nomorkartu;
     // TODO: Rename parameter arguments, choose names that match
@@ -85,7 +87,7 @@ public class ProfileFragment extends Fragment {
         sessionsManager = new SessionsManager(getContext());
 
         imageViewbarcodecm = (ImageView) view.findViewById(R.id.IVbarcodekartupengaturan);
-        textViewLogout =(TextView) view.findViewById(R.id.TVlogoutpengaturan);
+        textViewLogout = (AppCompatImageButton) view.findViewById(R.id.TVlogoutpengaturan);
         textViewnamapasienkartu = (TextView) view.findViewById(R.id.TVnamapasienkartupengaturan);
         textViewnomorpasienkartu = (TextView) view.findViewById(R.id.TVnormkartupengaturan);
         textViewnamapasienkartu.setText(namapasien);
