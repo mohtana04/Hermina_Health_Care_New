@@ -3,7 +3,7 @@ package com.example.herminahealtcenter.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Racikan {
+public class Detailracikan {
     @SerializedName("obatid")
     @Expose
     private String obatid;
@@ -48,4 +48,5 @@ public class Racikan {
     public void setJumlahracikan(String jumlahracikan) {
         this.jumlahracikan = jumlahracikan;
     }
+
 }

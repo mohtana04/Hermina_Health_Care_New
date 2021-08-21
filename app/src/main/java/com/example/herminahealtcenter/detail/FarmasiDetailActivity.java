@@ -39,6 +39,8 @@ public class FarmasiDetailActivity extends AppCompatActivity implements SwipeRef
     TextView textViewNoregi, textViewNotrans, textViewNorm, textViewNamapasien, textViewNmdokter, textViewTypeketerangan, textViewShift, textViewPetugas, textViewJam, textViewTanggal;
     String notransaksi, notrans, norm, noregis, nmpasien, nmdokter, typeketerangan, shift, petugas, jam, tanggal;
 
+    RecyclerView recyclerView, recyclerView1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,10 +86,14 @@ public class FarmasiDetailActivity extends AppCompatActivity implements SwipeRef
         });
     }
 
+
     public void refreshData() {
 
-        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.fardetail_recycleview);
+        recyclerView = (RecyclerView) findViewById(R.id.fardetail_recycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+//        recyclerView1 = (RecyclerView) findViewById(R.id.racikanfardetail_recycleview);
+//        recyclerView1.setLayoutManager(new LinearLayoutManager(this));
 
         ApiInterface apiService =
                 ApiClient.createService(ApiInterface.class, "admin", "h3rm1n4c4r3");
@@ -103,18 +109,7 @@ public class FarmasiDetailActivity extends AppCompatActivity implements SwipeRef
                 String message = code.getMessage();
                 String MetaCode = code.getCode();
                 Historyfardetail historyfardetail = response.body().getHistoryfardetail();
-//                noregis = historyfardetail.getNoregistrasi();
-//                notrans = historyfardetail.getNotransaksi();
-//                norm = historyfardetail.getPatientid();
-//                nmpasien = historyfardetail.getPatientnama();
-//                nmdokter = historyfardetail.getDokterpengirim();
-//                typeketerangan = historyfardetail.getTypeketerangan();
-//                shift = historyfardetail.getShift();
-//                petugas = historyfardetail.getPetugas();
-//                tanggal = historyfardetail.getTglTrans();
-//                jam = historyfardetail.getJam();
 
-//
 
                 if (MetaCode.equals("200")) {
                     swipeRefreshLayoutlabdet.setRefreshing(false);
@@ -135,17 +130,22 @@ public class FarmasiDetailActivity extends AppCompatActivity implements SwipeRef
                     int ukuranresep = reseps.size();
                     int fixukuran = ukuranresep - 1;
                     System.out.println("ccc " + ukuranresep);
-                    List<Racikan> racikans = null;
+                    final List<Racikan> racikans = reseps.get(fixukuran).getRacikan();
+//                    int ukuran = reseps.get(fixukuran).getRacikan().size();
 
-//                    int ukuran = reseps.get(fixukuran).getRacikan().;
-
-//                    System.out.println("hello : "+ ukuran);
+//                    System.out.println("hello : "+ ukuran + " " + fixukuran);
 //                    for (int i = 0; i < ukuran; i++) {
 //                        System.out.println("nama obat racikan2 " + i + " : " + racikans.get(i).getObatnamarecikan());
 //                    }
 
 
-                    recyclerView.setAdapter(new FardetailAdapter(reseps, R.layout.fardetail_list_resep_layout, getApplicationContext()));
+
+//                    if (racikans != null) {
+                        recyclerView.setAdapter(new FardetailAdapter(reseps,racikans, R.layout.fardetail_list_resep_layout, getApplicationContext()));
+//                        recyclerView1.setAdapter(new FardetailracikanAdapter(racikans, R.layout.fardetail_list_racikan_layout, getApplicationContext()));
+//                    }
+
+
                 } else {
                     AlertKoneksi alert = new AlertKoneksi();
                     alert.showDialog(FarmasiDetailActivity.this, message);
