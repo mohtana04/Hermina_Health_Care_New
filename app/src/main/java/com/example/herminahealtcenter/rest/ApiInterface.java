@@ -1,5 +1,6 @@
 package com.example.herminahealtcenter.rest;
 
+import com.example.herminahealtcenter.model.DetailRacikanResponse;
 import com.example.herminahealtcenter.model.HistoryFarheaderResponse;
 import com.example.herminahealtcenter.model.Historyfardetailresponse;
 import com.example.herminahealtcenter.model.HistoryfisioheaderResponse;
@@ -68,5 +69,11 @@ public interface ApiInterface {
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @POST("info/historyfardet")
     Call<Historyfardetailresponse> hfardet(@Field("nobuktitransaksi") String nobuktitransaksi);
+
+
+    @FormUrlEncoded
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @POST("info/noracikan")
+    Call<DetailRacikanResponse> dataracikan(@Field("noracikan") String noracikan);
 
 }
