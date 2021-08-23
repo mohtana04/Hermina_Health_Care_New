@@ -110,7 +110,7 @@
             android:id="@+id/TVtitleSatuanlabdet"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Keterangan"
+            android:text="Satuan"
             android:textColor="@color/black"
             android:gravity="center_horizontal"
             android:textSize="8sp"

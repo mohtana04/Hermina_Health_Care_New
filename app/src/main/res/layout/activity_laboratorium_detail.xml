@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/main_background"
     android:isScrollContainer="true"
     tools:context=".detail.LaboratoriumDetailActivity">
 
@@ -51,210 +51,185 @@
         android:layout_margin="5dp"
         app:layout_constraintTop_toBottomOf="@+id/CLtopnavbarLaboratoriumdet">
 
-
-        <TextView
-            android:id="@+id/titleTVnotransaksilabdetail"
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/LLheaderlabdet"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Pemeriksaan :"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:cardElevation="10dp"
+            android:backgroundTint="@color/white"
+            android:layout_margin="5dp"
+            app:cardCornerRadius="10dp"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SmallSp" />
-
-        <TextView
-            android:id="@+id/TVnotransaksiLabdetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:text="JFJFJFFJJFJFJ"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/titleTVnotransaksilabdetail"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/titleTVnormlabdetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No. Rekma Medis :"
-            android:textColor="@color/black"
-            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTVnotransaksilabdetail" />
+            app:layout_constraintEnd_toStartOf="@id/CVdetaillabdet"
+            app:layout_constraintBottom_toTopOf="@id/BTNcetaklabdet">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/TVnamapasienlabdetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TVnamapasienlabdetail"
+                    android:textColor="#019443"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"/>
+
+                <TextView
+                    android:id="@+id/TVumurlabdetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="10th 8bln 1hr"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"/>
+
+                <TextView
+                    android:id="@+id/TVtgllhirlabdetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="1992-12-10"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"/>
+
+                <TextView
+                    android:id="@+id/TVnmdokterlabdetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:text="TVnmdokterlabdetail"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/TVnormlabdetail"
-            android:layout_width="wrap_content"
+            android:id="@+id/BTNcetaklabdet"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:text="C20000"
+            android:background="@drawable/custombutton"
+            android:padding="5dp"
+            android:text="Cetak"
+            android:gravity="center_horizontal|center_vertical"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@+id/TVnotransaksiLabdetail"
-            app:layout_constraintStart_toEndOf="@+id/titleTVnormlabdetail"
-            app:layout_constraintTop_toBottomOf="@+id/TVnotransaksiLabdetail" />
-
-        <TextView
-            android:id="@+id/titleTVnamapasienlabdetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nama Pasien :"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/ic_baseline_print_24"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTVnormlabdetail" />
+            app:layout_constraintTop_toBottomOf="@id/LLheaderlabdet"
+            app:layout_constraintEnd_toStartOf="@id/IBsharelabdet"/>
 
-        <TextView
-            android:id="@+id/TVnamapasienlabdetail"
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/IBsharelabdet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginLeft="36dp"
-            android:text="chandra"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/titleTVnamapasienlabdetail"
-            app:layout_constraintTop_toBottomOf="@+id/TVnormlabdetail" />
+            android:src="@drawable/ic_baseline_share_24"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            android:background="@drawable/customstrokebutton"
+            app:layout_constraintTop_toTopOf="@id/BTNcetaklabdet"
+            app:layout_constraintBottom_toBottomOf="@id/BTNcetaklabdet"
+            app:layout_constraintStart_toEndOf="@id/BTNcetaklabdet"
+            app:layout_constraintEnd_toStartOf="@id/CVdetaillabdet"/>
 
-        <TextView
-            android:id="@+id/titleTVtgllahirlabdetail"
+        <LinearLayout
+            android:id="@+id/CVdetaillabdet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tgl. Lahir / Umur :"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTVnamapasienlabdetail" />
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/LLheaderlabdet"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <TextView
-            android:id="@+id/TVtgllhirlabdetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
-            android:text="1992-12-10"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/titleTVtgllahirlabdetail"
-            app:layout_constraintTop_toBottomOf="@+id/TVnamapasienlabdetail" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="no. pemeriksaan :"
+                android:textSize="8sp"
+                android:textColor="@color/black"/>
 
-        <TextView
-            android:id="@+id/TVgaringlabdetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:text="/"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/TVtgllhirlabdetail"
-            app:layout_constraintTop_toBottomOf="@+id/TVnamapasienlabdetail" />
+            <TextView
+                android:id="@+id/TVnotransaksiLabdetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="no transaksi"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
-        <TextView
-            android:id="@+id/TVumurlabdetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:text="10th 8bln 1hr"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/TVgaringlabdetail"
-            app:layout_constraintTop_toBottomOf="@+id/TVnamapasienlabdetail" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="no. rekam medis :"
+                android:textSize="8sp"
+                android:textColor="@color/black"/>
 
-        <TextView
-            android:id="@+id/titleTVnmdokterlabdetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dokter Pengirim :"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTVtgllahirlabdetail" />
+            <TextView
+                android:id="@+id/TVnormlabdetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="no rm"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
-        <TextView
-            android:id="@+id/TVnmdokterlabdetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="dr. Richard"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/titleTVnmdokterlabdetail"
-            app:layout_constraintTop_toBottomOf="@+id/TVtgllhirlabdetail" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="tgl. pemeriksaan :"
+                android:textSize="8sp"
+                android:textColor="@color/black"/>
 
+            <TextView
+                android:id="@+id/TVtglsamplinglabdetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="tgl sampling"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
-        <TextView
-            android:id="@+id/titleTVtglsamplinglabdetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tgl. Sampling :"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTVnmdokterlabdetail" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/TVtglsamplinglabdetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="2021-09-11"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/titleTVtglsamplinglabdetail"
-            app:layout_constraintTop_toBottomOf="@+id/TVnmdokterlabdetail" />
+                <TextView
+                    android:id="@+id/TVjamsamplinglabdetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="16:00"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"/>
 
-        <TextView
-            android:id="@+id/titleTVjamsamplinglabdetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Jam Sampling :"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTVtglsamplinglabdetail" />
+                <TextView
+                    android:id="@+id/TVshiftlabdetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="pagi/siang/malam"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"/>
 
-        <TextView
-            android:id="@+id/TVjamsamplinglabdetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="16:00"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/titleTVjamsamplinglabdetail"
-            app:layout_constraintTop_toBottomOf="@+id/TVtglsamplinglabdetail" />
+            </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/titleTVshiftlabdetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Shift :"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTVjamsamplinglabdetail" />
-
-        <TextView
-            android:id="@+id/TVshiftlabdetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="16:00"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/titleTVshiftlabdetail"
-            app:layout_constraintTop_toBottomOf="@+id/TVjamsamplinglabdetail" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -262,6 +237,10 @@
         android:id="@+id/swipeRefreshLayoutlabdet"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@drawable/customroundedtop"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
