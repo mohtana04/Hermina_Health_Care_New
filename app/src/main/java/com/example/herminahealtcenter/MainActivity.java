@@ -11,21 +11,21 @@ public class MainActivity extends AppCompatActivity {
 
     SessionsManager sessionsManager;
     TextView textViewNorm;
-    String norm;
+    String pasienname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sessionsManager = new SessionsManager(getApplicationContext());
-        norm = sessionsManager.getUserName();
-        textViewNorm = (TextView) findViewById(R.id.textnorm);
+        pasienname = sessionsManager.getUserName();
+        textViewNorm = (TextView) findViewById(R.id.TVsapapasien);
 
 
         if(sessionsManager.isLoggedIn() == false) {
                 textViewNorm.setText("tidak ada session");
         } else {
-            textViewNorm.setText("Hallo : " +  norm);
+            textViewNorm.setText("Hallo : " +  pasienname);
         }
     }
 }
