@@ -5,11 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    android:isScrollContainer="true"
-    tools:context=".detail.LaboratoriumDetailActivity">
+    tools:context=".detail.RadiologiDetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/CLtopnavbarLaboratoriumdet"
+        android:id="@+id/CLtopnavbarRadiologidet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -19,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/IVbacklaboratoriumdet"
+            android:id="@+id/IVbackradiologidet"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_margin="5dp"
@@ -33,40 +32,39 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Hasil Laboratorium"
+            android:text="Hasil Radiologi"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/IVbacklaboratoriumdet"
+            app:layout_constraintStart_toEndOf="@id/IVbackradiologidet"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/labdetailtittle"
+        android:id="@+id/raddetailtittle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@+id/CLtopnavbarLaboratoriumdet"
-        app:layout_constraintBottom_toTopOf="@id/swipeRefreshLayoutlabdet"
+        app:layout_constraintTop_toBottomOf="@+id/CLtopnavbarRadiologidet"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/swipeRefreshLayoutraddet">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/LLheaderlabdet"
+            android:id="@+id/LLheaderraddet"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
-            app:cardCornerRadius="10dp"
             app:cardElevation="10dp"
-            app:layout_constraintBottom_toTopOf="@id/BTNcetaklabdet"
-            app:layout_constraintEnd_toStartOf="@id/CVdetaillabdet"
+            android:backgroundTint="@color/white"
+            android:layout_margin="5dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintEnd_toStartOf="@id/CVdetailraddet"
+            app:layout_constraintBottom_toTopOf="@id/BTNcetakraddet">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -74,137 +72,128 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/TVnamapasienlabdetail"
+                    android:id="@+id/TVpatientnamaraddet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
                     android:text="TVnamapasienlabdetail"
                     android:textColor="#019443"
                     android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"/>
 
                 <TextView
-                    android:id="@+id/TVumurlabdetail"
+                    android:id="@+id/TVumurraddet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
                     android:text="10th 8bln 1hr"
                     android:textColor="@color/black"
-                    android:textSize="10sp" />
+                    android:textSize="10sp"/>
 
                 <TextView
-                    android:id="@+id/TVtgllhirlabdetail"
+                    android:id="@+id/TVtgllahirraddet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
                     android:text="1992-12-10"
                     android:textColor="@color/black"
-                    android:textSize="10sp" />
+                    android:textSize="10sp"/>
 
                 <TextView
-                    android:id="@+id/TVnmdokterlabdetail"
+                    android:id="@+id/TVdokterpengirimraddet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="TVnmdokterlabdetail"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
+                    android:text="TVnmdokterlabdetail"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/BTNcetaklabdet"
+            android:id="@+id/BTNcetakraddet"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/custombutton"
-            android:drawableLeft="@drawable/ic_baseline_print_24"
-            android:gravity="center_horizontal|center_vertical"
             android:padding="5dp"
             android:text="Cetak"
-            android:textAllCaps="false"
+            android:gravity="center_horizontal|center_vertical"
             android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/ic_baseline_print_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/IBsharelabdet"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/LLheaderlabdet" />
+            app:layout_constraintTop_toBottomOf="@id/LLheaderraddet"
+            app:layout_constraintEnd_toStartOf="@id/IBshareraddet"/>
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/IBsharelabdet"
+            android:id="@+id/IBshareraddet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_share_24"
             android:layout_margin="10dp"
-            android:background="@drawable/customstrokebutton"
             android:padding="5dp"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_baseline_share_24"
-            app:layout_constraintBottom_toBottomOf="@id/BTNcetaklabdet"
-            app:layout_constraintEnd_toStartOf="@id/CVdetaillabdet"
-            app:layout_constraintStart_toEndOf="@id/BTNcetaklabdet"
-            app:layout_constraintTop_toTopOf="@id/BTNcetaklabdet" />
+            android:background="@drawable/customstrokebutton"
+            app:layout_constraintTop_toTopOf="@id/BTNcetakraddet"
+            app:layout_constraintBottom_toBottomOf="@id/BTNcetakraddet"
+            app:layout_constraintStart_toEndOf="@id/BTNcetakraddet"
+            app:layout_constraintEnd_toStartOf="@id/CVdetailraddet"/>
 
         <LinearLayout
-            android:id="@+id/CVdetaillabdet"
+            android:id="@+id/CVdetailraddet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="5dp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/LLheaderlabdet"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toEndOf="@id/LLheaderraddet"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="no. pemeriksaan :"
-                android:textColor="@color/black"
-                android:textSize="8sp" />
+                android:textSize="8sp"
+                android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/TVnotransaksiLabdetail"
+                android:id="@+id/TVnotransaksiraddet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="no transaksi"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="no. rekam medis :"
-                android:textColor="@color/black"
-                android:textSize="8sp" />
+                android:textSize="8sp"
+                android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/TVnormlabdetail"
+                android:id="@+id/TVpatientidraddet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="no rm"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="tgl. pemeriksaan :"
-                android:textColor="@color/black"
-                android:textSize="8sp" />
-
-            <TextView
-                android:id="@+id/TVtglsamplinglabdetail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="tgl sampling"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:textSize="8sp"
+                android:textColor="@color/black"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -212,24 +201,23 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/TVjamsamplinglabdetail"
+                    android:id="@+id/TVtglselesairaddet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
-                    android:text="16:00"
-                    android:textColor="@color/black"
-                    android:textSize="10sp" />
+                    android:text="tgl sampling"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
 
                 <TextView
-                    android:id="@+id/TVshiftlabdetail"
+                    android:id="@+id/TVshiftraddet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:text="pagi/siang/malam"
                     android:textColor="@color/black"
-                    android:textSize="10sp" />
+                    android:textSize="10sp"/>
 
             </LinearLayout>
 
@@ -238,7 +226,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayoutlabdet"
+        android:id="@+id/swipeRefreshLayoutraddet"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/customroundedtop"
@@ -248,10 +236,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/labdetailtittle">
+        app:layout_constraintTop_toBottomOf="@id/raddetailtittle">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/labdetail_recycleview"
+            android:id="@+id/raddetail_recycleview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scrollbars="vertical">
