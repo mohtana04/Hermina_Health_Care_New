@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.herminahealtcenter"
+        applicationId "com.rsherminasamarinda.herminahealtcenter"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
@@ -55,4 +55,5 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.0-alpha03'
     implementation 'com.google.android.material:material:1.5.0-alpha02'
     implementation 'com.google.zxing:core:3.2.1'
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
 }
