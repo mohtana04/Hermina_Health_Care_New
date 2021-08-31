@@ -98,7 +98,7 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
                 finish();
             }
         });
-
+ ///sdfafdf
         cetakPdf();
     }
 
