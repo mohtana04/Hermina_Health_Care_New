@@ -1,8 +1,6 @@
 package com.rsherminasamarinda.herminahealtcenter.detail;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -12,11 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.github.barteksc.pdfviewer.PDFView;
 import com.rsherminasamarinda.herminahealtcenter.Alert.AlertKoneksi;
 import com.rsherminasamarinda.herminahealtcenter.PdfViewActivity;
 import com.rsherminasamarinda.herminahealtcenter.R;
@@ -29,6 +27,7 @@ import com.rsherminasamarinda.herminahealtcenter.rest.ApiClient;
 import com.rsherminasamarinda.herminahealtcenter.rest.ApiInterface;
 import com.rsherminasamarinda.herminahealtcenter.utils.SessionsManager;
 
+import java.io.File;
 import java.util.List;
 
 import retrofit2.Call;
@@ -45,6 +44,9 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
     TextView buttonCetakLab, textViewnotranskasi, textViewnorekammedis, textViewnmpasien, textViewtgllahir, textViewumur, textViewnamadokter, textViewtglsampling, textViewjamsampling, textViewshift;
     Bitmap bitmap, scaleBitmap;
 
+
+    PDFView pdfView;
+    File file;
     int pageWidth = 1200;
 
 
@@ -64,9 +66,7 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.headerpdf);
         scaleBitmap = Bitmap.createScaledBitmap(bitmap, 1200, 518, false);
 
-        //permission
-        ActivityCompat.requestPermissions(this, new String[]{
-                Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
+
 
         textViewnotranskasi = (TextView) findViewById(R.id.TVnotransaksiLabdetail);
         textViewnorekammedis = (TextView) findViewById(R.id.TVnormlabdetail);
@@ -219,33 +219,18 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
 //                        String sfilename = nobukti + ".pdf";
 //
 //                        if (MetaCode.equals("200")) {
-//                            load();
-//                            PdfDocument pdfDocument = new PdfDocument();
-//                            Paint paint = new Paint();
-//                            Paint titlePaint = new Paint();
-//
-//                            PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(1200, 2010, 1).create();
-//                            PdfDocument.Page page = pdfDocument.startPage(pageInfo);
-//
+//                            PdfDocument myPdfDocument = new PdfDocument();
+//                            Paint myPaint = new Paint();
+//                            PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(400,500,1).create();
+//                            PdfDocument.Page page = myPdfDocument.startPage(pageInfo);
 //                            Canvas canvas = page.getCanvas();
-//                            canvas.drawBitmap(scaleBitmap, 0, 0, paint);
+//                            canvas.drawText("Welcome to pdf", 40 , 50 , myPaint);
+//                            myPdfDocument.finishPage(page);
 //
-//                            titlePaint.setTextAlign(Paint.Align.CENTER);
-//                            titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-//                            titlePaint.setColor(Color.WHITE);
-//                            titlePaint.setTextSize(70);
 //
-//                            canvas.drawText("HASIL PEMERIKSAAN LABORATORIUM", pageWidth / 2, 500, titlePaint);
-//                            pdfDocument.finishPage(page);
 //
-//                            File file = new File(Environment.getExternalStorageDirectory(), "/Pesanan.pdf");
-//                            try {
-//                                pdfDocument.writeTo(new FileOutputStream(file));
-//                            } catch (IOException e) {
-//                                e.printStackTrace();
-//                            }
+////
 //
-//                            pdfDocument.close();
 ////                            writeFileOnInternalStorage();
 ////                            Toast.makeText(LaboratoriumDetailActivity.this, "PDF sudah dibuat /" + getFilesDir(), Toast.LENGTH_LONG).show();
 //                        } else {
@@ -265,7 +250,10 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
 //                    }
 //                });
 
-                startActivity(new Intent(getApplicationContext(), PdfViewActivity.class));
+                Intent intent = new Intent (getApplicationContext(), PdfViewActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("notransaksi", notransaksi);
+                startActivity(intent);
             }
         });
 
