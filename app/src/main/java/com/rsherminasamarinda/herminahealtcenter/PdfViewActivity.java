@@ -30,6 +30,9 @@ import com.rsherminasamarinda.herminahealtcenter.rest.ApiInterface;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -40,7 +43,7 @@ public class PdfViewActivity extends AppCompatActivity {
 
     PDFView pdfView;
     //    File file;
-    String norm, notransaksi, tgllahir, nobukti, nocm, nmpasien, umur, dokternama, tglsampling, jamsampling, shift, pdfPath;
+    String norm, notransaksi, tgllahir, nobukti, nocm, nmpasien, umur, dokternama, tglsampling, jamsampling, shift, hasilnumeriks;
     private static final int CREATE_FILE = 1;
     Boolean on = true;
     PdfDocument pdfDocument;
@@ -49,7 +52,8 @@ public class PdfViewActivity extends AppCompatActivity {
     private File file;
     Bitmap bmp, scaledbmp;
     int pageWidth = 701;
-
+    Date dateObj;
+    DateFormat dateFormat;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -95,6 +99,9 @@ public class PdfViewActivity extends AppCompatActivity {
     }
 
     private void getData() {
+
+
+        dateObj = new Date();
         ApiInterface apiService =
                 ApiClient.createService(ApiInterface.class, "admin", "h3rm1n4c4r3");
 
@@ -120,6 +127,8 @@ public class PdfViewActivity extends AppCompatActivity {
                 shift = historylabdetailResponse.getShift();
 
                 final List<Testindonesium> testindonesiums = historylabdetailResponse.getTestindonesia();
+//                int ukuran = testindonesiums.size();
+//                System.out.println("datalab : " + ukuran) ;
 
 
 
@@ -161,6 +170,7 @@ public class PdfViewActivity extends AppCompatActivity {
                     // header pdf right
 
 
+
                     myPaint.setTextAlign(Paint.Align.RIGHT);
                     myPaint.setTextSize(12);
                     myPaint.setColor(Color.BLACK);
@@ -190,15 +200,71 @@ public class PdfViewActivity extends AppCompatActivity {
                     canvas.drawLine(300, 340, 300, 380, myPaint);
                     myPaint.setTextAlign(Paint.Align.LEFT);
                     myPaint.setStyle(Paint.Style.FILL);
-                    canvas.drawText("Nilai Normal", 310, 365, myPaint);
-                    canvas.drawLine(400, 340, 400, 380, myPaint);
+                    canvas.drawText("Nilai Normal", 320, 365, myPaint);
+                    canvas.drawLine(450, 340, 450, 380, myPaint);
                     myPaint.setTextAlign(Paint.Align.LEFT);
                     myPaint.setStyle(Paint.Style.FILL);
-                    canvas.drawText("Satuan", 430, 365, myPaint);
-                    canvas.drawLine(500, 340, 500, 380, myPaint);
+                    canvas.drawText("Satuan", 480, 365, myPaint);
+                    canvas.drawLine(550, 340, 550, 380, myPaint);
                     myPaint.setTextAlign(Paint.Align.LEFT);
                     myPaint.setStyle(Paint.Style.FILL);
-                    canvas.drawText("Keterangan", 550, 365, myPaint);
+                    canvas.drawText("Keterangan", 570, 365, myPaint);
+
+                    int ukuran = testindonesiums.size();
+                    int barisklmpknama = 400;
+                    int barisy = 415;
+
+                    //list pemeriksaan
+                    for (int i = 0; i < testindonesiums.size(); i++) {
+//                        System.out.println("testindonesia " + i + " : " + testindonesiums.get(i).getTestindonesia());
+
+
+                        myPaint.setStyle(Paint.Style.STROKE);
+                        myPaint.setStrokeWidth(2);
+                        canvas.drawRect(20, 380, pageWidth - 20, 40*ukuran+380, myPaint);
+//                        canvas.drawLine(20, 380, 20, 420, myPaint);
+                        myPaint.setTextAlign(Paint.Align.LEFT);
+                        myPaint.setStyle(Paint.Style.FILL);
+                        canvas.drawText(testindonesiums.get(i).getKelompoknama(), 30, barisklmpknama, myPaint);
+                        barisklmpknama = barisklmpknama+30;
+                        canvas.drawText(testindonesiums.get(i).getTestindonesia(), 50, barisy, myPaint);
+                        canvas.drawLine(200, 380, 200, 40*ukuran+380, myPaint);
+                        hasilnumeriks = testindonesiums.get(i).getHasilnumerik();
+                        if (testindonesiums.get(i).getHasilkarakter().equals("0")){
+                            myPaint.setTextAlign(Paint.Align.LEFT);
+                            myPaint.setStyle(Paint.Style.FILL);
+                            canvas.drawText(testindonesiums.get(i).getHasilkarakter(), 210, barisy, myPaint);
+                        } else {
+                            myPaint.setTextAlign(Paint.Align.LEFT);
+                            myPaint.setStyle(Paint.Style.FILL);
+                            canvas.drawText(testindonesiums.get(i).getHasilnumerik(), 210, barisy, myPaint);
+                        }
+                        canvas.drawLine(300, 380, 300, 40*ukuran+380, myPaint);
+                        myPaint.setTextAlign(Paint.Align.LEFT);
+                        myPaint.setStyle(Paint.Style.FILL);
+                        canvas.drawText(testindonesiums.get(i).getNormalkarakter(), 310, barisy, myPaint);
+                        canvas.drawLine(450, 380, 450, 40*ukuran+380, myPaint);
+
+                        myPaint.setTextAlign(Paint.Align.LEFT);
+                        myPaint.setStyle(Paint.Style.FILL);
+                        canvas.drawText(testindonesiums.get(i).getSatuanindonesia(), 470, barisy, myPaint);
+                        barisy = barisy+30;
+                        canvas.drawLine(550, 380, 550, 40*ukuran+380, myPaint);
+
+
+
+                    }
+
+                    dateFormat = new SimpleDateFormat("dd/MM/yy");
+
+                    myPaint.setTextAlign(Paint.Align.RIGHT);
+                    myPaint.setTextSize(12);
+                    myPaint.setColor(Color.BLACK);
+                    canvas.drawText("Samarinda, "+dateFormat.format(dateObj), pageWidth - 80, 40*ukuran+400, myPaint);
+                    canvas.drawLine(pageWidth -220,40*ukuran+500, pageWidth - 20, 40*ukuran+500, myPaint);
+
+
+
 
 
                     pdfDocument.finishPage(page);

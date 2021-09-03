@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    public static final String BASE_URL = "http://192.168.0.101/herminacare/api/";
+    public static final String BASE_URL = "http://192.168.0.105/herminacare/api/";
 //    public static final String BASE_URL = "http://smr.rshermina.co.id:28445/herminacare/api/";
 //public static final String BASE_URL = "http://192.168.45.17/herminacare/api/";
        /* private static Retrofit retrofit = null;
