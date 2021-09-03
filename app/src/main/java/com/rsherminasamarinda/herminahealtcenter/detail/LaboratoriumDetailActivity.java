@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,8 +42,9 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
     Boolean on = true;
     private SwipeRefreshLayout swipeRefreshLayoutlabdet;
     private ImageView backLaboratoriumdet;
-    TextView buttonCetakLab, textViewnotranskasi, textViewnorekammedis, textViewnmpasien, textViewtgllahir, textViewumur, textViewnamadokter, textViewtglsampling, textViewjamsampling, textViewshift;
+    TextView textViewnotranskasi, textViewnorekammedis, textViewnmpasien, textViewtgllahir, textViewumur, textViewnamadokter, textViewtglsampling, textViewjamsampling, textViewshift;
     Bitmap bitmap, scaleBitmap;
+    ImageButton buttonCetakLab;
 
 
     PDFView pdfView;
@@ -77,7 +79,7 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
         textViewtglsampling = (TextView) findViewById(R.id.TVtglsamplinglabdetail);
         textViewjamsampling = (TextView) findViewById(R.id.TVjamsamplinglabdetail);
         textViewshift = (TextView) findViewById(R.id.TVshiftlabdetail);
-        buttonCetakLab = (TextView) findViewById(R.id.BTNcetaklabdet);
+        buttonCetakLab = (ImageButton) findViewById(R.id.BTNcetaklabdet);
 
         swipeRefreshLayoutlabdet = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayoutlabdet);
         backLaboratoriumdet = findViewById(R.id.IVbacklaboratoriumdet);
