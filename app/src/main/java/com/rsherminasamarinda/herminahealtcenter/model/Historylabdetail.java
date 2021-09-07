@@ -24,6 +24,12 @@ public class Historylabdetail {
     @SerializedName("dokternama")
     @Expose
     private String dokternama;
+    @SerializedName("analis")
+    @Expose
+    private String analis;
+    @SerializedName("dokterpatologi")
+    @Expose
+    private String dokterpatologi;
     @SerializedName("tglsampling")
     @Expose
     private String tglsampling;
@@ -86,6 +92,23 @@ public class Historylabdetail {
     public String getDokternama() {
         return dokternama;
     }
+
+    public String getAnalis() {
+        return analis;
+    }
+
+    public void setAnalis(String analis) {
+        this.analis = analis;
+    }
+
+    public String getDokterpatologi() {
+        return dokterpatologi;
+    }
+
+    public void setDokterpatologi(String dokterpatologi) {
+        this.dokterpatologi = dokterpatologi;
+    }
+
 
     public void setDokternama(String dokternama) {
         this.dokternama = dokternama;

@@ -42,16 +42,13 @@ import retrofit2.Response;
 public class PdfViewActivity extends AppCompatActivity {
 
     PDFView pdfView;
-    //    File file;
-    String norm, notransaksi, tgllahir, nobukti, nocm, nmpasien, umur, dokternama, tglsampling, jamsampling, shift, hasilnumeriks;
+    String analis, dktrpatologi, notransaksi, tgllahir, nobukti, nocm, nmpasien, umur, dokternama, tglsampling, jamsampling, shift, hasilnumeriks;
     private static final int CREATE_FILE = 1;
     Boolean on = true;
-    PdfDocument pdfDocument;
-    private String stringFilePath ;
-    //    private String stringFilePath;
+    private String stringFilePath;
     private File file;
     Bitmap bmp, scaledbmp;
-    int pageWidth = 701;
+    int pageWidth = 701, barisklmpknama, barisy, i, p, dataakhir;
     Date dateObj;
     DateFormat dateFormat;
 
@@ -71,9 +68,9 @@ public class PdfViewActivity extends AppCompatActivity {
 
 
         notransaksi = getNotransaksi() + ".pdf";
-        stringFilePath = Environment.getExternalStorageDirectory().getPath() + "/Download/"+notransaksi;
-        file  = new File(stringFilePath);
-        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.headerpdf);
+        stringFilePath = Environment.getExternalStorageDirectory().getPath() + "/Download/" + notransaksi;
+        file = new File(stringFilePath);
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.pdfheader_ng);
         scaledbmp = Bitmap.createScaledBitmap(bmp, 701, 169, false);
 //        pdfPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
 //        file = new File(pdfPath+notransaksi);
@@ -125,149 +122,170 @@ public class PdfViewActivity extends AppCompatActivity {
                 tglsampling = historylabdetailResponse.getTglsampling();
                 jamsampling = historylabdetailResponse.getJamsampling();
                 shift = historylabdetailResponse.getShift();
+                analis = historylabdetailResponse.getAnalis();
+                dktrpatologi = historylabdetailResponse.getDokterpatologi();
 
                 final List<Testindonesium> testindonesiums = historylabdetailResponse.getTestindonesia();
 //                int ukuran = testindonesiums.size();
 //                System.out.println("datalab : " + ukuran) ;
 
 
-
                 if (MetaCode.equals("200")) {
+                    float ukuran = testindonesiums.size();
+                    barisklmpknama = 0;
+                    barisy = 0;
+                    float datarowpage = 10;
+                    dataakhir = -1;
+                    float ihih = ukuran / datarowpage;
+                    float pagecount = (int) Math.ceil(ihih);
+
+                    Toast.makeText(PdfViewActivity.this, "Jumlah page :" + pagecount + ", Jumlah Data :" + ukuran + ", Hasil Bagi : " + ihih, Toast.LENGTH_LONG).show();
                     PdfDocument pdfDocument = new PdfDocument();
                     Paint myPaint = new Paint();
                     Paint titlePaint = new Paint();
 
-                    PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(pageWidth, 1500, 1).create();
-                    PdfDocument.Page page = pdfDocument.startPage(pageInfo);
-                    Canvas canvas = page.getCanvas();
+                    for (p = 1; p <= pagecount; p++) {
+                        barisklmpknama = 400;
+                        barisy = 415;
+                        String halaman = String.valueOf(p);
+                        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(pageWidth, 1500, p).create();
+                        PdfDocument.Page page = pdfDocument.startPage(pageInfo);
+                        Canvas canvas = page.getCanvas();
 
-                    //header pdf
-                    canvas.drawBitmap(scaledbmp, 0, 0, myPaint);
-
-
-                    // JUDUL PDF
-                    titlePaint.setTextAlign(Paint.Align.CENTER);
-                    titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-                    titlePaint.setTextSize(18);
-                    canvas.drawText("HASIL PEMERIKSAAN LABORATORIUM", pageWidth / 2, 180, titlePaint);
-
-                    // header pdf left
-
-                    myPaint.setTextAlign(Paint.Align.LEFT);
-                    myPaint.setTextSize(12);
-                    myPaint.setColor(Color.BLACK);
-                    canvas.drawText("No. Transaksi", 20, 220, myPaint);
-                    canvas.drawText(": " + notransaksi, 120, 220, myPaint);
-                    canvas.drawText("No. RM", 20, 240, myPaint);
-                    canvas.drawText(": " + nocm, 120, 240, myPaint);
-                    canvas.drawText("Nama Pasien", 20, 260, myPaint);
-                    canvas.drawText(": " + nmpasien, 120, 260, myPaint);
-                    canvas.drawText("Tgl.Lahir/Umur", 20, 280, myPaint);
-                    canvas.drawText(": " + tgllahir, 120, 280, myPaint);
-                    canvas.drawText("Dokter Pengirim", 20, 300, myPaint);
-                    canvas.drawText(": " + dokternama, 120, 300, myPaint);
-
-                    // header pdf right
+                        //header pdf
+                        canvas.drawBitmap(scaledbmp, 0, 0, myPaint);
 
 
+                        // JUDUL PDF
+                        titlePaint.setTextAlign(Paint.Align.CENTER);
+                        titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+                        titlePaint.setTextSize(18);
+                        canvas.drawText("HASIL PEMERIKSAAN LABORATORIUM", pageWidth / 2, 180, titlePaint);
 
-                    myPaint.setTextAlign(Paint.Align.RIGHT);
-                    myPaint.setTextSize(12);
-                    myPaint.setColor(Color.BLACK);
-                    canvas.drawText("Tgl. Sampling :", pageWidth - 120, 220, myPaint);
-                    canvas.drawText(tglsampling, pageWidth - 20, 220, myPaint);
-                    canvas.drawText("Jam Sampling :", pageWidth - 120, 240, myPaint);
-                    canvas.drawText(jamsampling, pageWidth - 20, 240, myPaint);
-                    canvas.drawText("Shift :", pageWidth - 120, 260, myPaint);
-                    canvas.drawText(shift, pageWidth - 20, 260, myPaint);
-                    canvas.drawText("Halaman ", pageWidth - 120, 280, myPaint);
-                    canvas.drawText("1", pageWidth - 20, 280, myPaint);
+                        // header pdf left
 
+                        myPaint.setTextAlign(Paint.Align.LEFT);
+                        myPaint.setTextSize(12);
+                        myPaint.setColor(Color.BLACK);
+                        canvas.drawText("No. Transaksi", 20, 220, myPaint);
+                        canvas.drawText(": " + notransaksi, 120, 220, myPaint);
+                        canvas.drawText("No. RM", 20, 240, myPaint);
+                        canvas.drawText(": " + nocm, 120, 240, myPaint);
+                        canvas.drawText("Nama Pasien", 20, 260, myPaint);
+                        canvas.drawText(": " + nmpasien, 120, 260, myPaint);
+                        canvas.drawText("Tgl.Lahir/Umur", 20, 280, myPaint);
+                        canvas.drawText(": " + tgllahir, 120, 280, myPaint);
+                        canvas.drawText("Dokter Pengirim", 20, 300, myPaint);
+                        canvas.drawText(": " + dokternama, 120, 300, myPaint);
 
-                    //table pemeriksaan
-                    myPaint.setStyle(Paint.Style.STROKE);
-                    myPaint.setStrokeWidth(2);
-                    canvas.drawRect(20, 340, pageWidth - 20, 380, myPaint);
-
-                    myPaint.setTextAlign(Paint.Align.LEFT);
-                    myPaint.setStyle(Paint.Style.FILL);
-                    canvas.drawText("Pemeriksaan", 50, 365, myPaint);
-
-                    canvas.drawLine(200, 340, 200, 380, myPaint);
-                    myPaint.setTextAlign(Paint.Align.LEFT);
-                    myPaint.setStyle(Paint.Style.FILL);
-                    canvas.drawText("Hasil", 230, 365, myPaint);
-                    canvas.drawLine(300, 340, 300, 380, myPaint);
-                    myPaint.setTextAlign(Paint.Align.LEFT);
-                    myPaint.setStyle(Paint.Style.FILL);
-                    canvas.drawText("Nilai Normal", 320, 365, myPaint);
-                    canvas.drawLine(450, 340, 450, 380, myPaint);
-                    myPaint.setTextAlign(Paint.Align.LEFT);
-                    myPaint.setStyle(Paint.Style.FILL);
-                    canvas.drawText("Satuan", 480, 365, myPaint);
-                    canvas.drawLine(550, 340, 550, 380, myPaint);
-                    myPaint.setTextAlign(Paint.Align.LEFT);
-                    myPaint.setStyle(Paint.Style.FILL);
-                    canvas.drawText("Keterangan", 570, 365, myPaint);
-
-                    int ukuran = testindonesiums.size();
-                    int barisklmpknama = 400;
-                    int barisy = 415;
-
-                    //list pemeriksaan
-                    for (int i = 0; i < testindonesiums.size(); i++) {
-//                        System.out.println("testindonesia " + i + " : " + testindonesiums.get(i).getTestindonesia());
+                        // header pdf right
 
 
+                        myPaint.setTextAlign(Paint.Align.RIGHT);
+                        myPaint.setTextSize(12);
+                        myPaint.setColor(Color.BLACK);
+                        canvas.drawText("Tgl. Sampling :", pageWidth - 120, 220, myPaint);
+                        canvas.drawText(tglsampling, pageWidth - 20, 220, myPaint);
+                        canvas.drawText("Jam Sampling :", pageWidth - 120, 240, myPaint);
+                        canvas.drawText(jamsampling, pageWidth - 20, 240, myPaint);
+                        canvas.drawText("Shift :", pageWidth - 120, 260, myPaint);
+                        canvas.drawText(shift, pageWidth - 20, 260, myPaint);
+                        canvas.drawText("Halaman ", pageWidth - 120, 280, myPaint);
+                        canvas.drawText(halaman, pageWidth - 20, 280, myPaint);
+
+
+                        //table pemeriksaan
                         myPaint.setStyle(Paint.Style.STROKE);
                         myPaint.setStrokeWidth(2);
-                        canvas.drawRect(20, 380, pageWidth - 20, 40*ukuran+380, myPaint);
-//                        canvas.drawLine(20, 380, 20, 420, myPaint);
+                        canvas.drawRect(20, 340, pageWidth - 20, 380, myPaint);
+
                         myPaint.setTextAlign(Paint.Align.LEFT);
                         myPaint.setStyle(Paint.Style.FILL);
-                        canvas.drawText(testindonesiums.get(i).getKelompoknama(), 30, barisklmpknama, myPaint);
-                        barisklmpknama = barisklmpknama+30;
-                        canvas.drawText(testindonesiums.get(i).getTestindonesia(), 50, barisy, myPaint);
-                        canvas.drawLine(200, 380, 200, 40*ukuran+380, myPaint);
-                        hasilnumeriks = testindonesiums.get(i).getHasilnumerik();
-                        if (testindonesiums.get(i).getHasilkarakter().equals("0")){
+                        canvas.drawText("Pemeriksaan", 50, 365, myPaint);
+
+                        canvas.drawLine(200, 340, 200, 380, myPaint);
+                        myPaint.setTextAlign(Paint.Align.LEFT);
+                        myPaint.setStyle(Paint.Style.FILL);
+                        canvas.drawText("Hasil", 230, 365, myPaint);
+                        canvas.drawLine(300, 340, 300, 380, myPaint);
+                        myPaint.setTextAlign(Paint.Align.LEFT);
+                        myPaint.setStyle(Paint.Style.FILL);
+                        canvas.drawText("Nilai Normal", 320, 365, myPaint);
+                        canvas.drawLine(450, 340, 450, 380, myPaint);
+                        myPaint.setTextAlign(Paint.Align.LEFT);
+                        myPaint.setStyle(Paint.Style.FILL);
+                        canvas.drawText("Satuan", 480, 365, myPaint);
+                        canvas.drawLine(550, 340, 550, 380, myPaint);
+                        myPaint.setTextAlign(Paint.Align.LEFT);
+                        myPaint.setStyle(Paint.Style.FILL);
+                        canvas.drawText("Keterangan", 570, 365, myPaint);
+
+                        //list pemeriksaan
+
+                        for (i = 0; i <= ukuran; i++) {
+//                        System.out.println("testindonesia " + i + " : " + testindonesiums.get(i).getTestindonesia());
+
+                            if (i == datarowpage || dataakhir == ukuran-1) {
+                                break;
+                            }
+
+                            ++dataakhir;
+
+                            myPaint.setStyle(Paint.Style.STROKE);
+                            myPaint.setStrokeWidth(2);
+                            canvas.drawRect(20, 380, pageWidth - 20, 40 * datarowpage + 380, myPaint);
                             myPaint.setTextAlign(Paint.Align.LEFT);
                             myPaint.setStyle(Paint.Style.FILL);
-                            canvas.drawText(testindonesiums.get(i).getHasilkarakter(), 210, barisy, myPaint);
-                        } else {
-                            myPaint.setTextAlign(Paint.Align.LEFT);
-                            myPaint.setStyle(Paint.Style.FILL);
-                            canvas.drawText(testindonesiums.get(i).getHasilnumerik(), 210, barisy, myPaint);
+
+                                canvas.drawText(testindonesiums.get(dataakhir).getKelompoknama(), 30, barisklmpknama, myPaint);
+                                barisklmpknama = barisklmpknama + 30;
+                                canvas.drawText(testindonesiums.get(dataakhir).getTestindonesia(), 50, barisy, myPaint);
+                                canvas.drawLine(200, 380, 200, 40 * datarowpage + 380, myPaint);
+                                hasilnumeriks = testindonesiums.get(dataakhir).getHasilnumerik();
+                                if (testindonesiums.get(dataakhir).getHasilkarakter().equals("0")) {
+                                    myPaint.setTextAlign(Paint.Align.LEFT);
+                                    myPaint.setStyle(Paint.Style.FILL);
+                                    canvas.drawText(testindonesiums.get(dataakhir).getHasilkarakter(), 210, barisy, myPaint);
+                                } else {
+                                    myPaint.setTextAlign(Paint.Align.LEFT);
+                                    myPaint.setStyle(Paint.Style.FILL);
+                                    canvas.drawText(testindonesiums.get(dataakhir).getHasilnumerik(), 210, barisy, myPaint);
+                                }
+                                canvas.drawLine(300, 380, 300, 40 * datarowpage + 380, myPaint);
+                                myPaint.setTextAlign(Paint.Align.LEFT);
+                                myPaint.setStyle(Paint.Style.FILL);
+                                canvas.drawText(testindonesiums.get(dataakhir).getNormalkarakter(), 310, barisy, myPaint);
+                                canvas.drawLine(450, 380, 450, 40 * datarowpage + 380, myPaint);
+
+                                myPaint.setTextAlign(Paint.Align.LEFT);
+                                myPaint.setStyle(Paint.Style.FILL);
+                                canvas.drawText(testindonesiums.get(dataakhir).getSatuanindonesia(), 470, barisy, myPaint);
+                                barisy = barisy + 30;
+                                canvas.drawLine(550, 380, 550, 40 * datarowpage + 380, myPaint);
+                                System.out.println("Cek perulangan :" + p + " " + i + " " + dataakhir + " " + testindonesiums.size());
+
                         }
-                        canvas.drawLine(300, 380, 300, 40*ukuran+380, myPaint);
-                        myPaint.setTextAlign(Paint.Align.LEFT);
-                        myPaint.setStyle(Paint.Style.FILL);
-                        canvas.drawText(testindonesiums.get(i).getNormalkarakter(), 310, barisy, myPaint);
-                        canvas.drawLine(450, 380, 450, 40*ukuran+380, myPaint);
+
+                        Toast.makeText(PdfViewActivity.this, String.valueOf("Data akhir: "+dataakhir), Toast.LENGTH_LONG).show();
 
                         myPaint.setTextAlign(Paint.Align.LEFT);
-                        myPaint.setStyle(Paint.Style.FILL);
-                        canvas.drawText(testindonesiums.get(i).getSatuanindonesia(), 470, barisy, myPaint);
-                        barisy = barisy+30;
-                        canvas.drawLine(550, 380, 550, 40*ukuran+380, myPaint);
+                        myPaint.setTextSize(12);
+                        myPaint.setColor(Color.BLACK);
+                        canvas.drawText("Dokter Patologi Klinik ", 20, 40 * datarowpage + 395, myPaint);
+                        canvas.drawText(": " + dktrpatologi, 170, 40 * datarowpage + 395, myPaint);
 
+                        dateFormat = new SimpleDateFormat("dd/MM/yy");
 
-
+                        myPaint.setTextAlign(Paint.Align.RIGHT);
+                        myPaint.setTextSize(12);
+                        myPaint.setColor(Color.BLACK);
+                        canvas.drawText("Samarinda, " + dateFormat.format(dateObj), pageWidth - 80, 40 * datarowpage + 400, myPaint);
+                        canvas.drawLine(pageWidth - 220, 40 * datarowpage + 500, pageWidth - 20, 40 * datarowpage + 500, myPaint);
+                        canvas.drawText(analis, pageWidth - 80, 40 * datarowpage + 520, myPaint);
+                        pdfDocument.finishPage(page);
                     }
 
-                    dateFormat = new SimpleDateFormat("dd/MM/yy");
 
-                    myPaint.setTextAlign(Paint.Align.RIGHT);
-                    myPaint.setTextSize(12);
-                    myPaint.setColor(Color.BLACK);
-                    canvas.drawText("Samarinda, "+dateFormat.format(dateObj), pageWidth - 80, 40*ukuran+400, myPaint);
-                    canvas.drawLine(pageWidth -220,40*ukuran+500, pageWidth - 20, 40*ukuran+500, myPaint);
-
-
-
-
-
-                    pdfDocument.finishPage(page);
                     try {
                         pdfDocument.writeTo(new FileOutputStream(file));
                     } catch (Exception e) {
