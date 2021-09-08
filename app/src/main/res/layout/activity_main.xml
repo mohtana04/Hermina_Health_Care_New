@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:textColor="@color/black"
+            android:textColor="#019443"
             android:textSize="20sp"
             android:textStyle="bold"
             android:text="Hermina Samarinda Health Care"/>

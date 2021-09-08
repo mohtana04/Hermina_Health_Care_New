@@ -44,6 +44,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:gravity="center_horizontal"
                     app:layout_constraintStart_toEndOf="@id/parentAvatar"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -69,6 +70,20 @@
                         android:layout_marginRight="5dp"
                         android:textColor="@color/black"
                         android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/TVUbahFotoProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ubah Foto"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/custombutton"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:padding="5dp"
+                        android:textStyle="bold"/>
 
                 </LinearLayout>
 
