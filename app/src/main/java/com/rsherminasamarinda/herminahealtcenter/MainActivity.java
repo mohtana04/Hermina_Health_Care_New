@@ -1,7 +1,9 @@
 package com.rsherminasamarinda.herminahealtcenter;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.os.Handler;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,22 +12,24 @@ import com.rsherminasamarinda.herminahealtcenter.utils.SessionsManager;
 public class MainActivity extends AppCompatActivity {
 
     SessionsManager sessionsManager;
-    TextView textViewNorm;
-    String pasienname;
-
+    private static int SPLASH_TIME_OUT = 3000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sessionsManager = new SessionsManager(getApplicationContext());
-        pasienname = sessionsManager.getUserName();
-        textViewNorm = (TextView) findViewById(R.id.TVsapapasien);
-
-
-        if(sessionsManager.isLoggedIn() == false) {
-                textViewNorm.setText("tidak ada session");
-        } else {
-            textViewNorm.setText("Hallo : " +  pasienname);
-        }
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                sessionsManager = new SessionsManager(getApplicationContext());
+                if (sessionsManager.isLoggedIn() == true) {
+                    Intent log = new Intent(MainActivity.this, DashboardActivity.class);
+                    startActivity(log);
+                } else {
+                    Intent log = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(log);
+                }
+            }
+        }, SPLASH_TIME_OUT);
     }
 }
