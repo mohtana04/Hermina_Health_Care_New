@@ -1,16 +1,20 @@
 package com.rsherminasamarinda.herminahealtcenter.fragment;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.rsherminasamarinda.herminahealtcenter.Alert.AlertKoneksi;
 import com.rsherminasamarinda.herminahealtcenter.R;
 import com.rsherminasamarinda.herminahealtcenter.adapter.HistoryrwjAdapter;
 import com.rsherminasamarinda.herminahealtcenter.model.Historyrwj;
@@ -20,6 +24,7 @@ import com.rsherminasamarinda.herminahealtcenter.rest.ApiClient;
 import com.rsherminasamarinda.herminahealtcenter.rest.ApiInterface;
 import com.rsherminasamarinda.herminahealtcenter.utils.SessionsManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -44,8 +49,12 @@ public class RiwayatRwjFragment extends Fragment implements SwipeRefreshLayout.O
 
 
     private SwipeRefreshLayout swipeRefreshLayout;
+    List<Historyrwj> historyrwjs;
     SessionsManager sessionsManager;
     String nomr ;
+    EditText editTextSearch;
+    RecyclerView rView;
+    HistoryrwjAdapter mAdapter;
 
     public RiwayatRwjFragment() {
         // Required empty public constructor
@@ -78,14 +87,25 @@ public class RiwayatRwjFragment extends Fragment implements SwipeRefreshLayout.O
         }
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         sessionsManager = new SessionsManager(getContext());
         nomr = sessionsManager.getUserNomr();
+
+
+
         final View view = inflater.inflate(R.layout.fragment_riwayat_rwj, container, false);
 
+        rView = (RecyclerView) view.findViewById(R.id.rvriwayatrwj);
+        rView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+
+        editTextSearch = (EditText)  view.findViewById(R.id.svpencarianrwj);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayoutrwj);
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.post(new Runnable() {
@@ -95,14 +115,42 @@ public class RiwayatRwjFragment extends Fragment implements SwipeRefreshLayout.O
                 refreshData(view);
             }
         });
+
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
         return view;
     }
 
+    private void filter(String text) {
+        List<Historyrwj> filteredList = new ArrayList<>();
+        for (Historyrwj item : historyrwjs) {
+            if (item.getTglregistrasi().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }if (item.getDoktername().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            } if (item.getNoregistrasi().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+        mAdapter.filterList(filteredList);
+    }
+
+
     private void refreshData(View view) {
-
-        final RecyclerView rView = (RecyclerView) view.findViewById(R.id.rvriwayatrwj);
-        rView.setLayoutManager(new LinearLayoutManager(getContext()));
-
 
         ApiInterface apiService =
                 ApiClient.createService(ApiInterface.class, "admin", "h3rm1n4c4r3");
@@ -116,9 +164,20 @@ public class RiwayatRwjFragment extends Fragment implements SwipeRefreshLayout.O
                 String MetaCode = code.getCode();
                 String MetaMessage = code.getMessage();
                 Log.d("Retrofit Post", "Jumlah data Kontak: " + MetaCode);
-                final List<Historyrwj> historyrwjs = response.body().getHistoryrwj();
-                rView.setAdapter(new HistoryrwjAdapter(historyrwjs,R.layout.historyrwj_list_item_layout,getContext()));
+                historyrwjs = response.body().getHistoryrwj();
+//                rView.setAdapter(new HistoryrwjAdapter(historyrwjs,R.layout.historyrwj_list_item_layout,getContext()));
+                 mAdapter = new HistoryrwjAdapter(historyrwjs,R.layout.historyrwj_list_item_layout,getContext());
+                 rView.setAdapter(mAdapter);
                 swipeRefreshLayout.setRefreshing(false);
+                if (MetaCode.equals("201")){
+                    AlertKoneksi alert = new AlertKoneksi();
+                    alert.showDialog(getActivity(),"Belum Ada Riwayat Kunjungan Anda");
+                    swipeRefreshLayout.setRefreshing(false);
+                    editTextSearch.setEnabled(false);
+                    editTextSearch.setVisibility(View.GONE);
+                } else {
+                    editTextSearch.setEnabled(true);
+                }
             }
 
             @Override

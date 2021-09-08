@@ -35,7 +35,7 @@ public class FarmasiDetailActivity extends AppCompatActivity implements SwipeRef
     SessionsManager sessionsManager;
     Boolean on = true;
     private SwipeRefreshLayout swipeRefreshLayoutlabdet;
-    private ImageView backLaboratoriumdet;
+    private ImageView backFarmasidet;
     TextView textViewNoregi, textViewNotrans, textViewNorm, textViewNamapasien, textViewNmdokter, textViewTypeketerangan, textViewShift, textViewPetugas, textViewJam, textViewTanggal;
     String notransaksi, notrans, norm, noregis, nmpasien, nmdokter, typeketerangan, shift, petugas, jam, tanggal;
 
@@ -66,7 +66,7 @@ public class FarmasiDetailActivity extends AppCompatActivity implements SwipeRef
         textViewPetugas = (TextView) findViewById(R.id.TVpetugasfardetail);
 
         swipeRefreshLayoutlabdet = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayoutfardet);
-        backLaboratoriumdet = findViewById(R.id.IVbackfarmasidet);
+        backFarmasidet = findViewById(R.id.IVbackfarmasidet);
         swipeRefreshLayoutlabdet.setOnRefreshListener(this);
         swipeRefreshLayoutlabdet.post(new Runnable() {
             @Override
@@ -78,7 +78,7 @@ public class FarmasiDetailActivity extends AppCompatActivity implements SwipeRef
         sessionsManager = new SessionsManager(getApplicationContext());
         norm = sessionsManager.getUserNomr();
 
-        backLaboratoriumdet.setOnClickListener(new View.OnClickListener() {
+        backFarmasidet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -139,9 +139,8 @@ public class FarmasiDetailActivity extends AppCompatActivity implements SwipeRef
 //                    }
 
 
-
 //                    if (racikans != null) {
-                        recyclerView.setAdapter(new FardetailAdapter(reseps,racikans, R.layout.fardetail_list_resep_layout, getApplicationContext()));
+                    recyclerView.setAdapter(new FardetailAdapter(reseps, racikans, R.layout.fardetail_list_resep_layout, getApplicationContext()));
 //                        recyclerView1.setAdapter(new FardetailracikanAdapter(racikans, R.layout.fardetail_list_racikan_layout, getApplicationContext()));
 //                    }
 
@@ -165,7 +164,7 @@ public class FarmasiDetailActivity extends AppCompatActivity implements SwipeRef
 
     @Override
     public void onRefresh() {
-
+        refreshData();
     }
 
     @Override

@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -51,6 +52,7 @@ public class PdfViewActivity extends AppCompatActivity {
     int pageWidth = 701, barisklmpknama, barisy, i, p, dataakhir;
     Date dateObj;
     DateFormat dateFormat;
+    private ImageView backLaboratoriumfilepdf;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -65,20 +67,24 @@ public class PdfViewActivity extends AppCompatActivity {
             View view = getWindow().getDecorView();
             view.setSystemUiVisibility(view.getSystemUiVisibility() & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
-
+        backLaboratoriumfilepdf = findViewById(R.id.IVbacklaboratoriumpdf);
 
         notransaksi = getNotransaksi() + ".pdf";
         stringFilePath = Environment.getExternalStorageDirectory().getPath() + "/Download/" + notransaksi;
         file = new File(stringFilePath);
         bmp = BitmapFactory.decodeResource(getResources(), R.drawable.pdfheader_ng);
         scaledbmp = Bitmap.createScaledBitmap(bmp, 701, 169, false);
-//        pdfPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
-//        file = new File(pdfPath+notransaksi);
-//        createPDF();
+
+        backLaboratoriumfilepdf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         getData();
 
 
-//        createFile(Uri.fromFile(file));
     }
 
 
@@ -139,7 +145,7 @@ public class PdfViewActivity extends AppCompatActivity {
                     float ihih = ukuran / datarowpage;
                     float pagecount = (int) Math.ceil(ihih);
 
-                    Toast.makeText(PdfViewActivity.this, "Jumlah page :" + pagecount + ", Jumlah Data :" + ukuran + ", Hasil Bagi : " + ihih, Toast.LENGTH_LONG).show();
+//                    Toast.makeText(PdfViewActivity.this, "Jumlah page :" + pagecount + ", Jumlah Data :" + ukuran + ", Hasil Bagi : " + ihih, Toast.LENGTH_LONG).show();
                     PdfDocument pdfDocument = new PdfDocument();
                     Paint myPaint = new Paint();
                     Paint titlePaint = new Paint();
@@ -242,7 +248,7 @@ public class PdfViewActivity extends AppCompatActivity {
                                 canvas.drawText(testindonesiums.get(dataakhir).getTestindonesia(), 50, barisy, myPaint);
                                 canvas.drawLine(200, 380, 200, 40 * datarowpage + 380, myPaint);
                                 hasilnumeriks = testindonesiums.get(dataakhir).getHasilnumerik();
-                                if (testindonesiums.get(dataakhir).getHasilkarakter().equals("0")) {
+                                if (testindonesiums.get(dataakhir).getHasilnumerik().equals("0")) {
                                     myPaint.setTextAlign(Paint.Align.LEFT);
                                     myPaint.setStyle(Paint.Style.FILL);
                                     canvas.drawText(testindonesiums.get(dataakhir).getHasilkarakter(), 210, barisy, myPaint);
@@ -262,11 +268,11 @@ public class PdfViewActivity extends AppCompatActivity {
                                 canvas.drawText(testindonesiums.get(dataakhir).getSatuanindonesia(), 470, barisy, myPaint);
                                 barisy = barisy + 30;
                                 canvas.drawLine(550, 380, 550, 40 * datarowpage + 380, myPaint);
-                                System.out.println("Cek perulangan :" + p + " " + i + " " + dataakhir + " " + testindonesiums.size());
+//                                System.out.println("Cek perulangan :" + p + " " + i + " " + dataakhir + " " + testindonesiums.size());
 
                         }
 
-                        Toast.makeText(PdfViewActivity.this, String.valueOf("Data akhir: "+dataakhir), Toast.LENGTH_LONG).show();
+//                        Toast.makeText(PdfViewActivity.this, String.valueOf("Data akhir: "+dataakhir), Toast.LENGTH_LONG).show();
 
                         myPaint.setTextAlign(Paint.Align.LEFT);
                         myPaint.setTextSize(12);
@@ -319,98 +325,12 @@ public class PdfViewActivity extends AppCompatActivity {
         return notransaksi;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private void createPDF() {
-
-
-        // create a new document
-
-        PdfDocument pdfDocument = new PdfDocument();
-        Paint myPaint = new Paint();
-        Paint titlePaint = new Paint();
-
-        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(pageWidth, 1500, 1).create();
-        PdfDocument.Page page = pdfDocument.startPage(pageInfo);
-        Canvas canvas = page.getCanvas();
-
-        //header pdf
-        canvas.drawBitmap(scaledbmp, 0, 0, myPaint);
-
-
-        // JUDUL PDF
-        titlePaint.setTextAlign(Paint.Align.CENTER);
-        titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-        titlePaint.setTextSize(18);
-        canvas.drawText("HASIL PEMERIKSAAN LABORATORIUM", pageWidth / 2, 180, titlePaint);
-
-        // header pdf left
-
-        myPaint.setTextAlign(Paint.Align.LEFT);
-        myPaint.setTextSize(12);
-        myPaint.setColor(Color.BLACK);
-        canvas.drawText("No. Transaksi", 20, 220, myPaint);
-        canvas.drawText(": " + notransaksi, 120, 220, myPaint);
-        canvas.drawText("No. RM", 20, 240, myPaint);
-        canvas.drawText(": ", 120, 240, myPaint);
-        canvas.drawText("Nama Pasien", 20, 260, myPaint);
-        canvas.drawText(": ", 120, 260, myPaint);
-        canvas.drawText("Tgl.Lahir/Umur", 20, 280, myPaint);
-        canvas.drawText(": ", 120, 280, myPaint);
-        canvas.drawText("Dokter Pengirim", 20, 300, myPaint);
-        canvas.drawText(": ", 120, 300, myPaint);
-
-        // header pdf right
-
-
-        myPaint.setTextAlign(Paint.Align.RIGHT);
-        myPaint.setTextSize(12);
-        myPaint.setColor(Color.BLACK);
-        canvas.drawText("Tgl. Sampling :", pageWidth - 120, 220, myPaint);
-        canvas.drawText("05/07/2021", pageWidth - 20, 220, myPaint);
-        canvas.drawText("Jam Sampling :", pageWidth - 120, 240, myPaint);
-        canvas.drawText("" + notransaksi, pageWidth - 20, 240, myPaint);
-        canvas.drawText("Shift :", pageWidth - 120, 260, myPaint);
-        canvas.drawText("", pageWidth - 20, 260, myPaint);
-        canvas.drawText("Halaman ", pageWidth - 120, 280, myPaint);
-        canvas.drawText("1", pageWidth - 20, 280, myPaint);
-
-
-        //table pemeriksaan
-        myPaint.setStyle(Paint.Style.STROKE);
-        myPaint.setStrokeWidth(2);
-        canvas.drawRect(20, 340, pageWidth - 20, 380, myPaint);
-
-        myPaint.setTextAlign(Paint.Align.LEFT);
-        myPaint.setStyle(Paint.Style.FILL);
-        canvas.drawText("Pemeriksaan", 50, 365, myPaint);
-
-        canvas.drawLine(200, 340, 200, 380, myPaint);
-        myPaint.setTextAlign(Paint.Align.LEFT);
-        myPaint.setStyle(Paint.Style.FILL);
-        canvas.drawText("Hasil", 230, 365, myPaint);
-        canvas.drawLine(300, 340, 300, 380, myPaint);
-        myPaint.setTextAlign(Paint.Align.LEFT);
-        myPaint.setStyle(Paint.Style.FILL);
-        canvas.drawText("Nilai Normal", 310, 365, myPaint);
-        canvas.drawLine(400, 340, 400, 380, myPaint);
-        myPaint.setTextAlign(Paint.Align.LEFT);
-        myPaint.setStyle(Paint.Style.FILL);
-        canvas.drawText("Satuan", 430, 365, myPaint);
-        canvas.drawLine(500, 340, 500, 380, myPaint);
-        myPaint.setTextAlign(Paint.Align.LEFT);
-        myPaint.setStyle(Paint.Style.FILL);
-        canvas.drawText("Keterangan", 550, 365, myPaint);
-
-
-        pdfDocument.finishPage(page);
-        try {
-            pdfDocument.writeTo(new FileOutputStream(file));
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(PdfViewActivity.this, "PDF gagal dibuat", Toast.LENGTH_LONG).show();
-        }
-        pdfDocument.close();
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
+
 
 //    public void ReadPDF(){
 //        try {

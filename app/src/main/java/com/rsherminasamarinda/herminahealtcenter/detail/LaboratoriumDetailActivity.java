@@ -69,7 +69,6 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
         scaleBitmap = Bitmap.createScaledBitmap(bitmap, 1200, 518, false);
 
 
-
         textViewnotranskasi = (TextView) findViewById(R.id.TVnotransaksiLabdetail);
         textViewnorekammedis = (TextView) findViewById(R.id.TVnormlabdetail);
         textViewnmpasien = (TextView) findViewById(R.id.TVnamapasienlabdetail);
@@ -100,7 +99,6 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
                 finish();
             }
         });
- ///sdfafdf
         cetakPdf();
     }
 
@@ -170,7 +168,7 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
 
     @Override
     public void onRefresh() {
-
+        refreshData();
     }
 
     @Override
@@ -193,66 +191,7 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
         buttonCetakLab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                ApiInterface apiService =
-//                        ApiClient.createService(ApiInterface.class, "admin", "h3rm1n4c4r3");
-//
-//
-//                Call<HistorylabdetailResponse> call = apiService.hlabdet(getNotransaksi());
-//                call.enqueue(new Callback<HistorylabdetailResponse>() {
-//                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-//                    @Override
-//                    public void onResponse(Call<HistorylabdetailResponse> call, Response<HistorylabdetailResponse> response) {
-//                        MetaData code = response.body().getMetaData();
-//                        String message = code.getMessage();
-//                        String MetaCode = code.getCode();
-//                        Historylabdetail historylabdetailResponse = response.body().getHistorylabdetail();
-//
-//                        nobukti = historylabdetailResponse.getNotransaksi();
-//                        nocm = historylabdetailResponse.getPatientid();
-//                        nmpasien = historylabdetailResponse.getPatientnama();
-//                        tgllahir = historylabdetailResponse.getTgllahir();
-//                        umur = historylabdetailResponse.getUmur();
-//                        dokternama = historylabdetailResponse.getDokternama();
-//                        tglsampling = historylabdetailResponse.getTglsampling();
-//                        jamsampling = historylabdetailResponse.getJamsampling();
-//                        shift = historylabdetailResponse.getShift();
-//
-//
-//                        String sfilename = nobukti + ".pdf";
-//
-//                        if (MetaCode.equals("200")) {
-//                            PdfDocument myPdfDocument = new PdfDocument();
-//                            Paint myPaint = new Paint();
-//                            PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(400,500,1).create();
-//                            PdfDocument.Page page = myPdfDocument.startPage(pageInfo);
-//                            Canvas canvas = page.getCanvas();
-//                            canvas.drawText("Welcome to pdf", 40 , 50 , myPaint);
-//                            myPdfDocument.finishPage(page);
-//
-//
-//
-////
-//
-////                            writeFileOnInternalStorage();
-////                            Toast.makeText(LaboratoriumDetailActivity.this, "PDF sudah dibuat /" + getFilesDir(), Toast.LENGTH_LONG).show();
-//                        } else {
-//                            AlertKoneksi alert = new AlertKoneksi();
-//                            alert.showDialog(LaboratoriumDetailActivity.this, message);
-//                            swipeRefreshLayoutlabdet.setRefreshing(false);
-//                        }
-//
-//
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<HistorylabdetailResponse> call, Throwable t) {
-//                        AlertKoneksi alert = new AlertKoneksi();
-//                        alert.showDialog(LaboratoriumDetailActivity.this, "Mohon maaf , Cek kembali koneksi anda");
-//                        swipeRefreshLayoutlabdet.setRefreshing(false);
-//                    }
-//                });
-
-                Intent intent = new Intent (getApplicationContext(), PdfViewActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PdfViewActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("notransaksi", notransaksi);
                 startActivity(intent);
@@ -260,8 +199,6 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
         });
 
     }
-
-
 
 
 }

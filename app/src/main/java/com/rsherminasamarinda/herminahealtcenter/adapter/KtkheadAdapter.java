@@ -46,6 +46,10 @@ public class KtkheadAdapter extends RecyclerView.Adapter<KtkheadAdapter.Ktkheade
         return historyktkheaders == null ? 0 : historyktkheaders.size();
     }
 
+    public void filterListktk(List<Historyktkheader> filteredList) {
+        historyktkheaders = filteredList;
+        notifyDataSetChanged();
+    }
 
     public class KtkheaderAdapterViewHolder  extends  RecyclerView.ViewHolder implements View.OnClickListener{
         TextView nobuktitransaksi, tgltransaksi, typeketerangan, dotkternama;

@@ -47,6 +47,11 @@ public class HistoryrwjAdapter extends RecyclerView.Adapter<HistoryrwjAdapter.Hi
         return historyrwjs == null ? 0 : historyrwjs.size();
     }
 
+    public void filterList(List<Historyrwj> filteredList) {
+        historyrwjs = filteredList;
+        notifyDataSetChanged();
+    }
+
     public class HistoryrwjAdapterViewHolder extends RecyclerView.ViewHolder {
 
         TextView noregistrasi, namadokter, poliklinik, tglregis, asuransi;

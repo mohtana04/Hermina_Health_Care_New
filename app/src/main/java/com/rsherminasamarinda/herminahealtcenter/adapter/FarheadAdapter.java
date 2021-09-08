@@ -61,6 +61,11 @@ public class FarheadAdapter extends RecyclerView.Adapter<FarheadAdapter.FarheadA
         return historyfarheaders == null ? 0 : historyfarheaders.size();
     }
 
+    public void filterListfar(List<Historyfarheader> filteredList) {
+        historyfarheaders = filteredList;
+        notifyDataSetChanged();
+    }
+
     public class FarheadAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView nobuktitransaksi, tgltransaksi, patientnama, typeketerangan, dotkternama;
         Button detailfar;

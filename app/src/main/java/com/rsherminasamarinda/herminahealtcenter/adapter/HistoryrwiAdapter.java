@@ -50,6 +50,11 @@ public class HistoryrwiAdapter extends RecyclerView.Adapter<HistoryrwiAdapter.Hi
         return historyrwis == null ? 0 :historyrwis.size();
     }
 
+    public void filterListrwi(List<Historyrwi> filteredList) {
+        historyrwis = filteredList;
+        notifyDataSetChanged();
+    }
+
     public class HistoryrwiAdapterViewHolder extends RecyclerView.ViewHolder{
 
         TextView noregisrwi , tglregisrwi, tglpulang, umur, keterangan, keterangan2, doktername, asuransi;

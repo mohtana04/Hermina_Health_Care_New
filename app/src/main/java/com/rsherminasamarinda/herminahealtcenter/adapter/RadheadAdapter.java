@@ -44,6 +44,11 @@ public class RadheadAdapter extends RecyclerView.Adapter<RadheadAdapter.Radheade
         return historyradheaders == null ? 0 : historyradheaders.size();
     }
 
+    public void filterListrad(List<Historyradheader> filteredList) {
+        historyradheaders = filteredList;
+        notifyDataSetChanged();
+    }
+
     public class RadheaderAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView nobuktitransaksi, tgltransaksi, typeketerangan, dotkternama;
 

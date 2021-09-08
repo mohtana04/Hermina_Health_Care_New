@@ -46,6 +46,10 @@ public class FisheadAdapter extends RecyclerView.Adapter<FisheadAdapter.Fisheade
         return historyfisioheaders == null ? 0 : historyfisioheaders.size();
     }
 
+    public void filterListfis(List<Historyfisioheader> filteredList) {
+        historyfisioheaders = filteredList;
+        notifyDataSetChanged();
+    }
     public class FisheaderAdapterViewholder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView nobuktitransaksi, tgltransaksi, typeketerangan, dotkternama;
         public FisheaderAdapterViewholder(View view){

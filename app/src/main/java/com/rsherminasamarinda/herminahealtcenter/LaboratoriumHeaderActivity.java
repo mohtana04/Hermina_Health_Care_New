@@ -1,10 +1,12 @@
 package com.rsherminasamarinda.herminahealtcenter;
 
-import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.RequiresApi;
@@ -22,6 +24,7 @@ import com.rsherminasamarinda.herminahealtcenter.rest.ApiClient;
 import com.rsherminasamarinda.herminahealtcenter.rest.ApiInterface;
 import com.rsherminasamarinda.herminahealtcenter.utils.SessionsManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -33,9 +36,13 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity implements Swi
     SessionsManager sessionsManager;
     String norm;
     Boolean on = true;
-    private Activity activity;
     private SwipeRefreshLayout swipeRefreshLayout;
     private ImageView backLaboratorium;
+    EditText editTextSearch;
+    RecyclerView recyclerView;
+    List<Historylabheader> historylabheaders;
+    LabheadAdapter labheadAdapter;
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -50,7 +57,31 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity implements Swi
             View view = getWindow().getDecorView();
             view.setSystemUiVisibility(view.getSystemUiVisibility() & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
+        sessionsManager = new SessionsManager(getApplicationContext());
+        norm = sessionsManager.getUserNomr();
 
+        recyclerView = (RecyclerView) findViewById(R.id.labheader_recycleview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        backLaboratorium = findViewById(R.id.IVbacklaboratorium);
+
+        editTextSearch = (EditText) findViewById(R.id.ETpencarianLab);
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayoutlab);
         backLaboratorium = findViewById(R.id.IVbacklaboratorium);
@@ -62,8 +93,7 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity implements Swi
                 refreshData();
             }
         });
-        sessionsManager = new SessionsManager(getApplicationContext());
-        norm = sessionsManager.getUserNomr();
+
 
         backLaboratorium.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,11 +104,23 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity implements Swi
 
     }
 
+    private void filter(String text) {
+        List<Historylabheader> filteredList = new ArrayList<>();
+        for (Historylabheader item : historylabheaders) {
+            if (item.getDokternama().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            } if (item.getNobuktitransaksi().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }  if (item.getJamsampling().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            } if (item.getTypeketerangan().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+        labheadAdapter.filterListlab(filteredList);
+    }
 
     public void refreshData() {
-
-        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.labheader_recycleview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         ApiInterface apiService =
                 ApiClient.createService(ApiInterface.class, "admin", "h3rm1n4c4r3");
@@ -93,9 +135,20 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity implements Swi
                 String MetaCode = code.getCode();
                 String MetaMessage = code.getMessage();
                 Log.d("Retrofit Post", "Jumlah data Kontak: " + MetaCode);
-                final List<Historylabheader> historylabheaders = response.body().getHistorylabheader();
-                recyclerView.setAdapter(new LabheadAdapter(historylabheaders, R.layout.labheader_list_item_layout, getApplicationContext()));
+                historylabheaders = response.body().getHistorylabheader();
+//                recyclerView.setAdapter(new LabheadAdapter(historylabheaders, R.layout.labheader_list_item_layout, getApplicationContext()));
+                labheadAdapter = new LabheadAdapter(historylabheaders,R.layout.labheader_list_item_layout, getApplicationContext());
+                recyclerView.setAdapter(labheadAdapter);
                 swipeRefreshLayout.setRefreshing(false);
+                if (MetaCode.equals("201")){
+                    AlertKoneksi alert = new AlertKoneksi();
+                    alert.showDialog(LaboratoriumHeaderActivity.this,"Belum Ada Riwayat Kunjungan Anda");
+                    swipeRefreshLayout.setRefreshing(false);
+                    editTextSearch.setEnabled(false);
+                    editTextSearch.setVisibility(View.GONE);
+                } else {
+                    editTextSearch.setEnabled(true);
+                }
             }
 
             @Override

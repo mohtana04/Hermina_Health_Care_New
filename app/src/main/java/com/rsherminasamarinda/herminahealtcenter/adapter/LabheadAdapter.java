@@ -60,6 +60,11 @@ public class LabheadAdapter extends RecyclerView.Adapter<LabheadAdapter.Labheade
         return historylabheaders == null ? 0 : historylabheaders.size();
     }
 
+    public void filterListlab(List<Historylabheader> filteredList) {
+        historylabheaders = filteredList;
+        notifyDataSetChanged();
+    }
+
     public class LabheaderAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView nobuktitransaksi, jamsampling, typeketerangan, dotkternama;

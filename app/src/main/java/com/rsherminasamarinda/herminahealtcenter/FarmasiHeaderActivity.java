@@ -1,8 +1,11 @@
 package com.rsherminasamarinda.herminahealtcenter;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +23,7 @@ import com.rsherminasamarinda.herminahealtcenter.rest.ApiInterface;
 import com.rsherminasamarinda.herminahealtcenter.utils.RecyclerTouchListener;
 import com.rsherminasamarinda.herminahealtcenter.utils.SessionsManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -33,6 +37,10 @@ public class FarmasiHeaderActivity extends AppCompatActivity implements SwipeRef
     Boolean on = true;
     private SwipeRefreshLayout swipeRefreshLayout;
     private ImageView backFarmasi;
+    RecyclerView recyclerView;
+    EditText editTextSearch;
+    List<Historyfarheader> historyfarheaders;
+    FarheadAdapter farheadAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,28 @@ public class FarmasiHeaderActivity extends AppCompatActivity implements SwipeRef
             View view = getWindow().getDecorView();
             view.setSystemUiVisibility(view.getSystemUiVisibility() & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
+        recyclerView = (RecyclerView) findViewById(R.id.farheader_recycleview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        backFarmasi = findViewById(R.id.IVbackfarmasi);
+        editTextSearch = (EditText) findViewById(R.id.ETpencarianFar) ;
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayoutfar);
         backFarmasi = findViewById(R.id.IVbackfarmasi);
@@ -68,10 +98,24 @@ public class FarmasiHeaderActivity extends AppCompatActivity implements SwipeRef
 
     }
 
+    private void filter(String text) {
+        List<Historyfarheader> filteredList = new ArrayList<>();
+        for (Historyfarheader item : historyfarheaders) {
+            if (item.getTanggal().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }if (item.getDoktername().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            } if (item.getNobuktitransaksi().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }  if (item.getTypeketerangan().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+        farheadAdapter.filterListfar(filteredList);
+    }
+
     public void refreshData() {
 
-        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.farheader_recycleview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         ApiInterface apiService =
                 ApiClient.createService(ApiInterface.class, "admin", "h3rm1n4c4r3");
@@ -86,7 +130,9 @@ public class FarmasiHeaderActivity extends AppCompatActivity implements SwipeRef
                 String MetaCode = code.getCode();
                 String MetaMessage = code.getMessage();
                 Log.d("Retrofit Post", "Jumlah data Farmasi: " + MetaCode);
-                final List<Historyfarheader> historyfarheaders = response.body().getHistoryfarheader();
+                historyfarheaders = response.body().getHistoryfarheader();
+                farheadAdapter = new FarheadAdapter(historyfarheaders,R.layout.farheader_list_item_layout,getApplicationContext());
+                recyclerView.setAdapter(farheadAdapter);
                 recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
                     @Override
                     public void onClick(View view, int position) {
@@ -102,8 +148,17 @@ public class FarmasiHeaderActivity extends AppCompatActivity implements SwipeRef
                     }
                 }));
 
-                recyclerView.setAdapter(new FarheadAdapter(historyfarheaders, R.layout.farheader_list_item_layout, getApplicationContext()));
+//                recyclerView.setAdapter(new FarheadAdapter(historyfarheaders, R.layout.farheader_list_item_layout, getApplicationContext()));
                 swipeRefreshLayout.setRefreshing(false);
+                if (MetaCode.equals("201")){
+                    AlertKoneksi alert = new AlertKoneksi();
+                    alert.showDialog(FarmasiHeaderActivity.this,"Belum Ada Riwayat Kunjungan Anda");
+                    swipeRefreshLayout.setRefreshing(false);
+                    editTextSearch.setEnabled(false);
+                    editTextSearch.setVisibility(View.GONE);
+                } else {
+                    editTextSearch.setEnabled(true);
+                }
             }
 
             @Override
@@ -118,5 +173,11 @@ public class FarmasiHeaderActivity extends AppCompatActivity implements SwipeRef
     @Override
     public void onRefresh() {
         refreshData();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
