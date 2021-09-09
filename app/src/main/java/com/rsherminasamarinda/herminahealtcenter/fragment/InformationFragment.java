@@ -1,9 +1,11 @@
 package com.rsherminasamarinda.herminahealtcenter.fragment;
 
 import android.os.Bundle;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -76,6 +78,10 @@ public class InformationFragment extends Fragment {
         webView.getSettings().setSupportZoom(false);
         webView.getSettings().setBuiltInZoomControls(false);
         webView.getSettings().setDisplayZoomControls(false);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.setPadding(0,0,0,0);
+        webView.setInitialScale(100);
         // Baris di bawah untuk menambahkan scrollbar di dalam WebView-nya
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         webView.setWebViewClient(new WebViewClient());
@@ -84,4 +90,5 @@ public class InformationFragment extends Fragment {
 
         return view;
     }
+
 }
