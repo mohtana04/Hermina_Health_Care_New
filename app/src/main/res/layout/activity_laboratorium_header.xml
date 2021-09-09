@@ -38,7 +38,7 @@
             app:layout_constraintStart_toEndOf="@id/IVbacklaboratorium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:textColor="@color/black"
+            android:textColor="#019443"
             android:text="Laboratorium"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
