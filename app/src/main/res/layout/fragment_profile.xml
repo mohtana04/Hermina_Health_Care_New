@@ -97,6 +97,67 @@
 <!--        app:layout_constraintStart_toStartOf="parent"/>-->
 
     <LinearLayout
+        android:id="@+id/parentOptional"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/CVkartuhermina"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/parentIgRSH">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#398F60"/>
+
+        <TextView
+            android:id="@+id/TVsyaratdanketentuan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kebijakan Privasi"
+            android:gravity="center_horizontal"
+            android:textColor="#398F60"
+            android:layout_margin="5dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#398F60"/>
+
+        <TextView
+            android:id="@+id/TVketentuanlayanan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ketentuan Layanan"
+            android:gravity="center_horizontal"
+            android:textColor="#398F60"
+            android:layout_margin="5dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#398F60"/>
+
+        <TextView
+            android:id="@+id/TVinformasiaplikasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Informasi Aplikasi"
+            android:gravity="center_horizontal"
+            android:textColor="#398F60"
+            android:layout_margin="5dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#398F60"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/parentIgRSH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -110,7 +171,7 @@
             android:id="@+id/IBlinkinstagrampengaturan"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/iglink"
+            android:src="@drawable/linkig"
             android:scaleType="fitXY"
             android:background="@null"/>
 
@@ -137,7 +198,7 @@
             android:id="@+id/IBlinkyoutubepengaturan"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ytlink"
+            android:src="@drawable/linkyt"
             android:scaleType="fitXY"
             android:background="@null"/>
 
@@ -164,7 +225,7 @@
             android:id="@+id/IBlinkwebpengaturan"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/telplink"
+            android:src="@drawable/linktelpon"
             android:scaleType="fitXY"
             android:background="@null"/>
 

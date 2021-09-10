@@ -25,9 +25,11 @@ public class MainActivity extends AppCompatActivity {
                 if (sessionsManager.isLoggedIn() == true) {
                     Intent log = new Intent(MainActivity.this, DashboardActivity.class);
                     startActivity(log);
+                    finish();
                 } else {
                     Intent log = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(log);
+                    finish();
                 }
             }
         }, SPLASH_TIME_OUT);
