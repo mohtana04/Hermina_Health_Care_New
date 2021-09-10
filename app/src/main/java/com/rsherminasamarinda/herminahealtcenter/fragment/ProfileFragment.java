@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,7 +30,7 @@ public class ProfileFragment extends Fragment {
     TextView textViewnamapasienkartu, textViewnomorpasienkartu;
     SessionsManager sessionsManager;
     ImageView imageViewbarcodecm;
-    AppCompatImageButton textViewLogout;
+    Button textViewLogout;
 
     String namapasien, nomorkartu;
     // TODO: Rename parameter arguments, choose names that match
@@ -87,7 +88,7 @@ public class ProfileFragment extends Fragment {
         sessionsManager = new SessionsManager(getContext());
 
         imageViewbarcodecm = (ImageView) view.findViewById(R.id.IVbarcodekartupengaturan);
-        textViewLogout = (AppCompatImageButton) view.findViewById(R.id.TVlogoutpengaturan);
+        textViewLogout = (Button) view.findViewById(R.id.TVlogoutpengaturan);
         textViewnamapasienkartu = (TextView) view.findViewById(R.id.TVnamapasienkartupengaturan);
         textViewnomorpasienkartu = (TextView) view.findViewById(R.id.TVnormkartupengaturan);
         textViewnamapasienkartu.setText(namapasien);

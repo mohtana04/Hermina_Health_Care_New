@@ -96,17 +96,147 @@
 <!--        app:layout_constraintTop_toBottomOf="@id/CVkartuhermina"-->
 <!--        app:layout_constraintStart_toStartOf="parent"/>-->
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parentSosialmedia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/CVkartuhermina"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tittleSosialMedia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Informasi lebih lanjut :"
+            android:layout_margin="10dp"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/parentIgRSH"/>
+
+        <LinearLayout
+            android:id="@+id/parentIgRSH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toBottomOf="@id/tittleSosialMedia"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/parentYtRSH">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/IBlinkinstagrampengaturan"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/linkig"
+                android:scaleType="fitXY"
+                android:background="@null"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Instagram"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/parentYtRSH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/parentIgRSH"
+            app:layout_constraintEnd_toStartOf="@id/parentWebRSH">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/IBlinkyoutubepengaturan"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/linkyt"
+                android:scaleType="fitXY"
+                android:background="@null"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Youtube"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/parentWebRSH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/parentYtRSH"
+            app:layout_constraintEnd_toStartOf="@id/parentLogout">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/IBlinkwebpengaturan"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/linkwebsite"
+                android:scaleType="fitXY"
+                android:background="@null"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Website"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/parentLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/parentWebRSH"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/IBlinktelepon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/linktelpon"
+                android:scaleType="fitXY"
+                android:background="@null"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telepon"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:id="@+id/parentOptional"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:padding="10dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/CVkartuhermina"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/parentIgRSH">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <View
             android:layout_width="match_parent"
@@ -155,114 +285,18 @@
             android:layout_height="0.8dp"
             android:background="#398F60"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/parentIgRSH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/parentYtRSH">
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/IBlinkinstagrampengaturan"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/linkig"
-            android:scaleType="fitXY"
-            android:background="@null"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Instagram"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/parentYtRSH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/parentIgRSH"
-        app:layout_constraintEnd_toStartOf="@id/parentWebRSH">
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/IBlinkyoutubepengaturan"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/linkyt"
-            android:scaleType="fitXY"
-            android:background="@null"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Youtube"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/parentWebRSH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/parentYtRSH"
-        app:layout_constraintEnd_toStartOf="@id/parentLogout">
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/IBlinkwebpengaturan"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/linktelpon"
-            android:scaleType="fitXY"
-            android:background="@null"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Telpon"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/parentLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/parentWebRSH"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <androidx.appcompat.widget.AppCompatImageButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/TVlogoutpengaturan"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:padding="10dp"
-            android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-            android:scaleType="fitXY"
-            android:background="@null"/>
-
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Keluar"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"
+            tools:ignore="RtlCompat"
+            android:text="Keluar Akun"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@drawable/custombutton"/>
 
     </LinearLayout>
 
