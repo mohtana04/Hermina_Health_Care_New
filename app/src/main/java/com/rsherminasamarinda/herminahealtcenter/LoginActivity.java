@@ -13,6 +13,8 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.safetynet.SafetyNet;
 import com.google.android.gms.safetynet.SafetyNetApi;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,7 +36,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-
+    private static final String TAG = LoginActivity.class.getSimpleName();
     private EditText editTextNomr;
     private EditText editTextTgllahir;
     private String nomr, tgllahir, nmpasien, gender;
@@ -43,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
     View focusView = null;
     SessionsManager sessionsManager;
-    String MetaCode;
+    String MetaCode, token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,12 +79,31 @@ public class LoginActivity extends AppCompatActivity {
                     SafetyNet.getClient(LoginActivity.this).verifyWithRecaptcha(getResources().getString(R.string.recaptcha_site_key)).addOnSuccessListener(new OnSuccessListener<SafetyNetApi.RecaptchaTokenResponse>() {
                         @Override
                         public void onSuccess(SafetyNetApi.RecaptchaTokenResponse recaptchaTokenResponse) {
-                            loginProcessWithRetrofit(nomr, tgllahir, recaptchaTokenResponse.getTokenResult());
+//                            token = recaptchaTokenResponse.getTokenResult();
+//                            loginProcessWithRetrofit(nomr, tgllahir, token);
+
+                            if (!recaptchaTokenResponse.getTokenResult().isEmpty()){
+                                String aa ="asdfsdfdfafafsaf";
+                                loginProcessWithRetrofit(recaptchaTokenResponse.getTokenResult());
+//                                Toast.makeText(LoginActivity.this,recaptchaTokenResponse.getTokenResult(),Toast.LENGTH_LONG).show();
+                            }
+
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-
+                            if (e instanceof ApiException) {
+                                // An error occurred when communicating with the
+                                // reCAPTCHA service. Refer to the status code to
+                                // handle the error appropriately.
+                                ApiException apiException = (ApiException) e;
+                                int statusCode = apiException.getStatusCode();
+                                Log.d("error captcha", "Error: " + CommonStatusCodes
+                                        .getStatusCodeString(statusCode));
+                            } else {
+                                // A different, unknown type of error occurred.
+                                Log.d("error captcha", "Error: " + e.getMessage());
+                            }
                         }
                     });
                 }
@@ -120,10 +141,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    private void loginProcessWithRetrofit(final String nomr, final String tgllahir, String token) {
+    private void loginProcessWithRetrofit(String token) {
+
+        nomr = editTextNomr.getText().toString();
+        tgllahir = editTextTgllahir.getText().toString();
         ApiInterface apiService =
                 ApiClient.createService(ApiInterface.class, "admin", "h3rm1n4c4r3");
-        Call<LoginResponse> mService = apiService.a(nomr, tgllahir);
+        Call<LoginResponse> mService = apiService.a(nomr, tgllahir, token);
         mService.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
@@ -135,7 +159,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (MetaCode.equals("200")) {
                     nmpasien = login.getNama();
                     gender = login.getGender();
-
                     Log.d("Retrofit Post", "Jumlah data Kontak: " + nmpasien + " " + gender);
                     Log.d("nama", "session nama :" + sessionsManager.getUserName());
                     sessionsManager.createLoginSession(nomr, nmpasien, gender);

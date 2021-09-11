@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
@@ -13,7 +14,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
+import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -21,6 +25,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.barteksc.pdfviewer.PDFView;
+import com.google.zxing.WriterException;
 import com.rsherminasamarinda.herminahealtcenter.Alert.AlertKoneksi;
 import com.rsherminasamarinda.herminahealtcenter.model.Historylabdetail;
 import com.rsherminasamarinda.herminahealtcenter.model.HistorylabdetailResponse;
@@ -36,6 +41,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import androidmads.library.qrgenearator.QRGContents;
+import androidmads.library.qrgenearator.QRGEncoder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,16 +50,17 @@ import retrofit2.Response;
 public class PdfViewActivity extends AppCompatActivity {
 
     PDFView pdfView;
-    String analis, dktrpatologi, notransaksi, tgllahir, nobukti, nocm, nmpasien, umur, dokternama, tglsampling, jamsampling, shift, hasilnumeriks;
+    String  notransaksi, tgllahir, nobukti, nocm, nmpasien, umur, dokternama, tglsampling, jamsampling, analis, dktrpatologi, shift, hasilnumeriks;
     private static final int CREATE_FILE = 1;
     Boolean on = true;
     private String stringFilePath;
     private File file;
-    Bitmap bmp, scaledbmp;
+    Bitmap bmp, scaledbmp, bitmap, scaledbmpQr;
     int pageWidth = 701, barisklmpknama, barisy, i, p, dataakhir;
     Date dateObj;
     DateFormat dateFormat;
     private ImageView backLaboratoriumfilepdf;
+    QRGEncoder qrgEncoder;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -137,6 +145,45 @@ public class PdfViewActivity extends AppCompatActivity {
 
 
                 if (MetaCode.equals("200")) {
+
+//                    generate qrcode
+// below line is for getting
+                    // the windowmanager service.
+                    WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
+
+                    // initializing a variable for default display.
+                    Display display = manager.getDefaultDisplay();
+// creating a variable for point which
+                    // is to be displayed in QR Code.
+                    Point point = new Point();
+                    display.getSize(point);
+
+                    // getting width and
+                    // height of a point
+                    int width = point.x;
+                    int height = point.y;
+
+                    // generating dimension from width and height.
+                    int dimen = width < height ? width : height;
+                    dimen = dimen * 3 / 4;
+
+                    // setting this dimensions inside our qr code
+                    // encoder to generate our qr code.
+                    qrgEncoder = new QRGEncoder(nobukti+nocm+nmpasien+tgllahir+umur+dokternama+tglsampling+analis+jamsampling+dktrpatologi, null, QRGContents.Type.TEXT, dimen);
+                    try {
+                        // getting our qrcode in the form of bitmap.
+                        bitmap = qrgEncoder.encodeAsBitmap();
+                        scaledbmpQr = bitmap.createScaledBitmap(bitmap, 200, 200, false);
+                        // the bitmap is set inside our image
+                        // view using .setimagebitmap method.
+//                        qrCodeIV.setImageBitmap(bitmap);
+                    } catch (WriterException e) {
+                        // this method is called for
+                        // exception handling.
+                        Log.e("Tag", e.toString());
+                    }
+
+                    //create file pdf
                     float ukuran = testindonesiums.size();
                     barisklmpknama = 0;
                     barisy = 0;
@@ -231,7 +278,7 @@ public class PdfViewActivity extends AppCompatActivity {
                         for (i = 0; i <= ukuran; i++) {
 //                        System.out.println("testindonesia " + i + " : " + testindonesiums.get(i).getTestindonesia());
 
-                            if (i == datarowpage || dataakhir == ukuran-1) {
+                            if (i == datarowpage || dataakhir == ukuran - 1) {
                                 break;
                             }
 
@@ -243,31 +290,31 @@ public class PdfViewActivity extends AppCompatActivity {
                             myPaint.setTextAlign(Paint.Align.LEFT);
                             myPaint.setStyle(Paint.Style.FILL);
 
-                                canvas.drawText(testindonesiums.get(dataakhir).getKelompoknama(), 30, barisklmpknama, myPaint);
-                                barisklmpknama = barisklmpknama + 30;
-                                canvas.drawText(testindonesiums.get(dataakhir).getTestindonesia(), 50, barisy, myPaint);
-                                canvas.drawLine(200, 380, 200, 40 * datarowpage + 380, myPaint);
-                                hasilnumeriks = testindonesiums.get(dataakhir).getHasilnumerik();
-                                if (testindonesiums.get(dataakhir).getHasilnumerik().equals("0")) {
-                                    myPaint.setTextAlign(Paint.Align.LEFT);
-                                    myPaint.setStyle(Paint.Style.FILL);
-                                    canvas.drawText(testindonesiums.get(dataakhir).getHasilkarakter(), 210, barisy, myPaint);
-                                } else {
-                                    myPaint.setTextAlign(Paint.Align.LEFT);
-                                    myPaint.setStyle(Paint.Style.FILL);
-                                    canvas.drawText(testindonesiums.get(dataakhir).getHasilnumerik(), 210, barisy, myPaint);
-                                }
-                                canvas.drawLine(300, 380, 300, 40 * datarowpage + 380, myPaint);
+                            canvas.drawText(testindonesiums.get(dataakhir).getKelompoknama(), 30, barisklmpknama, myPaint);
+                            barisklmpknama = barisklmpknama + 30;
+                            canvas.drawText(testindonesiums.get(dataakhir).getTestindonesia(), 50, barisy, myPaint);
+                            canvas.drawLine(200, 380, 200, 40 * datarowpage + 380, myPaint);
+                            hasilnumeriks = testindonesiums.get(dataakhir).getHasilnumerik();
+                            if (testindonesiums.get(dataakhir).getHasilnumerik().equals("0")) {
                                 myPaint.setTextAlign(Paint.Align.LEFT);
                                 myPaint.setStyle(Paint.Style.FILL);
-                                canvas.drawText(testindonesiums.get(dataakhir).getNormalkarakter(), 310, barisy, myPaint);
-                                canvas.drawLine(450, 380, 450, 40 * datarowpage + 380, myPaint);
+                                canvas.drawText(testindonesiums.get(dataakhir).getHasilkarakter(), 210, barisy, myPaint);
+                            } else {
+                                myPaint.setTextAlign(Paint.Align.LEFT);
+                                myPaint.setStyle(Paint.Style.FILL);
+                                canvas.drawText(testindonesiums.get(dataakhir).getHasilnumerik(), 210, barisy, myPaint);
+                            }
+                            canvas.drawLine(300, 380, 300, 40 * datarowpage + 380, myPaint);
+                            myPaint.setTextAlign(Paint.Align.LEFT);
+                            myPaint.setStyle(Paint.Style.FILL);
+                            canvas.drawText(testindonesiums.get(dataakhir).getNormalkarakter(), 310, barisy, myPaint);
+                            canvas.drawLine(450, 380, 450, 40 * datarowpage + 380, myPaint);
 
-                                myPaint.setTextAlign(Paint.Align.LEFT);
-                                myPaint.setStyle(Paint.Style.FILL);
-                                canvas.drawText(testindonesiums.get(dataakhir).getSatuanindonesia(), 470, barisy, myPaint);
-                                barisy = barisy + 30;
-                                canvas.drawLine(550, 380, 550, 40 * datarowpage + 380, myPaint);
+                            myPaint.setTextAlign(Paint.Align.LEFT);
+                            myPaint.setStyle(Paint.Style.FILL);
+                            canvas.drawText(testindonesiums.get(dataakhir).getSatuanindonesia(), 470, barisy, myPaint);
+                            barisy = barisy + 30;
+                            canvas.drawLine(550, 380, 550, 40 * datarowpage + 380, myPaint);
 //                                System.out.println("Cek perulangan :" + p + " " + i + " " + dataakhir + " " + testindonesiums.size());
 
                         }
@@ -286,8 +333,9 @@ public class PdfViewActivity extends AppCompatActivity {
                         myPaint.setTextSize(12);
                         myPaint.setColor(Color.BLACK);
                         canvas.drawText("Samarinda, " + dateFormat.format(dateObj), pageWidth - 80, 40 * datarowpage + 400, myPaint);
-                        canvas.drawLine(pageWidth - 220, 40 * datarowpage + 500, pageWidth - 20, 40 * datarowpage + 500, myPaint);
-                        canvas.drawText(analis, pageWidth - 80, 40 * datarowpage + 520, myPaint);
+                        canvas.drawBitmap(scaledbmpQr,pageWidth - 220,40 * datarowpage + 410,myPaint);
+                        canvas.drawLine(pageWidth - 220, 40 * datarowpage + 600, pageWidth - 20, 40 * datarowpage + 600, myPaint);
+                        canvas.drawText(analis, pageWidth - 80, 40 * datarowpage + 620, myPaint);
                         pdfDocument.finishPage(page);
                     }
 

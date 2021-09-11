@@ -98,12 +98,7 @@ public class FardetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public int getItemCount() {
         return reseps == null ? 0 : reseps.size() ;
-//        if (reseps == null) {
-//            return 0;
-//        } else {
-//            reseps.size();
-//            return racikans.size();
-//        }
+
     }
 
     @Override
@@ -112,26 +107,9 @@ public class FardetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             return VIEW_TYPE_RESEP;
         }
 
-//        if(position - reseps.size() < racikans.size()){
-//            return VIEW_TYPE_RACIKAN;
-//        }
-
         return -1;
     }
 
-//    public class FardetailAdapterViewHolder extends RecyclerView.ViewHolder {
-//        TextView namaobat, jumlahobat, carapakai, namaobatracikan, carapakairacikan;
-//        Button detailracikan;
-//
-//        public FardetailAdapterViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//            namaobat = (TextView) itemView.findViewById(R.id.TVnmobatfar);
-//            jumlahobat = (TextView) itemView.findViewById(R.id.TVjumlahfar);
-//            carapakai = (TextView) itemView.findViewById(R.id.TVcarapakaifar);
-//            detailracikan = (Button) itemView.findViewById(R.id.ACBlihatdetailrackanfar);
-//            namaobatracikan = (TextView) itemView.findViewById(R.id.TVnamaobatracikfardet);
-//        }
-//    }
 
     public class ResepViewHolder extends RecyclerView.ViewHolder {
         String deteksiracikan;
@@ -147,14 +125,10 @@ public class FardetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         public void populate(Resep resep){
             deteksiracikan = resep.getObatnama();
+            System.out.println("cucok" + deteksiracikan);
             hasil = deteksiracikan.substring(0, 2);
-            System.out.println("cucok " + hasil);
+
             if (hasil.equals("RC")){
-//                namaobat.setVisibility(itemView.VISIBLE);
-//                jumlahobat.setVisibility(itemView.VISIBLE);
-//                carapakai.setVisibility(itemView.VISIBLE);
-//                farmasiresep.setVisibility(itemView.GONE);
-//                farmasiresep.setPadding(0,0,0,0);
                 namaobat.setText(resep.getObatnama());
                 jumlahobat.setText(resep.getJumlah());
                 carapakai.setText(resep.getCarapakai());
@@ -172,26 +146,7 @@ public class FardetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 jumlahobat.setText(resep.getJumlah());
                 carapakai.setText(resep.getCarapakai());
             }
-
         }
     }
 
-//    public class RacikanViewHolder extends RecyclerView.ViewHolder {
-//        TextView noracikan, namaobatracikan, jumlahracikan, carapakairac;
-//
-//        public RacikanViewHolder(View itemView){
-//            super(itemView);
-//            noracikan = (TextView) itemView.findViewById(R.id.TVnmobatfar);
-//            namaobatracikan = (TextView) itemView.findViewById(R.id.TVnamaobatracikfar);
-////            jumlahracikan = (TextView) itemView.findViewById(R.id.TVjumlahracikanfar);
-////            carapakairac = (TextView) itemView.findViewById(R.id.TVcarapakaifar);
-//        }
-//
-//        public void populate(Racikan racikan){
-////            noracikan.setText("Rincian :" +racikan.getNoracikan());
-////            namaobatracikan.setText(racikan.getObatnamarecikan());
-////            jumlahracikan.setText(racikan.getJumlahracikan());
-////            carapakairac.setText(carapakauracikan);
-//        }
-//    }
 }

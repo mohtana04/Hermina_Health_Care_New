@@ -22,7 +22,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @POST("users/login")
-    Call<LoginResponse> a(@Field("nomr") String nomr, @Field("tgllahir") String tgllahir);
+    Call<LoginResponse> a(@Field("nomr") String nomr, @Field("tgllahir") String tgllahir, @Field("response_key") String response_key);
 
     @FormUrlEncoded
     @Headers("Content-Type: application/x-www-form-urlencoded")
