@@ -21,6 +21,7 @@ public class HistoryrwjAdapter extends RecyclerView.Adapter<HistoryrwjAdapter.Hi
     public Context context;
     private int rowLayout;
 
+
     public HistoryrwjAdapter(List<Historyrwj> historyrwjs, int rowLayout, Context context){
         this.historyrwjs = historyrwjs;
         this.rowLayout = rowLayout;
@@ -38,6 +39,7 @@ public class HistoryrwjAdapter extends RecyclerView.Adapter<HistoryrwjAdapter.Hi
         holder.noregistrasi.setText(historyrwjs.get(position).getNoregistrasi());
         holder.namadokter.setText(historyrwjs.get(position).getDoktername());
         holder.poliklinik.setText(historyrwjs.get(position).getPoliklinikname());
+
         holder.asuransi.setText(historyrwjs.get(position).getsNama());
         holder.tglregis.setText(historyrwjs.get(position).getTglregistrasi());
     }

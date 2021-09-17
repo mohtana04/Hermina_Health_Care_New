@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Health Care</string>
+    <string name="app_name">Health Care RS Hermina Samarinda</string>
     <string name="SloginGreeting">Selamat Datang</string>
     <string name="SloginHintuser">Nomor Rekam Medis</string>
     <string name="SloginHintpass">Tanggal Lahir</string>

@@ -10,15 +10,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 
-import com.rsherminasamarinda.herminahealtcenter.R;
-import com.rsherminasamarinda.herminahealtcenter.utils.SessionsManager;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.rsherminasamarinda.herminahealtcenter.R;
+import com.rsherminasamarinda.herminahealtcenter.utils.SessionsManager;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -105,6 +104,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 sessionsManager.logoutUser();
+                getActivity().finish();
             }
         });
         return view;

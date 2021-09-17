@@ -19,13 +19,13 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.barteksc.pdfviewer.PDFView;
 import com.google.zxing.WriterException;
+import com.rsherminasamarinda.herminahealtcenter.Alert.AlertHakAkses;
 import com.rsherminasamarinda.herminahealtcenter.Alert.AlertKoneksi;
 import com.rsherminasamarinda.herminahealtcenter.model.Historylabdetail;
 import com.rsherminasamarinda.herminahealtcenter.model.HistorylabdetailResponse;
@@ -169,7 +169,7 @@ public class PdfViewActivity extends AppCompatActivity {
 
                     // setting this dimensions inside our qr code
                     // encoder to generate our qr code.
-                    qrgEncoder = new QRGEncoder(nobukti+nocm+nmpasien+tgllahir+umur+dokternama+tglsampling+analis+jamsampling+dktrpatologi, null, QRGContents.Type.TEXT, dimen);
+                    qrgEncoder = new QRGEncoder(nobukti+dokternama+analis+jamsampling+dktrpatologi, null, QRGContents.Type.TEXT, dimen);
                     try {
                         // getting our qrcode in the form of bitmap.
                         bitmap = qrgEncoder.encodeAsBitmap();
@@ -344,7 +344,9 @@ public class PdfViewActivity extends AppCompatActivity {
                         pdfDocument.writeTo(new FileOutputStream(file));
                     } catch (Exception e) {
                         e.printStackTrace();
-                        Toast.makeText(PdfViewActivity.this, "PDF gagal dibuat", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(PdfViewActivity.this, "PDF gagal dibuat", Toast.LENGTH_LONG).show();
+                        AlertHakAkses alertHakAkses = new AlertHakAkses();
+                        alertHakAkses.showDialog(PdfViewActivity.this,"Kami membutuhkan ijin dari anda untuk membuat file pdf. Seperti gambar di atas");
                     }
                     pdfDocument.close();
                     pdfView.fromFile(file).load();

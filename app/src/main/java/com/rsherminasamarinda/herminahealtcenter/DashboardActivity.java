@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
@@ -43,12 +42,12 @@ public class DashboardActivity extends AppCompatActivity {
 
         /*cek koneksi pada handphone*/
 
-        hasExtStoragePermission(getApplicationContext());
-        hasWriteSecureSettingsPermission(getApplicationContext());
+//        hasExtStoragePermission(getApplicationContext());
+//        hasWriteSecureSettingsPermission(getApplicationContext());
 
         //permission
-        ActivityCompat.requestPermissions(this, new String[]{
-                Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
+//        ActivityCompat.requestPermissions(this, new String[]{
+//                Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
 
         boolean connected = false;
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
