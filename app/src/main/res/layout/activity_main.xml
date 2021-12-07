@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="selamat datang di"
+            android:text="Selamat Datang di"
             android:gravity="center_horizontal"
             android:textColor="@color/black"
             />
@@ -51,7 +51,16 @@
             android:textColor="#019443"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:text="Hermina Samarinda Health Care"/>
+            android:text="Health Care RS Hermina Samarinda"/>
+
+        <TextView
+            android:id="@+id/versionname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            />
 
     </LinearLayout>
 

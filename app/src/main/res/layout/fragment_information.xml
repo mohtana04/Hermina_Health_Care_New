@@ -6,9 +6,18 @@
     tools:context=".fragment.InformationFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <WebView
-        android:id="@+id/infopage"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayoutinfo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        tools:ignore="WebViewLayout">
+
+        <WebView
+            android:id="@+id/infopage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
 </FrameLayout>

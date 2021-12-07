@@ -7,6 +7,7 @@ import com.rsherminasamarinda.herminahealtcenter.model.HistoryfisioheaderRespons
 import com.rsherminasamarinda.herminahealtcenter.model.HistoryktkheaderResponse;
 import com.rsherminasamarinda.herminahealtcenter.model.HistorylabdetailResponse;
 import com.rsherminasamarinda.herminahealtcenter.model.HistorylabheaderResponse;
+import com.rsherminasamarinda.herminahealtcenter.model.HistoryraddetailResponse;
 import com.rsherminasamarinda.herminahealtcenter.model.HistoryradheaderResponse;
 import com.rsherminasamarinda.herminahealtcenter.model.HistoryrwiResponse;
 import com.rsherminasamarinda.herminahealtcenter.model.HistoryrwjResponse;
@@ -64,6 +65,11 @@ public interface ApiInterface {
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @POST("info/historylabdet")
     Call<HistorylabdetailResponse> hlabdet(@Field("nobuktitransaksi") String nobuktitransaksi);
+
+    @FormUrlEncoded
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @POST("info/historyraddet")
+    Call<HistoryraddetailResponse> hraddet(@Field("nobuktitransaksi") String nobuktitransaksi);
 
     @FormUrlEncoded
     @Headers("Content-Type: application/x-www-form-urlencoded")

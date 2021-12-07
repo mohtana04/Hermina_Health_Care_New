@@ -2,7 +2,6 @@ package com.rsherminasamarinda.herminahealtcenter.detail;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,7 +37,7 @@ import retrofit2.Response;
 public class LaboratoriumDetailActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     SessionsManager sessionsManager;
-    String norm, notransaksi, tgllahir, nobukti, nocm, nmpasien, umur, dokternama, tglsampling, jamsampling, shift;
+    String norm, notransaksi, tgllahir, nobukti, nocm, nmpasien, umur, dokternama, tglsampling, jamsampling, shift, penunjang;
     Boolean on = true;
     private SwipeRefreshLayout swipeRefreshLayoutlabdet;
     private ImageView backLaboratoriumdet;
@@ -65,8 +64,8 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
         }
 
         //cover header
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.headerpdf);
-        scaleBitmap = Bitmap.createScaledBitmap(bitmap, 1200, 518, false);
+//        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.headerpdf);
+//        scaleBitmap = Bitmap.createScaledBitmap(bitmap, 1200, 518, false);
 
 
         textViewnotranskasi = (TextView) findViewById(R.id.TVnotransaksiLabdetail);
@@ -120,8 +119,6 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
                 String message = code.getMessage();
                 String MetaCode = code.getCode();
                 Historylabdetail historylabdetailResponse = response.body().getHistorylabdetail();
-
-
                 nobukti = historylabdetailResponse.getNotransaksi();
                 nocm = historylabdetailResponse.getPatientid();
                 nmpasien = historylabdetailResponse.getPatientnama();
@@ -193,6 +190,7 @@ public class LaboratoriumDetailActivity extends AppCompatActivity implements Swi
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), PdfViewActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("penunjang", "laboratorium");
                 intent.putExtra("notransaksi", notransaksi);
                 startActivity(intent);
             }

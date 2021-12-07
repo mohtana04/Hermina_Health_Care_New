@@ -10,16 +10,15 @@ android {
         applicationId "com.rsherminasamarinda.herminahealtcenter"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 5
-        versionName "1.21091702"
-
+        versionCode 13
+        versionName "1.21102101"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            shrinkResources true
-            minifyEnabled true
+            shrinkResources false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

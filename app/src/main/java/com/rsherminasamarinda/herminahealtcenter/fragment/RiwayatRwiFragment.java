@@ -180,7 +180,7 @@ public class RiwayatRwiFragment extends Fragment implements SwipeRefreshLayout.O
             @Override
             public void onFailure(Call<HistoryrwiResponse> call, Throwable t) {
                 AlertKoneksi alert = new AlertKoneksi();
-                alert.showDialog(getActivity(),"Mohon maaf , sedang dalam perbaikan");
+                alert.showDialog(getActivity(),"Cek koneksi anda");
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

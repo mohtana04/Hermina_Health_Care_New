@@ -142,7 +142,7 @@ public class FisioHeaderActivity extends AppCompatActivity implements SwipeRefre
             @Override
             public void onFailure(Call<HistoryfisioheaderResponse> call, Throwable t) {
                 AlertKoneksi alert = new AlertKoneksi();
-                alert.showDialog(FisioHeaderActivity.this,"Mohon maaf , sedang dalam perbaikan");
+                alert.showDialog(FisioHeaderActivity.this,"Cek koneksi anda");
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

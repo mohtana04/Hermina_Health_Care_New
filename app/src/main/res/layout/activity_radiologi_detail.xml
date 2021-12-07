@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_background"
+    android:background="@drawable/customcolorgradient"
+    android:isScrollContainer="true"
     tools:context=".detail.RadiologiDetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/IVbackradiologidet"
+            android:id="@+id/IVbackRadiologidet"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_margin="5dp"
@@ -33,210 +34,184 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="Hasil Radiologi"
-            android:textColor="@color/black"
+            android:textColor="#019443"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/IVbackRadiologidet"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/BTNcetakraddet"/>
+
+        <ImageButton
+            android:id="@+id/BTNcetakraddet"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:src="@drawable/ic_baseline_print_24"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/IVbackradiologidet"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/raddetailtittle"
+        android:id="@+id/parentDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintTop_toBottomOf="@+id/CLtopnavbarRadiologidet"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/swipeRefreshLayoutraddet">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/LLheaderraddet"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:cardElevation="10dp"
-            android:backgroundTint="@color/white"
-            android:layout_margin="5dp"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/CVdetailraddet"
-            app:layout_constraintBottom_toTopOf="@id/BTNcetakraddet">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/TVpatientnamaraddet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TVnamapasienlabdetail"
-                    android:textColor="#019443"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="5dp"/>
-
-                <TextView
-                    android:id="@+id/TVumurraddet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:text="10th 8bln 1hr"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"/>
-
-                <TextView
-                    android:id="@+id/TVtgllahirraddet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:text="1992-12-10"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"/>
-
-                <TextView
-                    android:id="@+id/TVdokterpengirimraddet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:text="TVnmdokterlabdetail"
-                    android:textStyle="bold"
-                    android:textSize="13sp"/>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
-            android:id="@+id/BTNcetakraddet"
+            android:id="@+id/tittleNoTransaksi"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/custombutton"
-            android:padding="5dp"
-            android:text="Cetak"
-            android:gravity="center_horizontal|center_vertical"
+            android:text="no. Transaksi"
+            android:textSize="8sp"
+            tools:ignore="SmallSp"
+            android:gravity="center"
             android:textColor="@color/black"
-            android:textAllCaps="false"
-            android:drawableLeft="@drawable/ic_baseline_print_24"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/LLheaderraddet"
-            app:layout_constraintEnd_toStartOf="@id/IBshareraddet"/>
+            app:layout_constraintEnd_toStartOf="@id/tittleNoRekMed"/>
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/IBshareraddet"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tittleNoRekMed"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_share_24"
-            android:layout_margin="10dp"
-            android:padding="5dp"
-            android:scaleType="fitXY"
-            android:background="@drawable/customstrokebutton"
-            app:layout_constraintTop_toTopOf="@id/BTNcetakraddet"
-            app:layout_constraintBottom_toBottomOf="@id/BTNcetakraddet"
-            app:layout_constraintStart_toEndOf="@id/BTNcetakraddet"
-            app:layout_constraintEnd_toStartOf="@id/CVdetailraddet"/>
-
-        <LinearLayout
-            android:id="@+id/CVdetailraddet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="5dp"
+            android:text="no. Rekam Medis"
+            android:textSize="8sp"
+            tools:ignore="SmallSp"
+            android:gravity="center"
+            android:textColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/LLheaderraddet"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintStart_toEndOf="@id/tittleNoTransaksi"/>
+
+        <TextView
+            android:id="@+id/TVnotransaksiraddetail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="no transaksi"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/tittleNoTransaksi"
+            app:layout_constraintStart_toStartOf="@id/tittleNoTransaksi"
+            app:layout_constraintEnd_toEndOf="@id/tittleNoTransaksi"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/TVnormraddetail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="no rek med"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/tittleNoRekMed"
+            app:layout_constraintStart_toStartOf="@id/tittleNoRekMed"
+            app:layout_constraintEnd_toEndOf="@id/tittleNoRekMed"
+            android:gravity="center_horizontal"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/parentIdentitas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/parentDetail"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/TVnamapasienraddetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="TVnamapasienraddetail"
+            android:textColor="#019443"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/TVtgllhirraddetail"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="no. pemeriksaan :"
-                android:textSize="8sp"
-                android:textColor="@color/black"/>
+                android:text="1992-12-10"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                tools:ignore="SmallSp"/>
 
             <TextView
-                android:id="@+id/TVnotransaksiraddet"
-                android:layout_width="match_parent"
+                android:id="@+id/TVumurraddetail"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="no transaksi"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="no. rekam medis :"
-                android:textSize="8sp"
-                android:textColor="@color/black"/>
-
-            <TextView
-                android:id="@+id/TVpatientidraddet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="no rm"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="tgl. pemeriksaan :"
-                android:textSize="8sp"
-                android:textColor="@color/black"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/TVtglselesairaddet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="tgl sampling"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/TVshiftraddet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:text="pagi/siang/malam"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"/>
-
-            </LinearLayout>
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="10th 8bln 1hr"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                tools:ignore="SmallSp"/>
 
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/TVnmdokterraddetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TVnmdokterraddetail"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/TVtglsamplingraddetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="tanggal"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                tools:ignore="SmallSp"/>
+
+
+
+            <TextView
+                android:id="@+id/TVshiftraddetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="waktu"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                tools:ignore="SmallSp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayoutraddet"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/customroundedtop"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="7dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/raddetailtittle">
+        app:layout_constraintTop_toBottomOf="@id/parentIdentitas">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/raddetail_recycleview"

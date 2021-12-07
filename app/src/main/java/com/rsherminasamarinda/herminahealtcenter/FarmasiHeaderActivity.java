@@ -164,7 +164,7 @@ public class FarmasiHeaderActivity extends AppCompatActivity implements SwipeRef
             @Override
             public void onFailure(Call<HistoryFarheaderResponse> call, Throwable t) {
                 AlertKoneksi alert = new AlertKoneksi();
-                alert.showDialog(FarmasiHeaderActivity.this,"Mohon maaf , sedang dalam perbaikan");
+                alert.showDialog(FarmasiHeaderActivity.this,"Cek koneksi anda");
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

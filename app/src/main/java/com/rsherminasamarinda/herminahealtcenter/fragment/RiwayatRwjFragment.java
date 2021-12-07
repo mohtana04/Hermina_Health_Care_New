@@ -182,6 +182,8 @@ public class RiwayatRwjFragment extends Fragment implements SwipeRefreshLayout.O
 
             @Override
             public void onFailure(Call<HistoryrwjResponse> call, Throwable t) {
+                AlertKoneksi alert = new AlertKoneksi();
+                alert.showDialog(getActivity(),"Cek koneksi anda");
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

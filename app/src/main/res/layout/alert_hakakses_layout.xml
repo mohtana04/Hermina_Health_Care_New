@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="500dp"
+    android:layout_width="300dp"
     android:layout_height="700dp"
     android:layout_gravity="center"
     android:layout_marginLeft="55dp"
@@ -17,7 +16,7 @@
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
+            android:layout_width="400dp"
             android:layout_height="500dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/main_background"
@@ -39,7 +38,7 @@
 
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="308dp"
+                android:layout_width="300dp"
                 android:layout_height="361dp"
                 android:layout_margin="45dp"
                 android:scaleType="fitXY"
@@ -47,14 +46,14 @@
 
             <TextView
                 android:id="@+id/infoalertprevilage"
-                android:layout_width="wrap_content"
+                android:layout_width="304dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:layout_marginLeft="55dp"
                 android:layout_marginBottom="40dp"
-                android:layout_marginLeft="30dp"
+                android:text="Kami membutuhkan ijin dari anda untuk membuat file pdf.Ikuti langkah seperti gambar di atas"
                 android:textColor="@color/black"
-                android:text="Kami membutuhkan ijin dari anda untuk membuat file pdf. Seperti gambar di atas"
-                android:textSize="18dp"/>
+                android:textSize="12dp" />
 
         </androidx.cardview.widget.CardView>
     </LinearLayout>
@@ -80,6 +79,32 @@
             android:layout_gravity="center"
             android:elevation="6dp"
             android:text="OK"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_horizontal"
+        android:id="@+id/frmNoPrevilage"
+        android:layout_marginTop="85dp">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingNoalertPrevilage"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            app:backgroundTint="@android:color/holo_red_dark" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:elevation="6dp"
+            android:text="X"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/white"
             android:textStyle="bold" />

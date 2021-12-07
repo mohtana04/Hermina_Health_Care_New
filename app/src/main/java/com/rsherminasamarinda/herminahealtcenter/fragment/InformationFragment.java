@@ -1,15 +1,14 @@
 package com.rsherminasamarinda.herminahealtcenter.fragment;
 
 import android.os.Bundle;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.rsherminasamarinda.herminahealtcenter.R;
 
@@ -18,7 +17,7 @@ import com.rsherminasamarinda.herminahealtcenter.R;
  * Use the {@link InformationFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class InformationFragment extends Fragment {
+public class InformationFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,7 +28,7 @@ public class InformationFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     WebView webView;
-
+    private SwipeRefreshLayout swipeRefreshLayout;
     public InformationFragment() {
         // Required empty public constructor
     }
@@ -73,6 +72,37 @@ public class InformationFragment extends Fragment {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
 
+
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayoutinfo);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+                // Tiga baris di bawah ini agar laman yang dimuat dapat
+                // melakukan zoom.
+                webView.getSettings().setSupportZoom(false);
+                webView.getSettings().setBuiltInZoomControls(false);
+                webView.getSettings().setDisplayZoomControls(false);
+                webView.getSettings().setLoadWithOverviewMode(true);
+                webView.getSettings().setUseWideViewPort(true);
+                webView.setPadding(0,0,0,0);
+                webView.setInitialScale(100);
+                // Baris di bawah untuk menambahkan scrollbar di dalam WebView-nya
+                webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+                webView.setWebViewClient(new WebViewClient());
+                webView.loadUrl("http://smr.rshermina.co.id:28444/herminacare/informasihc/");
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+
+
+        return view;
+    }
+
+    @Override
+    public void onRefresh() {
         // Tiga baris di bawah ini agar laman yang dimuat dapat
         // melakukan zoom.
         webView.getSettings().setSupportZoom(false);
@@ -85,10 +115,7 @@ public class InformationFragment extends Fragment {
         // Baris di bawah untuk menambahkan scrollbar di dalam WebView-nya
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://herminahospitals.com");
-
-
-        return view;
+        webView.loadUrl("http://smr.rshermina.co.id:28444/herminacare/informasihc/");
+        swipeRefreshLayout.setRefreshing(false);
     }
-
 }

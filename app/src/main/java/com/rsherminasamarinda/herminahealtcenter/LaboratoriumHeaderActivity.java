@@ -94,7 +94,6 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity implements Swi
             }
         });
 
-
         backLaboratorium.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,7 +154,7 @@ public class LaboratoriumHeaderActivity extends AppCompatActivity implements Swi
             public void onFailure(Call<HistorylabheaderResponse> call, Throwable t) {
 //                Toast.makeText(LaboratoriumHeaderActivity.this, "gagal", Toast.LENGTH_LONG).show();
                 AlertKoneksi alert = new AlertKoneksi();
-                alert.showDialog(LaboratoriumHeaderActivity.this,"Mohon maaf , sedang dalam perbaikan");
+                alert.showDialog(LaboratoriumHeaderActivity.this,"Cek koneksi anda");
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

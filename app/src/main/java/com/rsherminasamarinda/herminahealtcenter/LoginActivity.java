@@ -3,6 +3,8 @@ package com.rsherminasamarinda.herminahealtcenter;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -57,7 +59,11 @@ public class LoginActivity extends AppCompatActivity {
             Intent log = new Intent(LoginActivity.this, DashboardActivity.class);
             startActivity(log);
         }
+
         editTextNomr = (EditText) findViewById(R.id.ETnomorcm);
+        editTextNomr.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        editTextNomr.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+
         editTextTgllahir = (EditText) findViewById(R.id.ETtgllahir);
         buttonLogin = (Button) findViewById(R.id.BTlogin);
 
@@ -106,6 +112,10 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         }
                     });
+//                    gender = "L";
+//                    sessionsManager.createLoginSession(nomr, nmpasien, gender);
+//                    Intent log = new Intent(LoginActivity.this, DashboardActivity.class);
+//                    startActivity(log);
                 }
             }
         });
@@ -176,7 +186,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(Call<LoginResponse> call, Throwable t) {
                 Log.e("Retrofit Post", t.toString());
                 AlertKoneksi alert = new AlertKoneksi();
-                alert.showDialog(LoginActivity.this, "Mohon maaf , sedang dalam perbaikan");
+                alert.showDialog(LoginActivity.this, "Cek koneksi anda");
             }
         });
     }

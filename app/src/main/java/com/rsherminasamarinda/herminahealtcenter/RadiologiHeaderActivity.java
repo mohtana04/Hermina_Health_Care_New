@@ -149,7 +149,7 @@ public class RadiologiHeaderActivity extends AppCompatActivity implements SwipeR
             public void onFailure(Call<HistoryradheaderResponse> call, Throwable t) {
 //                Toast.makeText(RadiologiHeaderActivity.this, "gagal", Toast.LENGTH_LONG).show();
                 AlertKoneksi alert = new AlertKoneksi();
-                alert.showDialog(RadiologiHeaderActivity.this,"Mohon maaf , sedang dalam perbaikan");
+                alert.showDialog(RadiologiHeaderActivity.this,"Cek koneksi anda");
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

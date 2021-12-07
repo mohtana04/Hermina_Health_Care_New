@@ -148,7 +148,7 @@ public class KtkHeaderActivity extends AppCompatActivity implements SwipeRefresh
             @Override
             public void onFailure(Call<HistoryktkheaderResponse> call, Throwable t) {
                 AlertKoneksi alert = new AlertKoneksi();
-                alert.showDialog(KtkHeaderActivity.this, "Mohon maaf , sedang dalam perbaikan");
+                alert.showDialog(KtkHeaderActivity.this, "Cek koneksi anda");
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
